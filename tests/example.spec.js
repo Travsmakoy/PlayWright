@@ -36,25 +36,8 @@ test('Test login and navigation through pages', async ({ page }) => {
   // Log in
   await login(page, user, password);
 
-  // Test navigation links and pages
-  const pagesToTest = [
-    { name: 'Home', url: `${BASE_URL}/home` },
-    { name: 'Profile', url: `${BASE_URL}/profile` },
-    { name: 'Settings', url: `${BASE_URL}/settings` },
-    { name: 'Reports', url: `${BASE_URL}/reports` },
-  ];
-
-  // for (const pageInfo of pagesToTest) {
-  //   // Click navigation link
-  //   await page.getByRole('link', { name: pageInfo.name }).click();
-
-  //   // Verify the URL and content
-  //   await expect(page).toHaveURL(pageInfo.url);
-  //   await expect(page.getByRole('heading', { name: new RegExp(pageInfo.name, 'i') })).toBeVisible();
-  // }
 });
 
-// Test for error handling in login
 test('Login with invalid credentials', async ({ page }) => {
   await page.goto(`${BASE_URL}/login`);
 
