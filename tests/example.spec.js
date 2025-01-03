@@ -62,4 +62,5 @@ test('Add Project',async({page})=>{
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
+
 })
