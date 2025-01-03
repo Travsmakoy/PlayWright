@@ -53,3 +53,13 @@ test('Logout functionality', async ({ page }) => {
   await expect(page).toHaveURL(`${BASE_URL}/login`);
   await expect(page.getByRole('heading', { name: 'Hi, Welcome Back' })).toBeVisible();
 });
+
+test('Add Project',async({page})=>{
+  const user = 'admin'; 
+  const password = 'newadmin';
+
+  await login(page, user, password);
+  await page.getByLabel('open drawer').click();
+  await page.getByRole('button', { name: 'Projects' }).click();
+  await page.getByRole('button', { name: 'Add Project' }).click();
+})
