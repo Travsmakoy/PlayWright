@@ -4,8 +4,8 @@ const BASE_URL = 'http://192.168.1.193:3000/en';
 const user = 'admin'; 
 const password = 'newadmin';
 const ProjectNames = '["PlayWrightAuto", "Project Beta", "Project Gamma", "Project Delta"]';
-const randomProject = getRandomElementFromJsonArray(ProjectNames);
 const licenseNumber = Math.floor(Math.random() * 999999999) + 1;
+const randomProject = getRandomElementFromJsonArray(ProjectNames);
 const projectNumber = Math.floor(Math.random() * 999999999) + 1;
 const StartingPrice = Math.floor(Math.random() * 999999) + 1;
 
@@ -51,7 +51,7 @@ test('VERIFY ADD PROJECT PAGE',async({page})=>{
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProject);
+  await page.fill('input[name="project_name"]', randomProject+StartingPrice.toString());
   await page.fill('input[name="license_no"]',licenseNumber.toString());
   await page.fill('input[name="project_no"]',projectNumber.toString());
   await page.fill('input[name="starting_price"]',StartingPrice.toString());
