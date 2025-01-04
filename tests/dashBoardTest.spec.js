@@ -59,13 +59,89 @@ test('VERIFY ADD PROJECT PAGE',async({page})=>{
 
 await page.locator('input[placeholder="Developer Company"]').click();
 
-await page.fill('input[placeholder="Developer Company"]', 'MERAAS');
-
-await page.waitForSelector('ul[role="listbox"]'); // Adjust if necessary based on your dropdown
+// await page.waitForSelector('ul[role="listbox"]'); // Adjust if necessary based on your dropdown
 
 await page.locator('ul[role="listbox"] >> text=MERAAS').click();
 
+await page.locator('input[placeholder="Select Country"]').click();
+await page.locator('ul[role="listbox"] >> text=United Arab Emirates').click();
+await page.locator('input[placeholder="Select State"]').click();
+await page.locator('ul[role="listbox"] >> text=Abu Dhabi').click();
+await page.locator('input[placeholder="Select City"]').click();
+await page.locator('ul[role="listbox"] >> text=Abu Dhabi').click();
+await page.locator('input[placeholder="Select Community"]').click();
+await page.locator('ul[role="listbox"] >> text=Abu Dhabi Gate City').click();
 
+await page.locator('input[placeholder="Select Sub Community"]').click();
+await page.locator('ul[role="listbox"] >> text=Mangrove Village').click();
+  const mapContainer = await page.waitForSelector('#map', { state: 'visible' });
+
+  // Scroll the map into view
+  await mapContainer.scrollIntoViewIfNeeded();
+
+  // Click on the polygon tool button
+  const polygonButton = await page.locator('//html[1]/body[1]/div[2]/main[1]/form[1]/div[2]/div[1]/div[2]/div[1]/div[6]/div[2]/div[1]/div[3]/div[4]/button[1]');
+  await polygonButton.click();
+  console.log('Clicked on the polygon icon');
+
+  // Pause to ensure interaction readiness
+  await page.waitForTimeout(500);
+
+  // Get map dimensions
+  const mapBoundingBox = await mapContainer.boundingBox();
+  if (!mapBoundingBox) {
+    throw new Error('Failed to retrieve map bounding box');
+  }
+
+  const { width: mapWidth, height: mapHeight, x: mapX, y: mapY } = mapBoundingBox;
+  const centerX = mapX + mapWidth / 2;
+  const centerY = mapY + mapHeight / 2;
+
+  // Reduced box dimensions (very small)
+  const boxWidth = 20;
+  const boxHeight = 20;
+
+  // Calculate starting point (top-left corner of the box)
+  const startX = centerX - boxWidth / 2;
+  const startY = centerY - boxHeight / 2;
+
+  // Start drawing the polygon
+  await page.mouse.move(startX, startY); // Move to starting point
+  await page.mouse.click(startX, startY); // Start drawing
+  console.log('Started at top-left corner');
+  await page.waitForTimeout(500);
+
+  // Draw top edge
+  await page.mouse.move(startX + boxWidth, startY);
+  await page.mouse.click(startX + boxWidth, startY);
+  console.log('Drew top edge');
+  await page.waitForTimeout(500);
+
+  // Draw right edge
+  await page.mouse.move(startX + boxWidth, startY + boxHeight);
+  await page.mouse.click(startX + boxWidth, startY + boxHeight);
+  console.log('Drew right edge');
+  await page.waitForTimeout(500);
+
+  // Draw bottom edge
+  await page.mouse.move(startX, startY + boxHeight);
+  await page.mouse.click(startX, startY + boxHeight);
+  console.log('Drew bottom edge');
+  await page.waitForTimeout(500);
+
+  // Close the box by returning to start
+  await page.mouse.move(startX, startY);
+  await page.mouse.click(startX, startY);
+  console.log('Closed the box');
+  await page.waitForTimeout(500);
+
+  // Final click to complete the selection
+  await page.mouse.click(startX + 1, startY + 1);
+  console.log('Completed the box selection');
+  await page.waitForTimeout(500);
+
+  // Scroll the page (optional)
+  await page.evaluate(() => window.scrollBy(0, 250));
 })
 
 
