@@ -127,16 +127,16 @@ async function addProject(page) {
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  
+
   await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
 
+  await page.locator('input[name="start_date"]').fill('01/06/2025');
 
 await page.locator('input[name="completion_date"]').fill('01/06/2025');
 
 await page.locator('input[name="handover_date"]').fill('01/06/2025');
 
-
-  await drawPolygonOnMap(page);
+await drawPolygonOnMap(page);
   
 }
 
