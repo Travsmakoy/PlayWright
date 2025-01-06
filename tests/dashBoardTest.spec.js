@@ -143,8 +143,11 @@ async function addProject(page) {
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
 
   await page.evaluate(() => window.scrollBy(0, 250));
-
-
+  await page.getByText('currency').click();
+  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByText('measure', { exact: true }).click();
+  await page.getByRole('option', { name: 'sqft' }).click();
 }
 
 test('LOGIN FUNCTIONALITY', async ({ page }) => {
