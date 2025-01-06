@@ -113,19 +113,18 @@ async function addProject(page) {
   await page.fill('input[name="starting_price"]', startingPrice);
 
   await page.locator('input[placeholder="Developer Company"]').click();
-  await page.locator('ul[role="listbox"] >> text=MERAAS').click();
-
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
+  
   await page.locator('input[placeholder="Select Country"]').click();
-  await page.locator('ul[role="listbox"] >> text=United Arab Emirates').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.locator('input[placeholder="Select State"]').click();
-  await page.locator('ul[role="listbox"] >> text=Abu Dhabi').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.locator('input[placeholder="Select City"]').click();
-  await page.locator('ul[role="listbox"] >> text=Abu Dhabi').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.locator('input[placeholder="Select Community"]').click();
-  await page.locator('ul[role="listbox"] >> text=Abu Dhabi Gate City').click();
-
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
   await page.locator('input[placeholder="Select Sub Community"]').click();
-  await page.locator('ul[role="listbox"] >> text=Mangrove Village').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
 
   await drawPolygonOnMap(page);
   
