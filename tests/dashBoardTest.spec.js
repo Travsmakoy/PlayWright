@@ -92,7 +92,7 @@ async function drawPolygonOnMap(page) {
   console.log('Completed the box selection');
   await page.waitForTimeout(500);
 
-  await page.evaluate(() => window.scrollBy(0, 500));
+  // await page.evaluate(() => window.scrollBy(0, 500));
   // await page.evaluate(() => window.maximize());
 }
 
@@ -128,23 +128,25 @@ async function addProject(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
 
-  await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
+  await drawPolygonOnMap(page);
 
-  // await page.locator('input[name="completion_percentage_date"]').fill('01/06/2025');
+  await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
   await page.locator('input[placeholder="Select Life Style"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
-  await page.locator('input[name="completion_date"]').fill('01/06/2025');
-  await page.locator('input[name="handover_date"]').fill('01/06/2025');
-    // await page.locator('input[name="start_date"]').fill('01/06/2025');
+  
+  // await page.locator('input[name="completion_percentage_date"]').fill('01/08/2025');
+  await page.locator('input[name="completion_date"]').fill('01/20/2025');
+  await page.locator('input[name="handover_date"]').fill('01/31/2025');
+    await page.locator('input[name="start_date"]').fill('01/01/2025');
   await page.fill('input[name="plot_area"]',(Math.floor(Math.random() * 1000) + 1).toString());
   await page.fill('input[name="built_up_area"]',(Math.floor(Math.random() * 200) + 1).toString());
   await page.locator('input[placeholder="Select Furnished"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 4)).click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
   await page.fill('input[name="no_of_properties"]',(Math.floor(Math.random() * 150) + 1).toString());
   await page.locator('input[placeholder="Select Ownership"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
 
-  await drawPolygonOnMap(page);
+
 
 }
 
@@ -167,11 +169,10 @@ test('LOGOUT FUNCTIONALITY', async ({ page }) => {
 
 test('VERIFY LANDING PAGE', async ({ page }) => {
   await page.goto(BASE_URL);
-  await expect(page.getByText('Go to Dashboard')).toBeVisible();
+  await expect(page.getByText(`Go to Dashboard`)).toBeVisible();
 });
 
 test('VERIFY ADD PROJECT PAGE OFFPLAN', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProject(page);
-  // await logout(page);
 });
