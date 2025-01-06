@@ -135,7 +135,7 @@ async function addProject(page) {
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
   await page.locator('input[name="completion_date"]').fill('01/06/2025');
   await page.locator('input[name="handover_date"]').fill('01/06/2025');
-  await page.locator('input[name="start_date"]').fill('01/06/2025');
+  // await page.locator('input[name="start_date"]').fill('01/06/2025');
 
 await drawPolygonOnMap(page);
   
@@ -166,4 +166,5 @@ test('VERIFY LANDING PAGE', async ({ page }) => {
 test('VERIFY ADD PROJECT PAGE OFFPLAN', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProject(page);
+  await logout(page);
 });
