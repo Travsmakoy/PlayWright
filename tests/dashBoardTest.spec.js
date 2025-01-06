@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const PROJECT_NAMES = ['PlayWrightAuto', 'Project Beta', 'Project Gamma', 'Project Delta'];
+const PROJECT_NAMES = ['PlayWrightAuto ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
 
 async function login(page, user, password) {
@@ -125,6 +125,16 @@ async function addProject(page) {
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
   await page.locator('input[placeholder="Select Sub Community"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+  await page.locator('input[placeholder="Select Completion Status"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  
+  await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
+
+
+await page.locator('input[name="completion_date"]').fill('01/06/2025');
+
+await page.locator('input[name="handover_date"]').fill('01/06/2025');
+
 
   await drawPolygonOnMap(page);
   
@@ -152,7 +162,7 @@ test('VERIFY LANDING PAGE', async ({ page }) => {
   await expect(page.getByText('Go to Dashboard')).toBeVisible();
 });
 
-test('VERIFY ADD PROJECT PAGE', async ({ page }) => {
+test('VERIFY ADD PROJECT PAGE OFFPLAN', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProject(page);
 });
