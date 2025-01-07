@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { write } = require('fs');
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
@@ -90,9 +91,57 @@ async function drawPolygonOnMap(page) {
   console.log('Completed the box selection');
   await page.waitForTimeout(500);
 
-  // await page.evaluate(() => window.scrollBy(0, 500));
-  // await page.evaluate(() => window.maximize());
 }
+
+async function WriteDescription(page) {
+  function generateRealEstateDescription() {
+    const phrases = [
+      "Spacious and modern",
+      "Located in the heart of the city",
+      "Breathtaking views of the skyline",
+      "Ideal for families and professionals",
+      "Close to schools, parks, and shopping centers",
+      "Featuring state-of-the-art amenities",
+      "Open-concept living spaces",
+      "Designed for ultimate comfort and convenience",
+      "Perfect for entertaining guests",
+      "Luxury finishes throughout",
+      "Private balcony or patio",
+      "Natural light-filled interiors",
+      "High ceilings and elegant design",
+      "Fully equipped gourmet kitchen",
+      "Top-of-the-line appliances",
+      "Serene and peaceful surroundings",
+      "Walking distance to public transport",
+      "Minutes away from major highways",
+      "Secure and gated community",
+      "Energy-efficient construction",
+      "Pet-friendly policies",
+      "Resort-style pool and fitness center",
+      "Ample storage and parking",
+      "Unmatched investment opportunity",
+      "Customizable options available"
+    ];
+
+    let description = "";
+    while (description.length < 750) {
+      const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+      if (description.length + randomPhrase.length + 2 <= 780) { // +2 accounts for a period and space
+        description += `${randomPhrase}. `;
+      } else {
+        break;
+      }
+    }
+    return description.trim();
+  }
+
+  const description = generateRealEstateDescription();
+
+  await page.fill('textarea[name="description"]', description);
+
+  console.log("Description filled with:", description);
+}
+
 
 async function addProject(page) {
   const randomProject = getRandomProject() + getRandomStartingPrice().toString();
@@ -106,6 +155,7 @@ async function addProject(page) {
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
 
   await page.fill('input[name="project_name"]', randomProject);
+  console.log('Project Name:', randomProject);
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
@@ -142,12 +192,124 @@ async function addProject(page) {
   await page.locator('input[placeholder="Select Ownership"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
 
-  await page.evaluate(() => window.scrollBy(0, 250));
+  await page.evaluate(() => window.scrollBy(0, 350));
   await page.getByText('currency').click();
   await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
-  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
+
+  await WriteDescription(page);
+
+  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
+  // await elements[0].click('1');
+}
+
+async function addProjectReady(page) {
+  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
+  const licenseNumber = getRandomLicenseNumber().toString();
+  const projectNumber = getRandomProjectNumber().toString();
+  const startingPrice = getRandomStartingPrice().toString();
+
+  await page.getByLabel('open drawer').click();
+  await page.getByRole('button', { name: 'Projects' }).click();
+  await page.getByRole('button', { name: 'Add Project' }).click();
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
+
+  await page.fill('input[name="project_name"]', randomProject);
+  console.log('Project Name:', randomProject);
+  await page.fill('input[name="license_no"]', licenseNumber);
+  await page.fill('input[name="project_no"]', projectNumber);
+  await page.fill('input[name="starting_price"]', startingPrice);
+  await page.locator('input[placeholder="Developer Company"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
+  await page.locator('input[placeholder="Select Country"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('input[placeholder="Select State"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('input[placeholder="Select City"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('input[placeholder="Select Community"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
+  await page.locator('input[placeholder="Select Sub Community"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+
+  await page.evaluate(() => window.scrollBy(0, 250));
+  await drawPolygonOnMap(page);
+
+  await page.locator('input[placeholder="Select Completion Status"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(1).click();
+  await page.locator('input[placeholder="Select Life Style"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
+  await page.locator('input[name="completion_date"]').fill('01/20/2025');
+  await page.locator('input[name="handover_date"]').fill('01/31/2025');
+  await page.locator('input[name="start_date"]').fill('01/01/2025');
+  await page.fill('input[name="plot_area"]',(Math.floor(Math.random() * 1000) + 1).toString());
+  await page.fill('input[name="built_up_area"]',(Math.floor(Math.random() * 200) + 1).toString());
+  await page.locator('input[placeholder="Select Furnished"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
+  await page.fill('input[name="no_of_properties"]',(Math.floor(Math.random() * 150) + 1).toString());
+  await page.locator('input[placeholder="Select Ownership"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
+
+  await page.evaluate(() => window.scrollBy(0, 350));
+  await page.getByText('currency').click();
+  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByText('measure', { exact: true }).click();
+  await page.getByRole('option', { name: 'sqft' }).click();
+
+  await WriteDescription(page);
+
+  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
+  // await elements[0].click('1');
+}
+
+async function addProjectMultiPhase(page) {
+  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
+  const licenseNumber = getRandomLicenseNumber().toString();
+  const projectNumber = getRandomProjectNumber().toString();
+  const startingPrice = getRandomStartingPrice().toString();
+
+  await page.getByLabel('open drawer').click();
+  await page.getByRole('button', { name: 'Projects' }).click();
+  await page.getByRole('button', { name: 'Add Project' }).click();
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
+
+  await page.fill('input[name="project_name"]', randomProject);
+  console.log('Project Name:', randomProject);
+  await page.fill('input[name="license_no"]', licenseNumber);
+  await page.fill('input[name="project_no"]', projectNumber);
+  await page.fill('input[name="starting_price"]', startingPrice);
+  await page.locator('input[placeholder="Developer Company"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
+  await page.getByRole('checkbox').click();
+  await page.locator('input[placeholder="Select Country"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('input[placeholder="Select State"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('input[placeholder="Select City"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('input[placeholder="Select Community"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
+  await page.locator('input[placeholder="Select Sub Community"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+
+  await page.evaluate(() => window.scrollBy(0, 250));
+  await drawPolygonOnMap(page);
+
+
+  await page.locator('input[placeholder="Select Life Style"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
+  await page.locator('input[name="start_date"]').fill('01/01/2025');
+
+
+  await page.evaluate(() => window.scrollBy(0, 350));
+
+  await WriteDescription(page);
+
+  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
+  // await elements[0].click('1');
 }
 
 test('LOGIN FUNCTIONALITY', async ({ page }) => {
@@ -175,4 +337,13 @@ test('VERIFY LANDING PAGE', async ({ page }) => {
 test('VERIFY ADD PROJECT PAGE OFFPLAN', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProject(page);
+});
+
+test('VERIFY ADD PROJECT PAGE READY', async ({ page }) => {
+  await login(page, VALID_USER, VALID_PASSWORD);
+  await addProjectReady(page);
+});
+test('VERIFY ADD PROJECT MULTIPHASE', async ({ page }) => {
+  await login(page, VALID_USER, VALID_PASSWORD);
+  await addProjectMultiPhase(page);
 });

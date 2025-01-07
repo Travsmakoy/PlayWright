@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 592095
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Pet-friendly policies. Located in the heart of the city. Natural light-filled interiors. Ideal for families and professionals. Luxury finishes throughout. Natural light-filled interiors. Ample storage and parking. Top-of-the-line appliances. Pet-friendly policies. High ceilings and elegant design. Close to schools, parks, and shopping centers. Secure and gated community. Secure and gated community. Breathtaking views of the skyline. Luxury finishes throughout. Top-of-the-line appliances. Minutes away from major highways. Located in the heart of the city. Luxury finishes throughout. Breathtaking views of the skyline. Walking distance to public transport. Breathtaking views of the skyline. Energy-efficient construction. Energy-efficient construction.
