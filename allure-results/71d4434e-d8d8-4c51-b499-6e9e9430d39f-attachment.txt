@@ -1,0 +1,14 @@
+Project Name: Playwright Alpha 67 Multiphase
+Closed the box
+Completed the box selection
+Randomly selected IDs: 24,43,67,5,44,25,26,51,73,2
+Clicked on test ID: 24
+Clicked on test ID: 43
+Clicked on test ID: 67
+Clicked on test ID: 5
+Clicked on test ID: 44
+Clicked on test ID: 25
+Clicked on test ID: 26
+Clicked on test ID: 51
+Clicked on test ID: 73
+Clicked on test ID: 2

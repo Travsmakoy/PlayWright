@@ -1,0 +1,13 @@
+Project Name: Playwright Delta 998 Multiphase
+Closed the box
+Completed the box selection
+Clicked on test ID: 1
+Clicked on test ID: 2
+Clicked on test ID: 3
+Clicked on test ID: 4
+Clicked on test ID: 5
+Clicked on test ID: 6
+Clicked on test ID: 7
+Clicked on test ID: 8
+Clicked on test ID: 9
+Clicked on test ID: 10

@@ -1,0 +1,25 @@
+Project Name: PlayWrightAuto 910 Ready
+Closed the box
+Completed the box selection
+Randomly selected IDs: 11,74,43,55,5,18,22,14,44,20
+Clicked on test ID: 11
+Clicked on test ID: 74
+Clicked on test ID: 43
+Clicked on test ID: 55
+Clicked on test ID: 5
+Clicked on test ID: 18
+Clicked on test ID: 22
+Clicked on test ID: 14
+Clicked on test ID: 44
+Clicked on test ID: 20
+Randomly selected IDs: 110,116,122,97,84,120,88,99,111,85
+Clicked on test ID: 110
+Clicked on test ID: 116
+Clicked on test ID: 122
+Clicked on test ID: 97
+Clicked on test ID: 84
+Clicked on test ID: 120
+Clicked on test ID: 88
+Clicked on test ID: 99
+Clicked on test ID: 111
+Clicked on test ID: 85

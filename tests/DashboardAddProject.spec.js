@@ -154,12 +154,54 @@ async function locationRandom(page) {
   await page.locator('input[placeholder="Select Sub Community"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2) + 1 - 1).click();
 }
-
-async function AmenetiesFacilities(page){
-  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
-  // await elements[0].click('1');
-  return null;
+function getrandomFacilities(count, min, max) {
+  const ids = new Set();
+  while (ids.size < count) {
+      const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
+      ids.add(randomId);
+  }
+  return Array.from(ids);
 }
+
+async function facilities(page){
+
+const randomIds = getrandomFacilities(10, 1, 77);
+    console.log(`Randomly selected IDs: ${randomIds}`);
+    for (const id of randomIds) {
+        const testId = id.toString(); // Convert number to string for test ID
+        try {
+            // Attempt to click the element with the corresponding test ID
+            await page.getByTestId(testId).click();
+            console.log(`Clicked on test ID: ${testId}`);
+        } catch (error) {
+            console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+        }
+    }
+}
+function getrandomAmenities(count, min, max) {
+  const ids = new Set();
+  while (ids.size < count) {
+      const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
+      ids.add(randomId);
+  }
+  return Array.from(ids);
+}
+async function amenities(page){
+
+  const randomIds = getrandomAmenities(10, 78, 123);
+      console.log(`Randomly selected IDs: ${randomIds}`);
+      for (const id of randomIds) {
+          const testId = id.toString(); // Convert number to string for test ID
+          try {
+              // Attempt to click the element with the corresponding test ID
+              await page.getByTestId(testId).click();
+              console.log(`Clicked on test ID: ${testId}`);
+          } catch (error) {
+              console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+          }
+      }
+  }
+
 
 async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
@@ -251,6 +293,8 @@ async function addProjectReady(page) {
   await drawPolygonOnMap(page);
   await readyDetails(page);
   await WriteDescription(page);
+  await facilities(page);
+  await amenities(page);
 }
 
 async function addProjectMultiPhase(page) {
@@ -278,6 +322,7 @@ async function addProjectMultiPhase(page) {
   await page.locator('input[name="start_date"]').fill('01/01/2025');
   await page.evaluate(() => window.scrollBy(0, 350));
   await WriteDescription(page);
+  await facilities(page);
 }
 
 test('login', async ({ page }) => {
