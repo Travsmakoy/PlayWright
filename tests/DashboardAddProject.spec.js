@@ -154,6 +154,11 @@ async function locationRandom(page) {
   await page.locator('input[placeholder="Select Sub Community"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2) + 1 - 1).click();
 }
+
+async function AmenetiesFacilities(page){
+  return null;
+}
+
 async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
