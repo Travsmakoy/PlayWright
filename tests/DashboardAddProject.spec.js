@@ -156,6 +156,8 @@ async function locationRandom(page) {
 }
 
 async function AmenetiesFacilities(page){
+  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
+  // await elements[0].click('1');
   return null;
 }
 
@@ -205,8 +207,6 @@ async function addProject(page) {
   await projectDetails(page);
   await WriteDescription(page);
 
-  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
-  // await elements[0].click('1');
 }
 async function readyDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
@@ -251,9 +251,6 @@ async function addProjectReady(page) {
   await drawPolygonOnMap(page);
   await readyDetails(page);
   await WriteDescription(page);
-
-  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
-  // await elements[0].click('1');
 }
 
 async function addProjectMultiPhase(page) {
@@ -281,9 +278,6 @@ async function addProjectMultiPhase(page) {
   await page.locator('input[name="start_date"]').fill('01/01/2025');
   await page.evaluate(() => window.scrollBy(0, 350));
   await WriteDescription(page);
-
-  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
-  // await elements[0].click('1');
 }
 
 test('login', async ({ page }) => {
