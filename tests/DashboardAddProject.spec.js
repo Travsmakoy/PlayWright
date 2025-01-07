@@ -35,6 +35,10 @@ function getRandomProjectNumber() {
   return Math.floor(Math.random() * 999999999) + 1;
 }
 
+function getRandomProjectRan() {
+  return Math.floor(Math.random() * 1000 ) +1;
+}
+
 function getRandomStartingPrice() {
   return Math.floor(Math.random() * (START_PRICE_RANGE.max - START_PRICE_RANGE.min + 1)) + START_PRICE_RANGE.min;
 }
@@ -124,7 +128,7 @@ async function WriteDescription(page) {
     ];
 
     let description = "";
-    while (description.length < 750) {
+    while (description.length < 780) {
       const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
       if (description.length + randomPhrase.length + 2 <= 780) { // +2 accounts for a period and space
         description += `${randomPhrase}. `;
@@ -176,7 +180,7 @@ async function projectDetails(page) {
   await page.getByRole('option', { name: 'sqft' }).click();
 }
 async function addProject(page) {
-  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
+  const randomProject = getRandomProject() + getRandomProjectRan().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -223,7 +227,7 @@ async function readyDetails(page) {
   await page.getByRole('option', { name: 'sqft' }).click();
 }
 async function addProjectReady(page) {
-  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
+  const randomProject = getRandomProject() + getRandomProjectRan().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -249,7 +253,7 @@ async function addProjectReady(page) {
 }
 
 async function addProjectMultiPhase(page) {
-  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
+  const randomProject = getRandomProject() + getRandomProjectRan().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
