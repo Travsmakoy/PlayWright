@@ -1,0 +1,14 @@
+Project Name: Playwright Delta 945 Multiphase
+Closed the box
+Completed the box selection
+Randomly selected IDs: 57,21,4,52,11,19,41,25,29,68
+Clicked on test ID: 57
+Clicked on test ID: 21
+Clicked on test ID: 4
+Clicked on test ID: 52
+Clicked on test ID: 11
+Clicked on test ID: 19
+Clicked on test ID: 41
+Clicked on test ID: 25
+Clicked on test ID: 29
+Clicked on test ID: 68

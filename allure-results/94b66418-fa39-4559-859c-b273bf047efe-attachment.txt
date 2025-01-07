@@ -1,0 +1,25 @@
+Project Name: Playwright Delta 591 Ready
+Closed the box
+Completed the box selection
+Randomly selected IDs: 14,62,39,8,73,32,3,56,61,19
+Clicked on test ID: 14
+Clicked on test ID: 62
+Clicked on test ID: 39
+Clicked on test ID: 8
+Clicked on test ID: 73
+Clicked on test ID: 32
+Clicked on test ID: 3
+Clicked on test ID: 56
+Clicked on test ID: 61
+Clicked on test ID: 19
+Randomly selected IDs: 99,93,111,119,83,122,80,116,104,113
+Clicked on test ID: 99
+Clicked on test ID: 93
+Clicked on test ID: 111
+Clicked on test ID: 119
+Clicked on test ID: 83
+Clicked on test ID: 122
+Clicked on test ID: 80
+Clicked on test ID: 116
+Clicked on test ID: 104
+Clicked on test ID: 113

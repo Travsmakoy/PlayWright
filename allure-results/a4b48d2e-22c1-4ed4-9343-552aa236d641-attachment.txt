@@ -1,0 +1,25 @@
+Project Name: Playwright Delta 310 Offplan
+Closed the box
+Completed the box selection
+Randomly selected IDs: 16,62,67,38,5,34,35,26,63,13
+Clicked on test ID: 16
+Clicked on test ID: 62
+Clicked on test ID: 67
+Clicked on test ID: 38
+Clicked on test ID: 5
+Clicked on test ID: 34
+Clicked on test ID: 35
+Clicked on test ID: 26
+Clicked on test ID: 63
+Clicked on test ID: 13
+Randomly selected IDs: 78,89,94,92,118,108,87,83,86,79
+Clicked on test ID: 78
+Clicked on test ID: 89
+Clicked on test ID: 94
+Clicked on test ID: 92
+Clicked on test ID: 118
+Clicked on test ID: 108
+Clicked on test ID: 87
+Clicked on test ID: 83
+Clicked on test ID: 86
+Clicked on test ID: 79

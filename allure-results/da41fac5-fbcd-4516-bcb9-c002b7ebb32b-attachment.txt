@@ -1,0 +1,22 @@
+Randomly selected IDs: 8,63,5,60,77,51,66,19,12,44
+Clicked on test ID: 8
+Clicked on test ID: 63
+Clicked on test ID: 5
+Clicked on test ID: 60
+Clicked on test ID: 77
+Clicked on test ID: 51
+Clicked on test ID: 66
+Clicked on test ID: 19
+Clicked on test ID: 12
+Clicked on test ID: 44
+Randomly selected IDs: 82,100,106,174,142,129,104,96,93,120
+Clicked on test ID: 82
+Clicked on test ID: 100
+Clicked on test ID: 106
+Clicked on test ID: 174
+Clicked on test ID: 142
+Clicked on test ID: 129
+Clicked on test ID: 104
+Clicked on test ID: 96
+Clicked on test ID: 93
+Clicked on test ID: 120

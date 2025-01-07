@@ -3,8 +3,8 @@ const { write } = require('fs');
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const PROJECT_NAMES = ['PlayWrightAuto ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
-const START_PRICE_RANGE = { min: 1, max: 999999 };
+const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
+const START_PRICE_RANGE = { min: 1, max: 9999999 };
 
 async function login(page, user, password) {
   await page.goto(`${BASE_URL}/login`);
@@ -187,7 +187,7 @@ function getrandomAmenities(count, min, max) {
 }
 
 async function amenities(page){
-  const randomIds = getrandomAmenities(10, 78, 123);
+  const randomIds = getrandomAmenities(10, 78, 200);
       console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
           const testId = id.toString(); // Convert number to string for test ID
@@ -249,6 +249,8 @@ async function addProject(page) {
   await facilities(page);
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
+    // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+
 
 }
 async function readyDetails(page) {
@@ -297,6 +299,7 @@ async function addProjectReady(page) {
   await facilities(page);
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
+  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
 
 }
 
@@ -327,6 +330,8 @@ async function addProjectMultiPhase(page) {
   await WriteDescription(page);
   await facilities(page);
   await page.getByRole('button', { name: 'submit' }).click();
+  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+
 }
 
 test('login', async ({ page }) => {

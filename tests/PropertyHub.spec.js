@@ -15,6 +15,53 @@ async function login(page, user, password) {
   await expect(page.getByText('Welcome Mr.Super Ahmad')).toBeVisible();
 }
 
+function getrandomFacilities(count, min, max) {
+  const ids = new Set();
+  while (ids.size < count) {
+      const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
+      ids.add(randomId);
+  }
+  return Array.from(ids);
+}
+
+async function facilities(page){
+const randomIds = getrandomFacilities(10, 1, 77);
+    console.log(`Randomly selected IDs: ${randomIds}`);
+    for (const id of randomIds) {
+        const testId = id.toString(); // Convert number to string for test ID
+        try {
+            // Attempt to click the element with the corresponding test ID
+            await page.getByTestId(testId).click();
+            console.log(`Clicked on test ID: ${testId}`);
+        } catch (error) {
+            console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+        }
+    }
+}
+function getrandomAmenities(count, min, max) {
+  const ids = new Set();
+  while (ids.size < count) {
+      const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
+      ids.add(randomId);
+  }
+  return Array.from(ids);
+}
+
+async function amenities(page){
+  const randomIds = getrandomAmenities(10, 78, 200);
+      console.log(`Randomly selected IDs: ${randomIds}`);
+      for (const id of randomIds) {
+          const testId = id.toString(); // Convert number to string for test ID
+          try {
+              // Attempt to click the element with the corresponding test ID
+              await page.getByTestId(testId).click();
+              console.log(`Clicked on test ID: ${testId}`);
+          } catch (error) {
+              console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+          }
+      }
+  }
+
 function getRandomProject() {
   const randomIndex = Math.floor(Math.random() * PROJECT_NAMES.length);
   return PROJECT_NAMES[randomIndex];
@@ -92,9 +139,9 @@ async function addPropertyHub(page) {
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2) + 1 - 1).click();
   await locationRandom(page)
   await WriteDescription(page);
-
-  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
-  // await elements[0].click('1');
+  await facilities(page);
+  await amenities(page);
+    // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
 }
 
 test('login', async ({ page }) => {
