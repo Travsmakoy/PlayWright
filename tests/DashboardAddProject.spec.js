@@ -44,7 +44,7 @@ async function drawPolygonOnMap(page) {
   await mapContainer.scrollIntoViewIfNeeded();
   const polygonButton = await page.locator('//html[1]/body[1]/div[2]/main[1]/form[1]/div[2]/div[1]/div[2]/div[1]/div[6]/div[2]/div[1]/div[3]/div[4]/button[1]');
   await polygonButton.click();
-  console.log('Clicked on the polygon icon');
+  // console.log('Clicked on the polygon icon');
   await page.waitForTimeout(500);
 
   const mapBoundingBox = await mapContainer.boundingBox();
@@ -64,22 +64,22 @@ async function drawPolygonOnMap(page) {
 
   await page.mouse.move(startX, startY);
   await page.mouse.click(startX, startY);
-  console.log('Started at top-left corner');
+  // console.log('Started at top-left corner');
   await page.waitForTimeout(500);
 
   await page.mouse.move(startX + boxWidth, startY);
   await page.mouse.click(startX + boxWidth, startY);
-  console.log('Drew top edge');
+  // console.log('Drew top edge');
   await page.waitForTimeout(500);
 
   await page.mouse.move(startX + boxWidth, startY + boxHeight);
   await page.mouse.click(startX + boxWidth, startY + boxHeight);
-  console.log('Drew right edge');
+  // console.log('Drew right edge');
   await page.waitForTimeout(500);
 
   await page.mouse.move(startX, startY + boxHeight);
   await page.mouse.click(startX, startY + boxHeight);
-  console.log('Drew bottom edge');
+  // console.log('Drew bottom edge');
   await page.waitForTimeout(500);
 
   await page.mouse.move(startX, startY);
@@ -136,10 +136,8 @@ async function WriteDescription(page) {
   }
 
   const description = generateRealEstateDescription();
-
   await page.fill('textarea[name="description"]', description);
-
-  console.log("Description filled with:", description);
+  // console.log("Description filled with:", description);
 }
 async function locationRandom(page) {
   await page.locator('input[placeholder="Select Country"]').click();
@@ -176,20 +174,16 @@ async function projectDetails(page) {
   await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
-  
 }
-
 async function addProject(page) {
   const randomProject = getRandomProject() + getRandomStartingPrice().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-
   await page.fill('input[name="project_name"]', randomProject+ ' Offplan');
   console.log('Project Name:', randomProject+ ' Offplan');
   await page.fill('input[name="license_no"]', licenseNumber);
@@ -221,7 +215,6 @@ async function readyDetails(page) {
   await page.fill('input[name="no_of_properties"]',(Math.floor(Math.random() * 150) + 1).toString());
   await page.locator('input[placeholder="Select Ownership"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
-
   await page.evaluate(() => window.scrollBy(0, 350));
   await page.getByText('currency').click();
   await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
@@ -291,14 +284,14 @@ test('login', async ({ page }) => {
 
 test('verify invalid credentials', async ({ page }) => {
   await page.goto(`${BASE_URL}/login`);
-  await page.fill('input[name="user"]', 'invalidcredentials');
-  await page.fill('input[name="password"]', 'invalidcredentials');
+  await page.fill('input[name="user"]', 'admin');
+  await page.fill('input[name="password"]', 'ahdmin');
   await page.click('button[type="submit"]');
-  await expect(page.getByText(/no data found/i)).toBeVisible();
-});1  
-1 
-test('logout', async ({ page }) => {1 
-  await login(page, VALID_USER, VALID_PASSWORD);1 
+  await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+});  
+ 
+test('logout', async ({ page }) => { 
+  await login(page, VALID_USER, VALID_PASSWORD);
   await logout(page);1  
 });
 

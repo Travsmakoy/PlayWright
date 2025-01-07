@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 973103 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: High ceilings and elegant design. Luxury finishes throughout. Fully equipped gourmet kitchen. Perfect for entertaining guests. Located in the heart of the city. Resort-style pool and fitness center. Perfect for entertaining guests. Breathtaking views of the skyline. Perfect for entertaining guests. Walking distance to public transport. Serene and peaceful surroundings. Perfect for entertaining guests. Fully equipped gourmet kitchen. Breathtaking views of the skyline. Natural light-filled interiors. Perfect for entertaining guests. Pet-friendly policies. Pet-friendly policies. Natural light-filled interiors. Luxury finishes throughout. Fully equipped gourmet kitchen. Close to schools, parks, and shopping centers. Open-concept living spaces.

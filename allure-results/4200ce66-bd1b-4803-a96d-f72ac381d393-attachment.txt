@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 895532 Ready
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Walking distance to public transport. Luxury finishes throughout. Featuring state-of-the-art amenities. Natural light-filled interiors. Natural light-filled interiors. Unmatched investment opportunity. Private balcony or patio. Close to schools, parks, and shopping centers. Featuring state-of-the-art amenities. Open-concept living spaces. Open-concept living spaces. Natural light-filled interiors. Private balcony or patio. Secure and gated community. Close to schools, parks, and shopping centers. Located in the heart of the city. Serene and peaceful surroundings. Resort-style pool and fitness center. Ideal for families and professionals. Private balcony or patio. Close to schools, parks, and shopping centers. Spacious and modern. Ideal for families and professionals.

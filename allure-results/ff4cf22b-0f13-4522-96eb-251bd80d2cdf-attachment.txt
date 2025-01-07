@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 798571 Offplan
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Open-concept living spaces. Featuring state-of-the-art amenities. Spacious and modern. Breathtaking views of the skyline. Designed for ultimate comfort and convenience. Secure and gated community. Located in the heart of the city. Luxury finishes throughout. High ceilings and elegant design. Serene and peaceful surroundings. Minutes away from major highways. Close to schools, parks, and shopping centers. Spacious and modern. Energy-efficient construction. Perfect for entertaining guests. Designed for ultimate comfort and convenience. Walking distance to public transport. Unmatched investment opportunity. Private balcony or patio. Featuring state-of-the-art amenities. Unmatched investment opportunity. Natural light-filled interiors. Pet-friendly policies.
