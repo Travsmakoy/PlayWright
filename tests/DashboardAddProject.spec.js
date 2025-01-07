@@ -128,9 +128,9 @@ async function WriteDescription(page) {
     ];
 
     let description = "";
-    while (description.length < 780) {
+    while (description.length < 800) {
       const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-      if (description.length + randomPhrase.length + 2 <= 780) { // +2 accounts for a period and space
+      if (description.length + randomPhrase.length + 2 <= 800) { // +2 accounts for a period and space
         description += `${randomPhrase}. `;
       } else {
         break;
@@ -138,7 +138,6 @@ async function WriteDescription(page) {
     }
     return description.trim();
   }
-
   const description = generateRealEstateDescription();
   await page.fill('textarea[name="description"]', description);
   // console.log("Description filled with:", description);
