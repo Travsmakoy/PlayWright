@@ -1,0 +1,14 @@
+Project Name: PlayWrightAuto 410 Multiphase
+Closed the box
+Completed the box selection
+Randomly selected IDs: 50,22,60,28,21,65,26,55,30,44
+Clicked on test ID: 50
+Clicked on test ID: 22
+Clicked on test ID: 60
+Clicked on test ID: 28
+Clicked on test ID: 21
+Clicked on test ID: 65
+Clicked on test ID: 26
+Clicked on test ID: 55
+Clicked on test ID: 30
+Clicked on test ID: 44

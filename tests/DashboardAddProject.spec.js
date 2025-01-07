@@ -202,7 +202,6 @@ async function amenities(page){
       }
   }
 
-
 async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -248,6 +247,9 @@ async function addProject(page) {
   await drawPolygonOnMap(page);
   await projectDetails(page);
   await WriteDescription(page);
+  await facilities(page);
+  await amenities(page);
+  await page.getByRole('button', { name: 'submit' }).click();
 
 }
 async function readyDetails(page) {
@@ -295,6 +297,8 @@ async function addProjectReady(page) {
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
+  await page.getByRole('button', { name: 'submit' }).click();
+
 }
 
 async function addProjectMultiPhase(page) {
@@ -323,6 +327,7 @@ async function addProjectMultiPhase(page) {
   await page.evaluate(() => window.scrollBy(0, 350));
   await WriteDescription(page);
   await facilities(page);
+  await page.getByRole('button', { name: 'submit' }).click();
 }
 
 test('login', async ({ page }) => {
