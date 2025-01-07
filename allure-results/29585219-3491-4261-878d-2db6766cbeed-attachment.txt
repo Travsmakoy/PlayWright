@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 601041
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Luxury finishes throughout. High ceilings and elegant design. Featuring state-of-the-art amenities. Ample storage and parking. Secure and gated community. Breathtaking views of the skyline. Perfect for entertaining guests. Pet-friendly policies. Luxury finishes throughout. Natural light-filled interiors. Energy-efficient construction. Natural light-filled interiors. Energy-efficient construction. Unmatched investment opportunity. Walking distance to public transport. Ample storage and parking. Top-of-the-line appliances. Ample storage and parking. High ceilings and elegant design. Private balcony or patio. Customizable options available. Designed for ultimate comfort and convenience. Pet-friendly policies. Luxury finishes throughout. Perfect for entertaining guests.

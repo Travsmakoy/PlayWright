@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 716494 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Walking distance to public transport. Energy-efficient construction. Fully equipped gourmet kitchen. Ideal for families and professionals. Resort-style pool and fitness center. Energy-efficient construction. Minutes away from major highways. Serene and peaceful surroundings. Walking distance to public transport. Ideal for families and professionals. Ample storage and parking. Spacious and modern. High ceilings and elegant design. Spacious and modern. Fully equipped gourmet kitchen. Natural light-filled interiors. Resort-style pool and fitness center. Ample storage and parking. Ample storage and parking. Serene and peaceful surroundings. Resort-style pool and fitness center. Featuring state-of-the-art amenities. Ample storage and parking. Fully equipped gourmet kitchen.

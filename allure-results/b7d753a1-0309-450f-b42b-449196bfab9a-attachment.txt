@@ -1,0 +1,9 @@
+Project Name: Playwright Gamma 179751 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Ample storage and parking. Serene and peaceful surroundings. Open-concept living spaces. Located in the heart of the city. Walking distance to public transport. Pet-friendly policies. Pet-friendly policies. Pet-friendly policies. Resort-style pool and fitness center. Energy-efficient construction. Located in the heart of the city. Natural light-filled interiors. Breathtaking views of the skyline. Secure and gated community. Energy-efficient construction. Energy-efficient construction. Close to schools, parks, and shopping centers. Natural light-filled interiors. Perfect for entertaining guests. Breathtaking views of the skyline. Ideal for families and professionals. Perfect for entertaining guests. Open-concept living spaces. Luxury finishes throughout.

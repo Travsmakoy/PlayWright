@@ -1,0 +1,8 @@
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Perfect for entertaining guests. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Open-concept living spaces. Designed for ultimate comfort and convenience. Ideal for families and professionals. Ideal for families and professionals. Close to schools, parks, and shopping centers. Close to schools, parks, and shopping centers. Featuring state-of-the-art amenities. Spacious and modern. Featuring state-of-the-art amenities. Perfect for entertaining guests. Open-concept living spaces. Ideal for families and professionals. Open-concept living spaces. Located in the heart of the city. Located in the heart of the city. Luxury finishes throughout. Perfect for entertaining guests. Perfect for entertaining guests. Luxury finishes throughout.

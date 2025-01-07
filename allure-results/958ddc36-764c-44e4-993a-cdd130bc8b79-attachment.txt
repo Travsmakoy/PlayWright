@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 505402 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Top-of-the-line appliances. Fully equipped gourmet kitchen. Customizable options available. Resort-style pool and fitness center. Spacious and modern. Energy-efficient construction. High ceilings and elegant design. Featuring state-of-the-art amenities. Top-of-the-line appliances. Resort-style pool and fitness center. Open-concept living spaces. Minutes away from major highways. Natural light-filled interiors. Energy-efficient construction. Spacious and modern. Natural light-filled interiors. Minutes away from major highways. Top-of-the-line appliances. Resort-style pool and fitness center. High ceilings and elegant design. Luxury finishes throughout. Located in the heart of the city. Walking distance to public transport. Spacious and modern.

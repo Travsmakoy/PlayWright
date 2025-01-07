@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 699846
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Energy-efficient construction. Ample storage and parking. Top-of-the-line appliances. Pet-friendly policies. Secure and gated community. Walking distance to public transport. Top-of-the-line appliances. Ideal for families and professionals. Spacious and modern. Located in the heart of the city. Customizable options available. High ceilings and elegant design. Resort-style pool and fitness center. Located in the heart of the city. Ample storage and parking. Designed for ultimate comfort and convenience. Unmatched investment opportunity. Open-concept living spaces. Secure and gated community. Open-concept living spaces. Top-of-the-line appliances. Resort-style pool and fitness center. Secure and gated community. Natural light-filled interiors.

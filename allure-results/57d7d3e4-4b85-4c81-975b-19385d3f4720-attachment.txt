@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 896927 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Ample storage and parking. Serene and peaceful surroundings. Walking distance to public transport. Top-of-the-line appliances. Perfect for entertaining guests. Top-of-the-line appliances. Fully equipped gourmet kitchen. Natural light-filled interiors. Resort-style pool and fitness center. Unmatched investment opportunity. Open-concept living spaces. Top-of-the-line appliances. Unmatched investment opportunity. Perfect for entertaining guests. Open-concept living spaces. Secure and gated community. Top-of-the-line appliances. Luxury finishes throughout. Fully equipped gourmet kitchen. Fully equipped gourmet kitchen. Top-of-the-line appliances. Customizable options available. Private balcony or patio. High ceilings and elegant design. Fully equipped gourmet kitchen.

@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 603234 Ready
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Walking distance to public transport. Minutes away from major highways. Unmatched investment opportunity. Fully equipped gourmet kitchen. Secure and gated community. Top-of-the-line appliances. Natural light-filled interiors. Breathtaking views of the skyline. Resort-style pool and fitness center. High ceilings and elegant design. Open-concept living spaces. Energy-efficient construction. Breathtaking views of the skyline. Customizable options available. Minutes away from major highways. Spacious and modern. Natural light-filled interiors. Unmatched investment opportunity. Ideal for families and professionals. Private balcony or patio. Resort-style pool and fitness center. Ample storage and parking. High ceilings and elegant design. Spacious and modern.

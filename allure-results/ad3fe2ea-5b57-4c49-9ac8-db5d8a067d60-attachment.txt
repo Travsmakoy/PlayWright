@@ -1,0 +1,9 @@
+Project Name: Playwright Gamma 467149
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Spacious and modern. Unmatched investment opportunity. Minutes away from major highways. Energy-efficient construction. Fully equipped gourmet kitchen. Featuring state-of-the-art amenities. Unmatched investment opportunity. Natural light-filled interiors. Resort-style pool and fitness center. Ideal for families and professionals. Unmatched investment opportunity. Resort-style pool and fitness center. High ceilings and elegant design. Private balcony or patio. Luxury finishes throughout. Energy-efficient construction. Located in the heart of the city. Pet-friendly policies. High ceilings and elegant design. High ceilings and elegant design. Pet-friendly policies. Ample storage and parking. Customizable options available. Perfect for entertaining guests.

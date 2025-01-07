@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 629336
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Pet-friendly policies. Breathtaking views of the skyline. Resort-style pool and fitness center. Top-of-the-line appliances. Minutes away from major highways. Featuring state-of-the-art amenities. Located in the heart of the city. Designed for ultimate comfort and convenience. Minutes away from major highways. Serene and peaceful surroundings. Close to schools, parks, and shopping centers. Private balcony or patio. Unmatched investment opportunity. Customizable options available. Energy-efficient construction. Serene and peaceful surroundings. Ample storage and parking. Perfect for entertaining guests. Breathtaking views of the skyline. Perfect for entertaining guests. Designed for ultimate comfort and convenience. Serene and peaceful surroundings.

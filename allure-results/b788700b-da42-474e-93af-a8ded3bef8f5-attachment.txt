@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 103570 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Pet-friendly policies. Open-concept living spaces. Natural light-filled interiors. Perfect for entertaining guests. Located in the heart of the city. Breathtaking views of the skyline. Ideal for families and professionals. Walking distance to public transport. Unmatched investment opportunity. Customizable options available. Top-of-the-line appliances. Minutes away from major highways. Open-concept living spaces. Fully equipped gourmet kitchen. Featuring state-of-the-art amenities. Walking distance to public transport. Minutes away from major highways. Minutes away from major highways. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Serene and peaceful surroundings. Perfect for entertaining guests.

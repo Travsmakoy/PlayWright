@@ -141,26 +141,7 @@ async function WriteDescription(page) {
 
   console.log("Description filled with:", description);
 }
-
-
-async function addProject(page) {
-  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
-  const licenseNumber = getRandomLicenseNumber().toString();
-  const projectNumber = getRandomProjectNumber().toString();
-  const startingPrice = getRandomStartingPrice().toString();
-
-  await page.getByLabel('open drawer').click();
-  await page.getByRole('button', { name: 'Projects' }).click();
-  await page.getByRole('button', { name: 'Add Project' }).click();
-  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-
-  await page.fill('input[name="project_name"]', randomProject);
-  console.log('Project Name:', randomProject);
-  await page.fill('input[name="license_no"]', licenseNumber);
-  await page.fill('input[name="project_no"]', projectNumber);
-  await page.fill('input[name="starting_price"]', startingPrice);
-  await page.locator('input[placeholder="Developer Company"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
+async function locationRandom(page) {
   await page.locator('input[placeholder="Select Country"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.locator('input[placeholder="Select State"]').click();
@@ -170,11 +151,9 @@ async function addProject(page) {
   await page.locator('input[placeholder="Select Community"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
   await page.locator('input[placeholder="Select Sub Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
-
-  await page.evaluate(() => window.scrollBy(0, 250));
-  await drawPolygonOnMap(page);
-
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2) + 1 - 1).click();
+}
+async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
@@ -191,21 +170,16 @@ async function addProject(page) {
   await page.fill('input[name="no_of_properties"]',(Math.floor(Math.random() * 150) + 1).toString());
   await page.locator('input[placeholder="Select Ownership"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
-
   await page.evaluate(() => window.scrollBy(0, 350));
   await page.getByText('currency').click();
   await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
   await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
-
-  await WriteDescription(page);
-
-  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
-  // await elements[0].click('1');
+  
 }
 
-async function addProjectReady(page) {
+async function addProject(page) {
   const randomProject = getRandomProject() + getRandomStartingPrice().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
@@ -216,27 +190,23 @@ async function addProjectReady(page) {
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
 
-  await page.fill('input[name="project_name"]', randomProject);
-  console.log('Project Name:', randomProject);
+  await page.fill('input[name="project_name"]', randomProject+ ' Offplan');
+  console.log('Project Name:', randomProject+ ' Offplan');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
   await page.locator('input[placeholder="Developer Company"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
-  await page.locator('input[placeholder="Select Country"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await page.locator('input[placeholder="Select State"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await page.locator('input[placeholder="Select City"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await page.locator('input[placeholder="Select Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
-  await page.locator('input[placeholder="Select Sub Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
-
+  await locationRandom(page);
   await page.evaluate(() => window.scrollBy(0, 250));
   await drawPolygonOnMap(page);
+  await projectDetails(page);
+  await WriteDescription(page);
 
+  // const elements = await page.$$('.mui-5wgy6m[data-testid]');
+  // await elements[0].click('1');
+}
+async function readyDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(1).click();
   await page.locator('input[placeholder="Select Life Style"]').click();
@@ -258,7 +228,27 @@ async function addProjectReady(page) {
   await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
-
+}
+async function addProjectReady(page) {
+  const randomProject = getRandomProject() + getRandomStartingPrice().toString();
+  const licenseNumber = getRandomLicenseNumber().toString();
+  const projectNumber = getRandomProjectNumber().toString();
+  const startingPrice = getRandomStartingPrice().toString();
+  await page.getByLabel('open drawer').click();
+  await page.getByRole('button', { name: 'Projects' }).click();
+  await page.getByRole('button', { name: 'Add Project' }).click();
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
+  await page.fill('input[name="project_name"]', randomProject+' Ready');
+  console.log('Project Name:', randomProject+' Ready');
+  await page.fill('input[name="license_no"]', licenseNumber);
+  await page.fill('input[name="project_no"]', projectNumber);
+  await page.fill('input[name="starting_price"]', startingPrice);
+  await page.locator('input[placeholder="Developer Company"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
+  await locationRandom(page);
+  await page.evaluate(() => window.scrollBy(0, 250));
+  await drawPolygonOnMap(page);
+  await readyDetails(page);
   await WriteDescription(page);
 
   // const elements = await page.$$('.mui-5wgy6m[data-testid]');
@@ -270,53 +260,36 @@ async function addProjectMultiPhase(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-
-  await page.fill('input[name="project_name"]', randomProject);
-  console.log('Project Name:', randomProject);
+  await page.fill('input[name="project_name"]', randomProject+' Multiphase');
+  console.log('Project Name:', randomProject+' Multiphase');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
   await page.locator('input[placeholder="Developer Company"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
   await page.getByRole('checkbox').click();
-  await page.locator('input[placeholder="Select Country"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await page.locator('input[placeholder="Select State"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await page.locator('input[placeholder="Select City"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await page.locator('input[placeholder="Select Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
-  await page.locator('input[placeholder="Select Sub Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
-
+  await locationRandom(page);
   await page.evaluate(() => window.scrollBy(0, 250));
   await drawPolygonOnMap(page);
-
-
   await page.locator('input[placeholder="Select Life Style"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
   await page.locator('input[name="start_date"]').fill('01/01/2025');
-
-
   await page.evaluate(() => window.scrollBy(0, 350));
-
   await WriteDescription(page);
 
   // const elements = await page.$$('.mui-5wgy6m[data-testid]');
   // await elements[0].click('1');
 }
 
-test('LOGIN FUNCTIONALITY', async ({ page }) => {
+test('login', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
 });
 
-test('INVALID LOGIN FUNCTIONALITY', async ({ page }) => {
+test('verify invalid credentials', async ({ page }) => {
   await page.goto(`${BASE_URL}/login`);
   await page.fill('input[name="user"]', 'invalidcredentials');
   await page.fill('input[name="password"]', 'invalidcredentials');
@@ -324,26 +297,26 @@ test('INVALID LOGIN FUNCTIONALITY', async ({ page }) => {
   await expect(page.getByText(/no data found/i)).toBeVisible();
 });1  
 1 
-test('LOGOUT FUNCTIONALITY', async ({ page }) => {1 
+test('logout', async ({ page }) => {1 
   await login(page, VALID_USER, VALID_PASSWORD);1 
   await logout(page);1  
 });
 
-test('VERIFY LANDING PAGE', async ({ page }) => {
+test('verify dashboard redirection', async ({ page }) => {
   await page.goto(BASE_URL);
   await expect(page.getByText(`Go to Dashboard`)).toBeVisible();
 });
 
-test('VERIFY ADD PROJECT PAGE OFFPLAN', async ({ page }) => {
+test('add project offplan', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProject(page);
 });
 
-test('VERIFY ADD PROJECT PAGE READY', async ({ page }) => {
+test('add project ready', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProjectReady(page);
 });
-test('VERIFY ADD PROJECT MULTIPHASE', async ({ page }) => {
+test('add project multiphase', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProjectMultiPhase(page);
 });

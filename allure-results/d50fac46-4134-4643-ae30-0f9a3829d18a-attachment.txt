@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 723019 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Located in the heart of the city. Customizable options available. Pet-friendly policies. Private balcony or patio. Serene and peaceful surroundings. Walking distance to public transport. Walking distance to public transport. Breathtaking views of the skyline. Located in the heart of the city. Minutes away from major highways. Close to schools, parks, and shopping centers. Designed for ultimate comfort and convenience. Designed for ultimate comfort and convenience. Energy-efficient construction. Luxury finishes throughout. Perfect for entertaining guests. Breathtaking views of the skyline. Private balcony or patio. Fully equipped gourmet kitchen. Spacious and modern. Pet-friendly policies. Top-of-the-line appliances. Walking distance to public transport.

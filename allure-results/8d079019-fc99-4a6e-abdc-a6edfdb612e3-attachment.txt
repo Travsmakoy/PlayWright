@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 946395 Offplan
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Perfect for entertaining guests. Unmatched investment opportunity. Minutes away from major highways. Breathtaking views of the skyline. Top-of-the-line appliances. Natural light-filled interiors. Spacious and modern. Serene and peaceful surroundings. Resort-style pool and fitness center. Designed for ultimate comfort and convenience. Resort-style pool and fitness center. Fully equipped gourmet kitchen. Ideal for families and professionals. Serene and peaceful surroundings. Close to schools, parks, and shopping centers. Featuring state-of-the-art amenities. Luxury finishes throughout. Perfect for entertaining guests. Serene and peaceful surroundings. Open-concept living spaces. Energy-efficient construction. Luxury finishes throughout. Ample storage and parking.

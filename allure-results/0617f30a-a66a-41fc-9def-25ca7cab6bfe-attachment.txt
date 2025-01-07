@@ -1,0 +1,9 @@
+Project Name: Playwright Gamma 820704 Offplan
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Resort-style pool and fitness center. Fully equipped gourmet kitchen. Spacious and modern. Ideal for families and professionals. Featuring state-of-the-art amenities. Perfect for entertaining guests. High ceilings and elegant design. Top-of-the-line appliances. Energy-efficient construction. Close to schools, parks, and shopping centers. Walking distance to public transport. Walking distance to public transport. Featuring state-of-the-art amenities. Open-concept living spaces. Featuring state-of-the-art amenities. Top-of-the-line appliances. Energy-efficient construction. Minutes away from major highways. Designed for ultimate comfort and convenience. Secure and gated community. Breathtaking views of the skyline. Close to schools, parks, and shopping centers.

@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 876592 Ready
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Pet-friendly policies. Featuring state-of-the-art amenities. Open-concept living spaces. Featuring state-of-the-art amenities. Private balcony or patio. Energy-efficient construction. Luxury finishes throughout. Perfect for entertaining guests. Resort-style pool and fitness center. Featuring state-of-the-art amenities. Natural light-filled interiors. Pet-friendly policies. Luxury finishes throughout. Unmatched investment opportunity. Walking distance to public transport. Private balcony or patio. Spacious and modern. Featuring state-of-the-art amenities. Walking distance to public transport. Secure and gated community. Open-concept living spaces. Serene and peaceful surroundings. Open-concept living spaces. Customizable options available. Energy-efficient construction.

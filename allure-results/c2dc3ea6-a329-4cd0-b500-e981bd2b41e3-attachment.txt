@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 707809
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Open-concept living spaces. Ample storage and parking. Spacious and modern. Breathtaking views of the skyline. Energy-efficient construction. Top-of-the-line appliances. Walking distance to public transport. Fully equipped gourmet kitchen. Natural light-filled interiors. Featuring state-of-the-art amenities. Spacious and modern. Customizable options available. Fully equipped gourmet kitchen. Perfect for entertaining guests. Luxury finishes throughout. Minutes away from major highways. Natural light-filled interiors. Energy-efficient construction. Secure and gated community. Natural light-filled interiors. Breathtaking views of the skyline. Top-of-the-line appliances. Energy-efficient construction. Walking distance to public transport. Unmatched investment opportunity.

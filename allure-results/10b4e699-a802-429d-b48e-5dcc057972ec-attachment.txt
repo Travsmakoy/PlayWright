@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 394776 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Top-of-the-line appliances. Spacious and modern. Ideal for families and professionals. Spacious and modern. Pet-friendly policies. Customizable options available. Located in the heart of the city. Pet-friendly policies. Unmatched investment opportunity. Serene and peaceful surroundings. Resort-style pool and fitness center. High ceilings and elegant design. Ideal for families and professionals. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Featuring state-of-the-art amenities. Customizable options available. Breathtaking views of the skyline. Customizable options available. Ample storage and parking. Customizable options available. Secure and gated community. Energy-efficient construction. Pet-friendly policies.

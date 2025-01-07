@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 316053 Offplan
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Luxury finishes throughout. Close to schools, parks, and shopping centers. Customizable options available. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Energy-efficient construction. Luxury finishes throughout. Minutes away from major highways. Located in the heart of the city. Breathtaking views of the skyline. Ample storage and parking. Energy-efficient construction. Located in the heart of the city. Luxury finishes throughout. Minutes away from major highways. Top-of-the-line appliances. Secure and gated community. Resort-style pool and fitness center. Top-of-the-line appliances. Serene and peaceful surroundings. Luxury finishes throughout. Breathtaking views of the skyline. Customizable options available.

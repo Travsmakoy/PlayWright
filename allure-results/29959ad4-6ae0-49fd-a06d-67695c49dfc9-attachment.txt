@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 763889 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Ideal for families and professionals. Private balcony or patio. Private balcony or patio. Secure and gated community. Secure and gated community. Pet-friendly policies. Perfect for entertaining guests. Perfect for entertaining guests. Unmatched investment opportunity. Open-concept living spaces. Top-of-the-line appliances. Resort-style pool and fitness center. Walking distance to public transport. Located in the heart of the city. Designed for ultimate comfort and convenience. Unmatched investment opportunity. Walking distance to public transport. Luxury finishes throughout. Breathtaking views of the skyline. Minutes away from major highways. Customizable options available. Ample storage and parking. Featuring state-of-the-art amenities. Pet-friendly policies.

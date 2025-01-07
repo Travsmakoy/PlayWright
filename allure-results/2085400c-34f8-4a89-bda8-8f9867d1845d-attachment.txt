@@ -1,0 +1,9 @@
+Project Name: Playwright Gamma 2718
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: High ceilings and elegant design. Unmatched investment opportunity. Energy-efficient construction. Private balcony or patio. Ample storage and parking. Ideal for families and professionals. Energy-efficient construction. Located in the heart of the city. Close to schools, parks, and shopping centers. Located in the heart of the city. Energy-efficient construction. Pet-friendly policies. Luxury finishes throughout. Open-concept living spaces. Private balcony or patio. Fully equipped gourmet kitchen. Customizable options available. Breathtaking views of the skyline. Walking distance to public transport. Designed for ultimate comfort and convenience. Featuring state-of-the-art amenities. Pet-friendly policies. Natural light-filled interiors.

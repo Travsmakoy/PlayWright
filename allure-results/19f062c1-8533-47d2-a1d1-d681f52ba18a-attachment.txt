@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 933849 Offplan
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Spacious and modern. Walking distance to public transport. Minutes away from major highways. Ample storage and parking. Serene and peaceful surroundings. Perfect for entertaining guests. Top-of-the-line appliances. Customizable options available. Spacious and modern. Ideal for families and professionals. Unmatched investment opportunity. Unmatched investment opportunity. Featuring state-of-the-art amenities. Ideal for families and professionals. Customizable options available. Pet-friendly policies. Energy-efficient construction. Ideal for families and professionals. Featuring state-of-the-art amenities. Customizable options available. Fully equipped gourmet kitchen. Minutes away from major highways. Resort-style pool and fitness center.

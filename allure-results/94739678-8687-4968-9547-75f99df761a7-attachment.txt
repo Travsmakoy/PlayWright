@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 751237
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: High ceilings and elegant design. Spacious and modern. Natural light-filled interiors. Top-of-the-line appliances. Designed for ultimate comfort and convenience. High ceilings and elegant design. High ceilings and elegant design. Open-concept living spaces. Open-concept living spaces. Unmatched investment opportunity. Ample storage and parking. Spacious and modern. Ideal for families and professionals. Spacious and modern. Spacious and modern. Minutes away from major highways. Energy-efficient construction. Luxury finishes throughout. Spacious and modern. Spacious and modern. Perfect for entertaining guests. Fully equipped gourmet kitchen. Serene and peaceful surroundings. Close to schools, parks, and shopping centers. Walking distance to public transport.

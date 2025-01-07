@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 814096 Ready
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: High ceilings and elegant design. Secure and gated community. Minutes away from major highways. Fully equipped gourmet kitchen. Fully equipped gourmet kitchen. Breathtaking views of the skyline. Private balcony or patio. Perfect for entertaining guests. Pet-friendly policies. Close to schools, parks, and shopping centers. Ample storage and parking. Breathtaking views of the skyline. High ceilings and elegant design. Energy-efficient construction. Secure and gated community. Located in the heart of the city. Close to schools, parks, and shopping centers. Perfect for entertaining guests. Walking distance to public transport. Walking distance to public transport. Breathtaking views of the skyline. Minutes away from major highways. Secure and gated community.

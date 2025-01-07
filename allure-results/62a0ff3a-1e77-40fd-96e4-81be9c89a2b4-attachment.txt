@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 33877
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Fully equipped gourmet kitchen. Open-concept living spaces. Fully equipped gourmet kitchen. Open-concept living spaces. Spacious and modern. Secure and gated community. Luxury finishes throughout. Breathtaking views of the skyline. Spacious and modern. Resort-style pool and fitness center. Open-concept living spaces. Spacious and modern. Pet-friendly policies. Serene and peaceful surroundings. Ample storage and parking. Private balcony or patio. Close to schools, parks, and shopping centers. Serene and peaceful surroundings. Natural light-filled interiors. High ceilings and elegant design. Featuring state-of-the-art amenities. Natural light-filled interiors. Spacious and modern. Serene and peaceful surroundings. High ceilings and elegant design.

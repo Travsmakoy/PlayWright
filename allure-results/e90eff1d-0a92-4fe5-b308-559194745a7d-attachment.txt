@@ -1,0 +1,8 @@
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Luxury finishes throughout. Open-concept living spaces. Designed for ultimate comfort and convenience. Featuring state-of-the-art amenities. Close to schools, parks, and shopping centers. Designed for ultimate comfort and convenience. Spacious and modern. Luxury finishes throughout. Breathtaking views of the skyline. Perfect for entertaining guests. Spacious and modern. Designed for ultimate comfort and convenience. Spacious and modern. Perfect for entertaining guests. Breathtaking views of the skyline. Featuring state-of-the-art amenities. Ideal for families and professionals. Featuring state-of-the-art amenities. Breathtaking views of the skyline. Breathtaking views of the skyline. Spacious and modern. Featuring state-of-the-art amenities.

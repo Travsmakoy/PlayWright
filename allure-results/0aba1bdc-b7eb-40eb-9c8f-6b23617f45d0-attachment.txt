@@ -1,0 +1,9 @@
+Project Name: Playwright Delta 958534 Offplan
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Located in the heart of the city. Unmatched investment opportunity. High ceilings and elegant design. Designed for ultimate comfort and convenience. Close to schools, parks, and shopping centers. High ceilings and elegant design. Featuring state-of-the-art amenities. Perfect for entertaining guests. Energy-efficient construction. Top-of-the-line appliances. Customizable options available. Fully equipped gourmet kitchen. High ceilings and elegant design. Top-of-the-line appliances. Customizable options available. Energy-efficient construction. Fully equipped gourmet kitchen. Serene and peaceful surroundings. Serene and peaceful surroundings. Energy-efficient construction. Natural light-filled interiors. Unmatched investment opportunity. Secure and gated community.

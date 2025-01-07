@@ -1,0 +1,9 @@
+Project Name: Playwright Alpha 845550 Multiphase
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Walking distance to public transport. Featuring state-of-the-art amenities. Top-of-the-line appliances. Natural light-filled interiors. Private balcony or patio. Walking distance to public transport. Featuring state-of-the-art amenities. Pet-friendly policies. Located in the heart of the city. Luxury finishes throughout. Close to schools, parks, and shopping centers. Private balcony or patio. Secure and gated community. Pet-friendly policies. Private balcony or patio. Walking distance to public transport. Unmatched investment opportunity. Ample storage and parking. Spacious and modern. Ideal for families and professionals. Ideal for families and professionals. Unmatched investment opportunity. Spacious and modern. Walking distance to public transport.

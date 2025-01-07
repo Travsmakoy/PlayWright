@@ -1,0 +1,9 @@
+Project Name: PlayWrightAuto 652780 Ready
+Clicked on the polygon icon
+Started at top-left corner
+Drew top edge
+Drew right edge
+Drew bottom edge
+Closed the box
+Completed the box selection
+Description filled with: Fully equipped gourmet kitchen. Designed for ultimate comfort and convenience. Close to schools, parks, and shopping centers. Top-of-the-line appliances. Resort-style pool and fitness center. Unmatched investment opportunity. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Unmatched investment opportunity. Serene and peaceful surroundings. Secure and gated community. Luxury finishes throughout. Designed for ultimate comfort and convenience. Secure and gated community. Spacious and modern. Pet-friendly policies. Designed for ultimate comfort and convenience. Customizable options available. Serene and peaceful surroundings. Breathtaking views of the skyline. Featuring state-of-the-art amenities.
