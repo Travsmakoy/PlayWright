@@ -89,7 +89,7 @@ async function addPropertyHub(page) {
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
   await page.fill('input[name="property_name"]', randomProject);
   await page.locator('input[placeholder="Choose category"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 4) + 1 - 1).click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2) + 1 - 1).click();
   await locationRandom(page)
   await WriteDescription(page);
 
