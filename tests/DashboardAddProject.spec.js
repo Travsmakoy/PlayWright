@@ -164,7 +164,6 @@ function getrandomFacilities(count, min, max) {
 }
 
 async function facilities(page){
-
 const randomIds = getrandomFacilities(10, 1, 77);
     console.log(`Randomly selected IDs: ${randomIds}`);
     for (const id of randomIds) {
@@ -186,8 +185,8 @@ function getrandomAmenities(count, min, max) {
   }
   return Array.from(ids);
 }
-async function amenities(page){
 
+async function amenities(page){
   const randomIds = getrandomAmenities(10, 78, 123);
       console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
