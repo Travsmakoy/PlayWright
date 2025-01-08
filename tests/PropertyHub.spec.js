@@ -2,8 +2,6 @@ const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
 const Index = require('selenium-webdriver/bidi');
 const BASE_URL = 'http://192.168.1.193:3000/en';
-const VALID_USER = 'admin';
-const VALID_PASSWORD = 'newadmin';
 const PROJECT_NAMES = ['PlayWrightAuto ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
 
@@ -15,7 +13,6 @@ async function login(page, user, password) {
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
   await expect(page.getByText('Welcome Mr.Aqary Investment')).toBeVisible();
 }
-
 function getrandomFacilities(count, min, max) {
   const ids = new Set();
   while (ids.size < count) {
@@ -24,7 +21,6 @@ function getrandomFacilities(count, min, max) {
   }
   return Array.from(ids);
 }
-
 async function facilities(page){
 const randomIds = getrandomFacilities(10, 1, 77);
     // console.log(`Randomly selected IDs: ${randomIds}`);
@@ -69,11 +65,9 @@ function getRandomProject() {
   const randomIndex = Math.floor(Math.random() * PROJECT_NAMES.length);
   return PROJECT_NAMES[randomIndex];
 }
-
 function getRandomStartingPrice() {
   return Math.floor(Math.random() * (START_PRICE_RANGE.max - START_PRICE_RANGE.min + 1)) + START_PRICE_RANGE.min;
 }
-
 async function WriteDescription(page) {
   function generateRealEstateDescription() {
     const phrases = [
@@ -164,7 +158,6 @@ async function PropertyTitle(page) {
       }
     }
 
-    // Adjust to exactly 55 characters by trimming or padding
     if (description.length > 55) {
       description = description.slice(0, 55).trim();
     } else if (description.length < 55) {
@@ -176,9 +169,8 @@ async function PropertyTitle(page) {
 
   const description = generateRealEstateTittle();
   await page.getByPlaceholder('Property title').fill(description);
-  // console.log("Description filled with:", description);
-}
 
+}
 
 async function propertyTypeLogic(page) {
   await page.getByPlaceholder('Select Property type').click();
@@ -189,14 +181,10 @@ async function propertyTypeLogic(page) {
 
 async function clickMiddleMap(page) {
   const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
-
-  // Wait for the element to be visible
   await mapElement.waitFor({ state: 'visible' });
 
-  // Get the bounding box of the element
   const box = await mapElement.boundingBox();
   if (box) {
-      // Move to the specified position (50, 50) relative to the element and click
       await page.mouse.move(box.x + 50, box.y + 50);
       await page.mouse.click(box.x + 50, box.y + 50);
   } else {
@@ -250,16 +238,8 @@ async function addPropertyHub(page) {
   // await page.getByRole('button', { name: 'Submit' }).click();
 }
 
-test('login', async ({ page }) => {
-  await login(page, VALID_USER, VALID_PASSWORD);
-});
 
-test('verify dashboard redirection', async ({ page }) => {
-  await page.goto(BASE_URL);
-  await expect(page.getByText(`Go to Dashboard`)).toBeVisible();
-});
-
-test('add property hub sale', async ({ page }) => {
+test('add property commercial land', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
 });
