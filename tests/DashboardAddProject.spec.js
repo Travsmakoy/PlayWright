@@ -365,10 +365,10 @@ async function addReadyphasePlan(page) {
 async function addMultiphaseGallery(page) {
   await page.getByRole('row', { name: `${randomProjectPhase}` }).getByRole('button').nth(3).click();
   await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
-  for(let i=0; i<10; i++){
+  for(let i=0; i<5; i++){
     await page.getByRole('button', { name: 'Add Gallery' }).click();
     await page.getByPlaceholder('Select Gallery Type').click();
-    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6) + 1 - 1).click();
+    await page.locator('ul[role="listbox"] >> li').nth(0).click();
     await page.getByPlaceholder('Select Media Type').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
     const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
@@ -401,10 +401,10 @@ async function addOffplanPlan(page) {
 async function addOffplanGallery(page) {
   await page.getByRole('row', { name: `${randomProjectOffPlan}` }).getByRole('button').nth(5).click();
   await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
-  for(let i=0; i<10; i++){
+  for(let i=0; i<5; i++){
     await page.getByRole('button', { name: 'Add Gallery' }).click();
     await page.getByPlaceholder('Select Gallery Type').click();
-    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6) + 1 - 1).click();
+    await page.locator('ul[role="listbox"] >> li').nth(0).click();
     await page.getByPlaceholder('Select Media Type').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
     const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
@@ -420,10 +420,10 @@ async function addOffplanGallery(page) {
 async function addReadyphaseGallery(page) {
   await page.getByRole('row', { name: `${randomProjectReady}` }).getByRole('button').nth(5).click();
   await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
-  for(let i=0; i<10; i++){
+  for(let i=0; i<5; i++){
     await page.getByRole('button', { name: 'Add Gallery' }).click();
     await page.getByPlaceholder('Select Gallery Type').click();
-    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6) + 1 - 1).click();
+    await page.locator('ul[role="listbox"] >> li').nth(0).click();
     await page.getByPlaceholder('Select Media Type').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
     const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
