@@ -172,13 +172,6 @@ async function PropertyTitle(page) {
 
 }
 
-async function propertyTypeLogic(page) {
-  await page.getByPlaceholder('Select Property type').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*2)).click();
-  await page.getByPlaceholder('Select Unit type').click();
-  await page.getByRole('option', { Index: '0' }).click();
-}
-
 async function clickMiddleMap(page) {
   const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
   await mapElement.waitFor({ state: 'visible' });
@@ -191,6 +184,30 @@ async function clickMiddleMap(page) {
       console.error('Element not found or not visible');
   }
 }
+
+async function ifLand(page){
+  return null;
+  
+  await page.getByPlaceholder('Select Unit type').click();
+  const option = page.locator('[data-option-index="1"]');
+  await option.click();  
+}
+async function IfResidential(page){
+
+  await page.getByPlaceholder('Select Unit type').click();
+  const option = page.locator('[data-option-index="0"]');
+  await option.click();  }
+
+  async function propertyTypeLogic(page) {
+    await page.getByPlaceholder('Select Property type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*5)).click();
+    if (page.locator('ul[role="listbox"] >> li').nth(0).textContent() == 'Commercial land') {
+      await ifLand(page);
+    } else {
+      await IfResidential(page);
+    }
+  }
+
 async function AgentAndOwner(page) {
       const mark = await page.locator('input[placeholder="Search by name or number"]');
     await page.getByPlaceholder('Broker Agent').fill('Kashif');
