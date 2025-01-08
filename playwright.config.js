@@ -21,7 +21,10 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["line"], ["allure-playwright"]],
+
+  /////////REPORTER FOR ALLURE//////
+  // reporter: [["line"], ["allure-playwright"]], 
+  reporter: 'html', // THIS IS DEFAULT
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -35,13 +38,17 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'],headless: true },
+      use: { ...devices['Desktop Chrome'],
+        // screenshot:'on',
+        // video:'on',
+        trace:'on',
+        headless: true
+      },
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'],headless: true },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],headless: true },
+    // },
 
     // {
     //   name: 'webkit',
