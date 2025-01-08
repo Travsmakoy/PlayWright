@@ -140,7 +140,6 @@ async function WriteDescription(page) {
   }
   const description = generateRealEstateDescription();
   await page.fill('textarea[name="description"]', description);
-  // console.log("Description filled with:", description);
 }
 async function locationRandom(page) {
   await page.locator('input[placeholder="Select Country"]').click();
@@ -164,16 +163,13 @@ function getrandomFacilities(count, min, max) {
 }
 async function facilities(page){
 const randomIds = getrandomFacilities(10, 1, 77);
-    // console.log(`Randomly selected IDs: ${randomIds}`);
     for (const id of randomIds) {
         const testId = id.toString(); // Convert number to string for test ID
         try {
             // Attempt to click the element with the corresponding test ID
             await page.getByTestId(testId).click();
-            // console.log(`Clicked on test ID: ${testId}`);
         } catch (error) {
           return error;
-            // console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
         }
     }
 }
@@ -187,16 +183,13 @@ function getrandomAmenities(count, min, max) {
 }
 async function amenities(page){
   const randomIds = getrandomAmenities(10, 78, 200);
-      // console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
           const testId = id.toString(); // Convert number to string for test ID
           try {
               // Attempt to click the element with the corresponding test ID
               await page.getByTestId(testId).click();
-              // console.log(`Clicked on test ID: ${testId}`);
           } catch (error) {
             return error;
-              // console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
           }
       }
   }
@@ -342,6 +335,7 @@ async function addMultiphasePlan(page) {
     const fileInput = await page.$('//input[@type="file"]');
     await fileInput.setInputFiles(filePath);
     await page.getByRole('button', { name: 'submit' }).click();
+    await expect(page.getByText(/Created plan successfully/)).toBeVisible();
   }
   await page.getByRole('link', { name: 'Projects', exact: true }).click();
 }
@@ -378,6 +372,7 @@ async function addMultiphaseGallery(page) {
     const fileInput = await page.$('//input[@type="file"]');
     await fileInput.setInputFiles(filePath);
     await page.getByRole('button', { name: 'submit' }).click();
+    await expect(page.getByText(/Created successfully/)).toBeVisible();
   }
   await page.getByRole('link', { name: 'Project gallery' }).click();
 }
@@ -395,6 +390,8 @@ async function addOffplanPlan(page) {
     const fileInput = await page.$('//input[@type="file"]');
     await fileInput.setInputFiles(filePath);
     await page.getByRole('button', { name: 'submit' }).click();
+    await expect(page.getByText(/Created plan successfully/)).toBeVisible();
+
   }
   await page.getByRole('link', { name: 'Projects', exact: true }).click();
 }
