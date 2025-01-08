@@ -1,0 +1,4 @@
+Project Name: PlayWright Beta 150 Ready
+Closed the box
+Completed the box selection
+Randomly selected IDs: 96,94,152,115,136,160,167,90,183,156

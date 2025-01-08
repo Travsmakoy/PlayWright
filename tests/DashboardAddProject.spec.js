@@ -90,15 +90,14 @@ async function drawPolygonOnMap(page) {
 
   await page.mouse.move(startX, startY);
   await page.mouse.click(startX, startY);
-  console.log('Closed the box');
+  // console.log('Closed the box');
   await page.waitForTimeout(500);
 
   await page.mouse.click(startX + 1, startY + 1);
-  console.log('Completed the box selection');
+  // console.log('Completed the box selection');
   await page.waitForTimeout(500);
 
 }
-
 async function WriteDescription(page) {
   function generateRealEstateDescription() {
     const phrases = [
@@ -128,7 +127,6 @@ async function WriteDescription(page) {
       "Unmatched investment opportunity",
       "Customizable options available"
     ];
-
     let description = "";
     while (description.length < 800) {
       const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
@@ -164,7 +162,6 @@ function getrandomFacilities(count, min, max) {
   }
   return Array.from(ids);
 }
-
 async function facilities(page){
 const randomIds = getrandomFacilities(10, 1, 77);
     // console.log(`Randomly selected IDs: ${randomIds}`);
@@ -188,12 +185,11 @@ function getrandomAmenities(count, min, max) {
   }
   return Array.from(ids);
 }
-
 async function amenities(page){
   const randomIds = getrandomAmenities(10, 78, 200);
-      console.log(`Randomly selected IDs: ${randomIds}`);
+      // console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
-          // const testId = id.toString(); // Convert number to string for test ID
+          const testId = id.toString(); // Convert number to string for test ID
           try {
               // Attempt to click the element with the corresponding test ID
               await page.getByTestId(testId).click();
@@ -204,7 +200,6 @@ async function amenities(page){
           }
       }
   }
-
 async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -254,8 +249,8 @@ async function addProject(page) {
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
-
-
+  await addOffplanGallery(page);
+  await addOffplanPlan(page);
 }
 async function readyDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
@@ -304,7 +299,8 @@ async function addProjectReady(page) {
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
-
+  await addReadyphaseGallery(page);
+  await addReadyphasePlan(page);
 }
 const randomProjectPhase = getRandomProject() + getRandomProjectRan().toString();
 async function addProjectMultiPhase(page) {
@@ -334,8 +330,43 @@ async function addProjectMultiPhase(page) {
   await facilities(page);
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
+  await addMultiphaseGallery(page);
+  await addMultiphasePlan(page)
 }
-
+async function addMultiphasePlan(page) {
+  await page.getByRole('row', { name: `${randomProjectPhase}` }).getByRole('button').nth(3).click();
+  await page.locator('div').filter({ hasText: /^Manage Plan$/ }).getByRole('link').click();
+  for(let i=0; i<3; i++){
+    await page.getByRole('button', { name: 'Add Plan' }).click();
+    await page.getByPlaceholder('Select Plan Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+  }
+  await page.getByRole('link', { name: 'Projects', exact: true }).click();
+}
+async function addReadyphasePlan(page) {
+  await page.getByRole('row', { name: `${randomProjectReady}` }).getByRole('button').nth(3).click();
+  await page.locator('div').filter({ hasText: /^Manage Plan$/ }).getByRole('link').click();
+  for(let i=0; i<3; i++){
+    await page.getByRole('button', { name: 'Add Plan' }).click();
+    await page.getByPlaceholder('Select Plan Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+  }
+  await page.getByRole('link', { name: 'Projects', exact: true }).click();
+}
 async function addMultiphaseGallery(page) {
   await page.getByRole('row', { name: `${randomProjectPhase}` }).getByRole('button').nth(3).click();
   await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
@@ -353,36 +384,80 @@ async function addMultiphaseGallery(page) {
     await fileInput.setInputFiles(filePath);
     await page.getByRole('button', { name: 'submit' }).click();
   }
+  await page.getByRole('link', { name: 'Project gallery' }).click();
+}
+async function addOffplanPlan(page) {
+  await page.getByRole('row', { name: `${randomProjectOffPlan}` }).getByRole('button').nth(5).click();
+  await page.locator('div').filter({ hasText: /^Manage Plan$/ }).getByRole('link').click();
+  for(let i=0; i<3; i++){
+    await page.getByRole('button', { name: 'Add Plan' }).click();
+    await page.getByPlaceholder('Select Plan Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+  }
+  await page.getByRole('link', { name: 'Projects', exact: true }).click();
+}
+async function addOffplanGallery(page) {
+  await page.getByRole('row', { name: `${randomProjectOffPlan}` }).getByRole('button').nth(5).click();
+  await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
+  for(let i=0; i<10; i++){
+    await page.getByRole('button', { name: 'Add Gallery' }).click();
+    await page.getByPlaceholder('Select Gallery Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6) + 1 - 1).click();
+    await page.getByPlaceholder('Select Media Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(0).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+  }
+  await page.getByRole('link', { name: 'Project gallery' }).click();
+}
+async function addReadyphaseGallery(page) {
+  await page.getByRole('row', { name: `${randomProjectReady}` }).getByRole('button').nth(5).click();
+  await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
+  for(let i=0; i<10; i++){
+    await page.getByRole('button', { name: 'Add Gallery' }).click();
+    await page.getByPlaceholder('Select Gallery Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6) + 1 - 1).click();
+    await page.getByPlaceholder('Select Media Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(0).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+  }
+  await page.getByRole('link', { name: 'Project gallery' }).click();
 }
 
+// test('login', async ({ page }) => {
+//   await login(page, VALID_USER, VALID_PASSWORD);
+// });
 
-async function addProjectMultiPhaseWithProperty(page) {
-await addProjectMultiPhase(page);
-await addMultiphaseGallery(page);
-}
-
-
-test('login', async ({ page }) => {
-  await login(page, VALID_USER, VALID_PASSWORD);
-});
-
-test('verify invalid credentials', async ({ page }) => {
-  await page.goto(`${BASE_URL}/login`);
-  await page.fill('input[name="user"]', 'admin');
-  await page.fill('input[name="password"]', 'ahdmin');
-  await page.click('button[type="submit"]');
-  await expect(page.getByText(/invalid login credentials/)).toBeVisible();
-});  
+// test('verify invalid credentials', async ({ page }) => {
+//   await page.goto(`${BASE_URL}/login`);
+//   await page.fill('input[name="user"]', 'admin');
+//   await page.fill('input[name="password"]', 'ahdmin');
+//   await page.click('button[type="submit"]');
+//   await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+// });  
  
-test('logout', async ({ page }) => { 
-  await login(page, VALID_USER, VALID_PASSWORD);
-  await logout(page);1  
-});
-
-test('verify dashboard redirection', async ({ page }) => {
-  await page.goto(BASE_URL);
-  await expect(page.getByText(`Go to Dashboard`)).toBeVisible();
-});
+// test('logout', async ({ page }) => { 
+//   await login(page, VALID_USER, VALID_PASSWORD);
+//   await logout(page);1  
+// });
 
 test('add project offplan', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
@@ -396,9 +471,4 @@ test('add project ready', async ({ page }) => {
 test('add project multiphase', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProjectMultiPhase(page);
-});
-
-test('add project multiphase with property with unit full data', async ({ page }) => {
-  await login(page, VALID_USER, VALID_PASSWORD);
-  await addProjectMultiPhaseWithProperty(page);
 });

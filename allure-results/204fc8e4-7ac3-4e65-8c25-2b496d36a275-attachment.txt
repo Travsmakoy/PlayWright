@@ -1,0 +1,4 @@
+Project Name: Playwright Delta 343 Ready
+Closed the box
+Completed the box selection
+Randomly selected IDs: 179,174,155,154,90,184,123,105,200,189

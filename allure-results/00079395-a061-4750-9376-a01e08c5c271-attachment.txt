@@ -1,0 +1,4 @@
+Project Name: Playwright Alpha 961 Ready
+Closed the box
+Completed the box selection
+Randomly selected IDs: 97,184,178,138,147,89,124,86,198,188
