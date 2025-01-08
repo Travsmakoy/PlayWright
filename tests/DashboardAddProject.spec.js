@@ -224,8 +224,30 @@ async function projectDetails(page) {
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
 }
+async function readyDetails(page) {
+  await page.locator('input[placeholder="Select Completion Status"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(1).click();
+  await page.locator('input[placeholder="Select Life Style"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
+  await page.locator('input[name="completion_date"]').fill('01/20/2025');
+  await page.locator('input[name="handover_date"]').fill('01/31/2025');
+  await page.locator('input[name="start_date"]').fill('01/01/2025');
+  await page.fill('input[name="plot_area"]',(Math.floor(Math.random() * 1000) + 1).toString());
+  await page.fill('input[name="built_up_area"]',(Math.floor(Math.random() * 200) + 1).toString());
+  await page.locator('input[placeholder="Select Furnished"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
+  await page.fill('input[name="no_of_properties"]',(Math.floor(Math.random() * 150) + 1).toString());
+  await page.locator('input[placeholder="Select Ownership"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
+  await page.evaluate(() => window.scrollBy(0, 350));
+  await page.getByText('currency').click();
+  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByText('measure', { exact: true }).click();
+  await page.getByRole('option', { name: 'sqft' }).click();
+}
 const randomProjectOffPlan = getRandomProject() + getRandomProjectRan().toString();
-async function addProject(page) {
+async function addOffPlanDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -249,33 +271,9 @@ async function addProject(page) {
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
-  await addOffplanGallery(page);
-  await addOffplanPlan(page);
-}
-async function readyDetails(page) {
-  await page.locator('input[placeholder="Select Completion Status"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(1).click();
-  await page.locator('input[placeholder="Select Life Style"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2)).click();
-  await page.locator('input[name="completion_date"]').fill('01/20/2025');
-  await page.locator('input[name="handover_date"]').fill('01/31/2025');
-  await page.locator('input[name="start_date"]').fill('01/01/2025');
-  await page.fill('input[name="plot_area"]',(Math.floor(Math.random() * 1000) + 1).toString());
-  await page.fill('input[name="built_up_area"]',(Math.floor(Math.random() * 200) + 1).toString());
-  await page.locator('input[placeholder="Select Furnished"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
-  await page.fill('input[name="no_of_properties"]',(Math.floor(Math.random() * 150) + 1).toString());
-  await page.locator('input[placeholder="Select Ownership"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6)).click();
-  await page.evaluate(() => window.scrollBy(0, 350));
-  await page.getByText('currency').click();
-  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
-  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
-  await page.getByText('measure', { exact: true }).click();
-  await page.getByRole('option', { name: 'sqft' }).click();
 }
 const randomProjectReady = getRandomProject() + getRandomProjectRan().toString();
-async function addProjectReady(page) {
+async function projectReadyDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -299,11 +297,10 @@ async function addProjectReady(page) {
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
-  await addReadyphaseGallery(page);
-  await addReadyphasePlan(page);
+  
 }
 const randomProjectPhase = getRandomProject() + getRandomProjectRan().toString();
-async function addProjectMultiPhase(page) {
+async function multiphaseDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -330,8 +327,6 @@ async function addProjectMultiPhase(page) {
   await facilities(page);
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
-  await addMultiphaseGallery(page);
-  await addMultiphasePlan(page)
 }
 async function addMultiphasePlan(page) {
   await page.getByRole('row', { name: `${randomProjectPhase}` }).getByRole('button').nth(3).click();
@@ -351,7 +346,7 @@ async function addMultiphasePlan(page) {
   await page.getByRole('link', { name: 'Projects', exact: true }).click();
 }
 async function addReadyphasePlan(page) {
-  await page.getByRole('row', { name: `${randomProjectReady}` }).getByRole('button').nth(3).click();
+  await page.getByRole('row', { name: `${randomProjectReady}` }).getByRole('button').nth(5).click();
   await page.locator('div').filter({ hasText: /^Manage Plan$/ }).getByRole('link').click();
   for(let i=0; i<3; i++){
     await page.getByRole('button', { name: 'Add Plan' }).click();
@@ -461,14 +456,20 @@ async function addReadyphaseGallery(page) {
 
 test('add project offplan', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
-  await addProject(page);
+  await addOffPlanDetails(page);
+  await addOffplanGallery(page);
+  await addOffplanPlan(page);
 });
 
 test('add project ready', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
-  await addProjectReady(page);
+  await projectReadyDetails(page)
+  await addReadyphaseGallery(page);
+  await addReadyphasePlan(page);
 });
 test('add project multiphase', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
-  await addProjectMultiPhase(page);
+  await multiphaseDetails(page);
+  await addMultiphaseGallery(page);
+  await addMultiphasePlan(page)
 });
