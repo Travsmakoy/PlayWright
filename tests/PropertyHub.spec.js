@@ -239,7 +239,7 @@ async function addPropertyHub(page) {
 }
 
 
-test('add property commercial land', async ({ page }) => {
+test('add property lands sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
 });
