@@ -1,0 +1,14 @@
+Project Name: PlayWright Beta 599 Multiphase
+Closed the box
+Completed the box selection
+Randomly selected IDs: 9,64,26,40,48,17,59,5,53,44
+Clicked on test ID: 9
+Clicked on test ID: 64
+Clicked on test ID: 26
+Clicked on test ID: 40
+Clicked on test ID: 48
+Clicked on test ID: 17
+Clicked on test ID: 59
+Clicked on test ID: 5
+Clicked on test ID: 53
+Clicked on test ID: 44

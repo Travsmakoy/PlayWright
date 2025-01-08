@@ -1,0 +1,15 @@
+Could not click on test ID: 15 - locator.click: Test ended.
+Call log:
+  - waiting for getByTestId('15')
+    - locator resolved to <li data-testid="15" class="mui-5wgy6m" data-testevenid="15">…</li>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+
+Could not click on test ID: 51 - locator.click: Target page, context or browser has been closed
+Could not click on test ID: 23 - locator.click: locator.click: Target page, context or browser has been closed
+Could not click on test ID: 70 - locator.click: locator.click: locator.click: Target page, context or browser has been closed
+Could not click on test ID: 20 - locator.click: locator.click: locator.click: locator.click: Target page, context or browser has been closed
+Could not click on test ID: 21 - locator.click: locator.click: locator.click: locator.click: locator.click: Target page, context or browser has been closed
+Could not click on test ID: 48 - locator.click: locator.click: locator.click: locator.click: locator.click: locator.click: Target page, context or browser has been closed
+Could not click on test ID: 9 - locator.click: locator.click: locator.click: locator.click: locator.click: locator.click: locator.click: Target page, context or browser has been closed
+Could not click on test ID: 62 - locator.click: locator.click: locator.click: locator.click: locator.click: locator.click: locator.click: locator.click: Target page, context or browser has been closed

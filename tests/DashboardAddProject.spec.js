@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
 const BASE_URL = 'http://192.168.1.193:3000/en';
@@ -150,9 +152,9 @@ async function locationRandom(page) {
   await page.locator('input[placeholder="Select City"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.locator('input[placeholder="Select Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 50) + 1 - 1).click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 60) + 1 - 1).click();
   await page.locator('input[placeholder="Select Sub Community"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 2) + 1 - 1).click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 1) + 1 - 1).click();
 }
 function getrandomFacilities(count, min, max) {
   const ids = new Set();
@@ -165,15 +167,16 @@ function getrandomFacilities(count, min, max) {
 
 async function facilities(page){
 const randomIds = getrandomFacilities(10, 1, 77);
-    console.log(`Randomly selected IDs: ${randomIds}`);
+    // console.log(`Randomly selected IDs: ${randomIds}`);
     for (const id of randomIds) {
         const testId = id.toString(); // Convert number to string for test ID
         try {
             // Attempt to click the element with the corresponding test ID
             await page.getByTestId(testId).click();
-            console.log(`Clicked on test ID: ${testId}`);
+            // console.log(`Clicked on test ID: ${testId}`);
         } catch (error) {
-            console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+          return error;
+            // console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
         }
     }
 }
@@ -190,13 +193,14 @@ async function amenities(page){
   const randomIds = getrandomAmenities(10, 78, 200);
       console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
-          const testId = id.toString(); // Convert number to string for test ID
+          // const testId = id.toString(); // Convert number to string for test ID
           try {
               // Attempt to click the element with the corresponding test ID
               await page.getByTestId(testId).click();
-              console.log(`Clicked on test ID: ${testId}`);
+              // console.log(`Clicked on test ID: ${testId}`);
           } catch (error) {
-              console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+            return error;
+              // console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
           }
       }
   }
@@ -225,8 +229,8 @@ async function projectDetails(page) {
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
 }
+const randomProjectOffPlan = getRandomProject() + getRandomProjectRan().toString();
 async function addProject(page) {
-  const randomProject = getRandomProject() + getRandomProjectRan().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -234,8 +238,8 @@ async function addProject(page) {
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProject+ ' Offplan');
-  console.log('Project Name:', randomProject+ ' Offplan');
+  await page.fill('input[name="project_name"]', randomProjectOffPlan+ ' Offplan');
+  console.log('Project Name:', randomProjectOffPlan+ ' Offplan');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
@@ -249,7 +253,7 @@ async function addProject(page) {
   await facilities(page);
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
-    // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+  await expect(page.getByText(/Project created successfully/)).toBeVisible();
 
 
 }
@@ -275,8 +279,8 @@ async function readyDetails(page) {
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
 }
+const randomProjectReady = getRandomProject() + getRandomProjectRan().toString();
 async function addProjectReady(page) {
-  const randomProject = getRandomProject() + getRandomProjectRan().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -284,8 +288,8 @@ async function addProjectReady(page) {
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProject+' Ready');
-  console.log('Project Name:', randomProject+' Ready');
+  await page.fill('input[name="project_name"]', randomProjectReady+' Ready');
+  console.log('Project Name:', randomProjectReady+' Ready');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
@@ -299,12 +303,11 @@ async function addProjectReady(page) {
   await facilities(page);
   await amenities(page);
   await page.getByRole('button', { name: 'submit' }).click();
-  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+  await expect(page.getByText(/Project created successfully/)).toBeVisible();
 
 }
-
+const randomProjectPhase = getRandomProject() + getRandomProjectRan().toString();
 async function addProjectMultiPhase(page) {
-  const randomProject = getRandomProject() + getRandomProjectRan().toString();
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
@@ -312,8 +315,8 @@ async function addProjectMultiPhase(page) {
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProject+' Multiphase');
-  console.log('Project Name:', randomProject+' Multiphase');
+  await page.fill('input[name="project_name"]', randomProjectPhase+' Multiphase');
+  console.log('Project Name:', randomProjectPhase+' Multiphase');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
@@ -330,9 +333,34 @@ async function addProjectMultiPhase(page) {
   await WriteDescription(page);
   await facilities(page);
   await page.getByRole('button', { name: 'submit' }).click();
-  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
-
+  await expect(page.getByText(/Project created successfully/)).toBeVisible();
 }
+
+async function addMultiphaseGallery(page) {
+  await page.getByRole('row', { name: `${randomProjectPhase}` }).getByRole('button').nth(3).click();
+  await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
+  for(let i=0; i<10; i++){
+    await page.getByRole('button', { name: 'Add Gallery' }).click();
+    await page.getByPlaceholder('Select Gallery Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 6) + 1 - 1).click();
+    await page.getByPlaceholder('Select Media Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(0).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+  }
+}
+
+
+async function addProjectMultiPhaseWithProperty(page) {
+await addProjectMultiPhase(page);
+await addMultiphaseGallery(page);
+}
+
 
 test('login', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
@@ -368,4 +396,9 @@ test('add project ready', async ({ page }) => {
 test('add project multiphase', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addProjectMultiPhase(page);
+});
+
+test('add project multiphase with property with unit full data', async ({ page }) => {
+  await login(page, VALID_USER, VALID_PASSWORD);
+  await addProjectMultiPhaseWithProperty(page);
 });

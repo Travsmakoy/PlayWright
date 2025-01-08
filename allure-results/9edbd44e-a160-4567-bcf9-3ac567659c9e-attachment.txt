@@ -1,0 +1,14 @@
+Project Name: PlayWright Beta 851 Multiphase
+Closed the box
+Completed the box selection
+Randomly selected IDs: 55,64,41,21,52,45,73,48,63,30
+Clicked on test ID: 55
+Clicked on test ID: 64
+Clicked on test ID: 41
+Clicked on test ID: 21
+Clicked on test ID: 52
+Clicked on test ID: 45
+Clicked on test ID: 73
+Clicked on test ID: 48
+Clicked on test ID: 63
+Clicked on test ID: 30

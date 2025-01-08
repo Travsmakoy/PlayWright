@@ -1,0 +1,14 @@
+Project Name: Playwright Alpha 975 Multiphase
+Closed the box
+Completed the box selection
+Randomly selected IDs: 50,23,70,14,48,18,25,13,57,68
+Clicked on test ID: 50
+Clicked on test ID: 23
+Clicked on test ID: 70
+Clicked on test ID: 14
+Clicked on test ID: 48
+Clicked on test ID: 18
+Clicked on test ID: 25
+Clicked on test ID: 13
+Clicked on test ID: 57
+Clicked on test ID: 68
