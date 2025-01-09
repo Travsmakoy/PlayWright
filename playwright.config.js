@@ -42,7 +42,8 @@ module.exports = defineConfig({
         // screenshot:'on',
         // video:'on',
         trace:'on',
-        headless: true
+        headless: true,
+        viewport: { width: 1920, height: 1080 },
       },
     },
     // {

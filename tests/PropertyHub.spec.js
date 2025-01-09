@@ -66,6 +66,7 @@ function getRandomProject() {
 function getRandomStartingPrice() {
   return Math.floor(Math.random() * (START_PRICE_RANGE.max - START_PRICE_RANGE.min + 1)) + START_PRICE_RANGE.min;
 }
+
 async function WriteDescription(page) {
   function generateRealEstateDescription() {
     const phrases = [
@@ -109,8 +110,8 @@ async function WriteDescription(page) {
   }
   const description = generateRealEstateDescription();
   await page.fill('textarea[name="description"]', description);
-  // console.log("Description filled with:", description);
 }
+
 async function randomView(page){
   for (let i = 0; i < 5; i++) {
     await page.getByPlaceholder('Select Views').click();
@@ -118,6 +119,7 @@ async function randomView(page){
     await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*20)).click();
   }
 }
+
 async function PropertyTitle(page) {
   function generateRealEstateTittle() {
     const phrases = [
@@ -145,7 +147,6 @@ async function PropertyTitle(page) {
       "Unmatched investment opportunity",
       "Customizable options available"
     ];
-
     let description = "";
     while (description.length < 55) {
       const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
@@ -155,32 +156,17 @@ async function PropertyTitle(page) {
         break;
       }
     }
-
     if (description.length > 55) {
       description = description.slice(0, 55).trim();
     } else if (description.length < 55) {
       description = description.padEnd(55, " ");
     }
-
     return description;
   }
-
   const description = generateRealEstateTittle();
   await page.getByPlaceholder('Property title').fill(description);
-
 }
-async function clickMiddleMap(page) {
-  const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
-  await mapElement.waitFor({ state: 'visible' });
 
-  const box = await mapElement.boundingBox();
-  if (box) {
-      await page.mouse.move(box.x + 50, box.y + 50);
-      await page.mouse.click(box.x + 50, box.y + 50);
-  } else {
-      console.error('Element not found or not visible');
-  }
-}
 async function ifLand(page){  
   await page.getByPlaceholder('Select Unit type').click();
   const option = page.locator('[data-option-index="0"]');
@@ -254,6 +240,7 @@ async function IfResidential(page){
     return null;
   }
 }
+
 async function propertyTypeLogic(page) {
   await page.getByPlaceholder('Select Property type').click();
   
@@ -281,16 +268,6 @@ async function propertyTypeLogic(page) {
   }
 }
 
-async function AgentAndOwner(page) {
-      const mark = await page.locator('input[placeholder="Search by name or number"]');
-    await page.getByPlaceholder('Broker Agent').fill('Kashif');
-    await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
-    const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
-    await firstOption.click();
-    await mark.fill('Ali');
-    const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
-    await secondOption.click();
-}
 async function locationRandom(page) {
   await page.locator('input[placeholder="Select Country"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -311,7 +288,16 @@ async function addPropertyHub(page) {
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
   await page.fill('input[name="property_name"]', propertyHubRan);
   console.log(`PropertyName: `+propertyHubRan);
+  const mark = await page.locator('input[placeholder="Search by name or number"]');
+  await page.getByPlaceholder('Broker Agent').fill('Kashif');
+  await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
+  const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
+  await firstOption.click();
+  await mark.fill('Ali');
+  const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
+  await secondOption.click();
   await page.locator('input[placeholder="Choose category"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   // const categoryRan = Math.floor(Math.random() * 2);
   // const listItems = page.locator('ul[role="listbox"] >> li');
   // const selectedOption = listItems.nth(categoryRan);
@@ -325,21 +311,28 @@ async function addPropertyHub(page) {
   //   console.error('Error getting text content:', error);
   // }
   // await selectedOption.click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  await AgentAndOwner(page);
   await locationRandom(page);
-  await clickMiddleMap(page);
+
+  const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
+  await mapElement.waitFor({ state: 'visible' });
+
+  const box = await mapElement.boundingBox();
+  if (box) {
+      await page.mouse.move(box.x + 50, box.y + 50);
+      await page.mouse.click(box.x + 50, box.y + 50);
+  } else {
+      console.error('Element not found or not visible');
+  }
   await propertyTypeLogic(page);
   await PropertyTitle(page);
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
-    // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
   // await page.getByRole('button', { name: 'Submit' }).click();
 }
 
-test('add property lands sale', async ({ page }) => {
+test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
-
 });
