@@ -203,7 +203,7 @@ async function ifLand(page){
 async function IfResidential(page){
   for (let i = 0; i < 4; i++) {
     await page.getByPlaceholder('Select Unit type').click();
-    const random = Math.floor(Math.random() * 6);
+    const random = Math.floor(Math.random() * 3);
     const option = page.locator(`[data-option-index="${random}"]`);  
     await option.click();  
   }
@@ -242,7 +242,6 @@ async function IfResidential(page){
   let selectedText = '';
   try {
     selectedText = await selectedOption.textContent();
-    console.log('Selected text:', selectedText); 
   } catch (error) {
     console.error('Error getting text content:', error);
   }
@@ -257,16 +256,18 @@ async function IfResidential(page){
 }
 async function propertyTypeLogic(page) {
   await page.getByPlaceholder('Select Property type').click();
+  
   const indices = [0, 1, 2, 3, 4, 8, 11];
   const randomIndex = Math.floor(Math.random() * indices.length);
+  const randomValue = indices[randomIndex];
   const listItems = page.locator('ul[role="listbox"] >> li');
-  const selectedOption = listItems.nth(randomIndex);
+  const selectedOption = listItems.nth(randomValue);
  
   let selectedText = '';
   try {
     selectedText = await selectedOption.textContent();
     console.log('Selected text:', selectedText); 
-    console.log(randomIndex);
+    console.log(randomValue);
   } catch (error) {
     console.error('Error getting text content:', error);
   }
@@ -309,8 +310,21 @@ async function addPropertyHub(page) {
   await page.getByRole('button', { name: 'Add Property' }).click();
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
   await page.fill('input[name="property_name"]', propertyHubRan);
-  console.log(`This is the PropertyName `+propertyHubRan);
+  console.log(`PropertyName: `+propertyHubRan);
   await page.locator('input[placeholder="Choose category"]').click();
+  // const categoryRan = Math.floor(Math.random() * 2);
+  // const listItems = page.locator('ul[role="listbox"] >> li');
+  // const selectedOption = listItems.nth(categoryRan);
+ 
+  // let selectedText = '';
+  // try {
+  //   selectedText = await selectedOption.textContent();
+  //   console.log('Selected text:', selectedText); 
+  //   console.log(categoryRan);
+  // } catch (error) {
+  //   console.error('Error getting text content:', error);
+  // }
+  // await selectedOption.click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await AgentAndOwner(page);
   await locationRandom(page);
