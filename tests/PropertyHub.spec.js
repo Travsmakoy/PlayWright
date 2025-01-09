@@ -244,10 +244,10 @@ async function IfResidential(page){
   await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
   await page.getByPlaceholder('Enter no of pools').fill((Math.floor(Math.random() * 100) + 1).toString());
   await page.getByPlaceholder('Enter no of elevators').fill((Math.floor(Math.random() * 100) + 1).toString());
-  await page.getByPlaceholder('Select Completion Status').click();
   const startingPrice = getRandomStartingPrice().toString();
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
-  const randomIndex = Math.floor(Math.random() * 2);
+  const randomIndex = Math.floor(Math.random() * 1);
+  await page.getByPlaceholder('Select Completion Status').click();
   const listItems = page.locator('ul[role="listbox"] >> li');
   const selectedOption = listItems.nth(randomIndex);
   let selectedText = '';
@@ -268,7 +268,8 @@ async function IfResidential(page){
 }
 async function propertyTypeLogic(page) {
   await page.getByPlaceholder('Select Property type').click();
-  const randomIndex = Math.floor(Math.random() * 5);
+  const indices = [0, 1, 2, 3, 4, 8, 11];
+  const randomIndex = Math.floor(Math.random() * indices.length);
   const listItems = page.locator('ul[role="listbox"] >> li');
   const selectedOption = listItems.nth(randomIndex);
   
