@@ -373,9 +373,37 @@ async function addPlan(page) {
   }
   await page.getByRole('link', { name: 'Properties', exact: true }).click();
 }
+
+async function unitType(page){
+  await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
+  await page.locator('div').filter({ hasText: /^Manage Unit Types$/ }).getByRole('link').click();
+  await page.getByRole('button', { name: 'Add Unit Type' }).click();
+  await page.getByPlaceholder('Select unit type').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  const randomType=['STUDIO','1BHK','2BHK','3BHK','4BHK','5BHK','6BHK','7BHK','8BHK','9BHK','10BHK'];
+  const randomIndex = Math.floor(Math.random() * randomType.length);
+  const randomValue = randomType[randomIndex];
+  await page.getByPlaceholder('Enter type name').fill(`${randomValue}`);
+  await page.getByPlaceholder('Enter min area').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter max area').fill((Math.floor(Math.random() * 1800) + 1000).toString());
+  await page.getByPlaceholder('Enter min price').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter max price').fill((Math.floor(Math.random() * 1800) + 1000).toString());
+  const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES FOR AUTO\\UNIT TYPES';
+  const files = fs.readdirSync(folderPath);
+  const randomFile = files[Math.floor(Math.random() * files.length)];
+  const filePath = path.join(folderPath, randomFile);
+  const fileInput = await page.$('//input[@type="file"]');
+  await fileInput.setInputFiles(filePath);
+  await page.getByRole('button', { name: 'submit' }).click();
+  if(page.getByPlaceholder('Enter No of Parking').isVisible())
+    {
+    await page.getByPlaceholder('Enter No of Parking').fill((Math.floor(Math.random() * 100) + 1).toString());
+  };
+}
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
+  await unitType(page);
   await addGallery(page);
   await addPlan(page);
 });
