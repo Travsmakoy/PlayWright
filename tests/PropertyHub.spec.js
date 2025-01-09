@@ -1,6 +1,4 @@
 const { test, expect } = require('@playwright/test');
-const { write } = require('fs');
-const Index = require('selenium-webdriver/bidi');
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const PROJECT_NAMES = ['PlayWrightAuto ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
@@ -171,7 +169,6 @@ async function PropertyTitle(page) {
   await page.getByPlaceholder('Property title').fill(description);
 
 }
-
 async function clickMiddleMap(page) {
   const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
   await mapElement.waitFor({ state: 'visible' });
@@ -182,14 +179,6 @@ async function clickMiddleMap(page) {
       await page.mouse.click(box.x + 50, box.y + 50);
   } else {
       console.error('Element not found or not visible');
-  }
-}
-async function categoryLogic(){
-  await page.getByPlaceholder('Choose category').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*2)).click();
-  if (page.locator('ul[role="listbox"] >> li').nth(0).textContent() == 'Sale') {
-   await propertyTypeLogic(page);
-  } else {
   }
 }
 async function ifLand(page){  
@@ -272,11 +261,12 @@ async function propertyTypeLogic(page) {
   const randomIndex = Math.floor(Math.random() * indices.length);
   const listItems = page.locator('ul[role="listbox"] >> li');
   const selectedOption = listItems.nth(randomIndex);
-  
+ 
   let selectedText = '';
   try {
     selectedText = await selectedOption.textContent();
     console.log('Selected text:', selectedText); 
+    console.log(randomIndex);
   } catch (error) {
     console.error('Error getting text content:', error);
   }
@@ -330,11 +320,12 @@ async function addPropertyHub(page) {
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
-  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+    // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
   // await page.getByRole('button', { name: 'Submit' }).click();
 }
 
 test('add property lands sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
+
 });
