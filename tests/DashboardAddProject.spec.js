@@ -3,6 +3,7 @@ const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
 const BASE_URL = 'https://dashboard.aqaryint.com/en';
+const TESTURL = 'http://192.168.1.193:3000';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
 const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
@@ -300,7 +301,7 @@ async function multiphaseDetails(page) {
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
-  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
+  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard/project/add');
   await page.fill('input[name="project_name"]', randomProjectPhase+' Multiphase');
   console.log('Project Name:', randomProjectPhase+' Multiphase');
   await page.fill('input[name="license_no"]', licenseNumber);
