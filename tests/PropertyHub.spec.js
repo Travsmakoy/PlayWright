@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
-const BASE_URL = 'https://dashboard.aqaryint.com/en';
+const BASE_URL = 'http://192.168.1.193:3000/en';
 const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
 
@@ -11,7 +11,7 @@ async function login(page, user, password) {
   await page.fill('input[name="user"]', user);
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
-  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard');
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
   await expect(page.getByText('Welcome Mr.Aqary Investment')).toBeVisible();
 }
 function getrandomFacilities(count, min, max) {
@@ -288,7 +288,7 @@ async function addPropertyHub(page) {
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Property Hub' }).click();
   await page.getByRole('button', { name: 'Add Property' }).click();
-  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard/property_hub/add');
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
   await page.fill('input[name="property_name"]', propertyHubRan);
   console.log(`PropertyName: `+propertyHubRan);
   const mark = await page.locator('input[placeholder="Search by name or number"]');

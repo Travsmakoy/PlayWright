@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
-const BASE_URL = 'https://dashboard.aqaryint.com/en';
-const TESTURL = 'http://192.168.1.193:3000';
+const BASE_URL = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
 const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
@@ -14,7 +13,7 @@ async function login(page, user, password) {
   await page.fill('input[name="user"]', user);
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
-  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard');
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
   await expect(page.getByText('Welcome Mr.Super Ahmad')).toBeVisible();
 }
 
@@ -248,7 +247,7 @@ async function addOffPlanDetails(page) {
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
-  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard/project/add');
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
   await page.fill('input[name="project_name"]', randomProjectOffPlan+ ' Offplan');
   console.log('Project Name:', randomProjectOffPlan+ ' Offplan');
   await page.fill('input[name="license_no"]', licenseNumber);
@@ -274,7 +273,7 @@ async function projectReadyDetails(page) {
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
-  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard/project/add');
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
   await page.fill('input[name="project_name"]', randomProjectReady+' Ready');
   console.log('Project Name:', randomProjectReady+' Ready');
   await page.fill('input[name="license_no"]', licenseNumber);
@@ -301,7 +300,7 @@ async function multiphaseDetails(page) {
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
-  await expect(page).toHaveURL('https://dashboard.aqaryint.com/en/dashboard/project/add');
+  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
   await page.fill('input[name="project_name"]', randomProjectPhase+' Multiphase');
   console.log('Project Name:', randomProjectPhase+' Multiphase');
   await page.fill('input[name="license_no"]', licenseNumber);
