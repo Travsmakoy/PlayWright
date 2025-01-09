@@ -184,29 +184,110 @@ async function clickMiddleMap(page) {
       console.error('Element not found or not visible');
   }
 }
-
-async function ifLand(page){
-  return null;
-  
-  await page.getByPlaceholder('Select Unit type').click();
-  const option = page.locator('[data-option-index="1"]');
-  await option.click();  
+async function categoryLogic(){
+  await page.getByPlaceholder('Choose category').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*2)).click();
+  if (page.locator('ul[role="listbox"] >> li').nth(0).textContent() == 'Sale') {
+   await propertyTypeLogic(page);
+  } else {
+  }
 }
-async function IfResidential(page){
-
+async function ifLand(page){  
   await page.getByPlaceholder('Select Unit type').click();
   const option = page.locator('[data-option-index="0"]');
-  await option.click();  }
-
-  async function propertyTypeLogic(page) {
-    await page.getByPlaceholder('Select Property type').click();
-    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*5)).click();
-    if (page.locator('ul[role="listbox"] >> li').nth(0).textContent() == 'Commercial land') {
-      await ifLand(page);
-    } else {
-      await IfResidential(page);
-    }
+  await option.click();
+  await randomView(page);  
+  await page.getByPlaceholder('Enter Plot Area').fill(Math.floor(Math.random()*1000).toString());
+  await page.getByPlaceholder('Enter Built Up Area').fill(Math.floor(Math.random()*500).toString());
+  await page.getByPlaceholder('Enter sector number').fill(Math.floor(Math.random()*100).toString());
+  await page.getByPlaceholder('Enter Property number').fill(Math.floor(Math.random()*100).toString());
+  await page.getByPlaceholder('Select Ownership').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*4)).click();
+  await page.getByText('currency').click();
+  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByText('measure', { exact: true }).click();
+  await page.getByRole('option', { name: 'sqft' }).click();
+  const startingPrice = getRandomStartingPrice().toString();
+  await page.getByPlaceholder('Enter Price').fill(startingPrice);
+}
+async function IfResidential(page){
+  for (let i = 0; i < 4; i++) {
+    await page.getByPlaceholder('Select Unit type').click();
+    const random = Math.floor(Math.random() * 6);
+    const option = page.locator(`[data-option-index="${random}"]`);  
+    await option.click();  
   }
+  await randomView(page);
+  await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 1000) + 500).toString());
+  await page.getByPlaceholder('Enter Built Up Area').fill((Math.floor(Math.random() * 499) + 1).toString());
+  await page.getByPlaceholder('Enter sector number').fill(Math.floor(Math.random()*100).toString());
+  await page.getByPlaceholder('Enter Property number').fill(Math.floor(Math.random()*100).toString());
+  await page.getByPlaceholder('Select Ownership').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*4)).click();
+  await page.getByPlaceholder('Select Life Style').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*1)).click();
+  await page.locator('input[name="completion_date"]').fill('01/20/2025');
+  await page.locator('input[name="handover_date"]').fill('01/31/2025');
+  await page.locator('input[name="start_date"]').fill('01/01/2025');
+  await page.getByText('currency').click();
+  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByText('measure', { exact: true }).click();
+  await page.getByRole('option', { name: 'sqft' }).click();
+  await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter Max Area').fill((Math.floor(Math.random() * 1500) + 1000).toString());
+  await page.locator('input[placeholder="Select Furnished"]').click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
+  await page.getByPlaceholder('No of units').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByPlaceholder('Enter no of floors').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByPlaceholder('Enter no of pools').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByPlaceholder('Enter no of elevators').fill((Math.floor(Math.random() * 100) + 1).toString());
+  await page.getByPlaceholder('Select Completion Status').click();
+  const startingPrice = getRandomStartingPrice().toString();
+  await page.getByPlaceholder('Enter Price').fill(startingPrice);
+  const randomIndex = Math.floor(Math.random() * 2);
+  const listItems = page.locator('ul[role="listbox"] >> li');
+  const selectedOption = listItems.nth(randomIndex);
+  let selectedText = '';
+  try {
+    selectedText = await selectedOption.textContent();
+    console.log('Selected text:', selectedText); 
+  } catch (error) {
+    console.error('Error getting text content:', error);
+  }
+  await selectedOption.click();
+
+  if (selectedText === 'Off Plan') {
+     await page.locator('input[name="completion_percentage_date"]').fill('01/08/2025');
+     await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
+  } else {
+    return null;
+  }
+}
+async function propertyTypeLogic(page) {
+  await page.getByPlaceholder('Select Property type').click();
+  const randomIndex = Math.floor(Math.random() * 5);
+  const listItems = page.locator('ul[role="listbox"] >> li');
+  const selectedOption = listItems.nth(randomIndex);
+  
+  let selectedText = '';
+  try {
+    selectedText = await selectedOption.textContent();
+    console.log('Selected text:', selectedText); 
+  } catch (error) {
+    console.error('Error getting text content:', error);
+  }
+  
+  await selectedOption.click();
+
+  if (selectedText === 'Commercial Lands' || selectedText === 'Mixed used lands' || selectedText === 'Residential Lands') {
+    await ifLand(page);
+  } else {
+    await IfResidential(page);
+  }
+}
 
 async function AgentAndOwner(page) {
       const mark = await page.locator('input[placeholder="Search by name or number"]');
@@ -243,10 +324,7 @@ async function addPropertyHub(page) {
   await AgentAndOwner(page);
   await locationRandom(page);
   await clickMiddleMap(page);
-  await  propertyTypeLogic(page);
-  await randomView(page);
-  const startingPrice = getRandomStartingPrice().toString();
-  await page.getByPlaceholder('Enter Price').fill(startingPrice);
+  await propertyTypeLogic(page);
   await PropertyTitle(page);
   await WriteDescription(page);
   await facilities(page);
@@ -254,7 +332,6 @@ async function addPropertyHub(page) {
   // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
   // await page.getByRole('button', { name: 'Submit' }).click();
 }
-
 
 test('add property lands sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
