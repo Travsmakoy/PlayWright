@@ -247,7 +247,7 @@ async function IfResidential(page){
 async function propertyTypeLogic(page) {
   await page.getByPlaceholder('Select Property type').click();
   
-  const indices = [0, 1, 2, 3, 4, 8, 11];
+  const indices = [8, 11, 2, 3, 4, 0, 2];
   const randomIndex = Math.floor(Math.random() * indices.length);
   const randomValue = indices[randomIndex];
   const listItems = page.locator('ul[role="listbox"] >> li');
