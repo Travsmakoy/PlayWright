@@ -394,11 +394,12 @@ async function unitType(page){
   const filePath = path.join(folderPath, randomFile);
   const fileInput = await page.$('//input[@type="file"]');
   await fileInput.setInputFiles(filePath);
-  await page.getByRole('button', { name: 'submit' }).click();
   if(page.getByPlaceholder('Enter No of Parking').isVisible())
     {
     await page.getByPlaceholder('Enter No of Parking').fill((Math.floor(Math.random() * 100) + 1).toString());
   };
+  await page.getByRole('button', { name: 'submit' }).click();
+  await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 }
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
