@@ -463,6 +463,7 @@ test('add project ready', async ({ page }) => {
   await projectReadyDetails(page)
   await addReadyphaseGallery(page);
   await addReadyphasePlan(page);
+  
 });
 test('add project multiphase', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);

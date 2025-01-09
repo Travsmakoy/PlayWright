@@ -1,4 +1,7 @@
+const fs = require('fs');
+const path = require('path');
 const { test, expect } = require('@playwright/test');
+const { write } = require('fs');
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const PROJECT_NAMES = ['PlayWrightAuto ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
@@ -187,7 +190,7 @@ async function ifLand(page){
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
 }
 async function IfResidential(page){
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 2; i++) {
     await page.getByPlaceholder('Select Unit type').click();
     const random = Math.floor(Math.random() * 3);
     const option = page.locator(`[data-option-index="${random}"]`);  
@@ -329,10 +332,50 @@ async function addPropertyHub(page) {
   await facilities(page);
   await amenities(page);
   // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
-  // await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('button', { name: 'Submit' }).click();
 }
 
+async function addGallery(page){
+  await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
+  await page.locator('div').filter({ hasText: /^Gallery$/ }).getByRole('link').click();
+  for(let i=0; i<5; i++){
+      await page.getByRole('button', { name: 'Add Gallery' }).click();
+      await page.getByPlaceholder('Select Gallery Type').click();
+      await page.locator('ul[role="listbox"] >> li').nth(0).click();
+      await page.getByPlaceholder('Select Media Type').click();
+      await page.locator('ul[role="listbox"] >> li').nth(0).click();
+      const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+      const files = fs.readdirSync(folderPath);
+      const randomFile = files[Math.floor(Math.random() * files.length)];
+      const filePath = path.join(folderPath, randomFile);
+      const fileInput = await page.$('//input[@type="file"]');
+      await fileInput.setInputFiles(filePath);
+      await page.getByRole('button', { name: 'submit' }).click();
+      await expect(page.getByText(/Created successfully/)).toBeVisible();
+    }
+    await page.getByRole('link', { name: 'Property gallery' }).click();
+}
+async function addPlan(page) {
+  await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
+  await page.locator('div').filter({ hasText: /^Manage Plan$/ }).getByRole('link').click();
+  for(let i=0; i<3; i++){
+    await page.getByRole('button', { name: 'Add Plan' }).click();
+    await page.getByPlaceholder('Select Plan Type').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 - 1).click();
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    const fileInput = await page.$('//input[@type="file"]');
+    await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: 'submit' }).click();
+    await expect(page.getByText(/Created plan successfully/)).toBeVisible();
+  }
+  await page.getByRole('link', { name: 'Properties', exact: true }).click();
+}
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
+  await addGallery(page);
+  await addPlan(page);
 });
