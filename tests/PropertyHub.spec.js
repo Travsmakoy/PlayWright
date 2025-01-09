@@ -3,7 +3,7 @@ const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
 const BASE_URL = 'http://192.168.1.193:3000/en';
-const PROJECT_NAMES = ['PlayWrightAuto ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
+const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
 
 async function login(page, user, password) {
