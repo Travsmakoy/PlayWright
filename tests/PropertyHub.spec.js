@@ -384,6 +384,7 @@ async function unitType(page){
   const randomIndex = Math.floor(Math.random() * randomType.length);
   const randomValue = randomType[randomIndex];
   await page.getByPlaceholder('Enter type name').fill(`${randomValue}`);
+  
   await page.getByPlaceholder('Enter min area').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Enter max area').fill((Math.floor(Math.random() * 1800) + 1000).toString());
   await page.getByPlaceholder('Enter min price').fill((Math.floor(Math.random() * 1000) + 1).toString());
@@ -411,14 +412,13 @@ async function PaymentPlans(page) {
   await page.getByRole('button', { name: 'next' }).click();
   await page.getByRole('button', { name: 'submit' }).click();
   await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
-  await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
 }
 
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
-  await PaymentPlans(page);
   await unitType(page);
   await addGallery(page);
   await addPlan(page);
+  await PaymentPlans(page);
 });
