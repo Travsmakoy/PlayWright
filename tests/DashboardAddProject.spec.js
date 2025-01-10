@@ -440,10 +440,6 @@ test('add project offplan', async ({ page }) => {
   await addOffplanGallery(page);
   await addOffplanPlan(page);
 });
-test('offplan / property', async ({ page }) => {
-  await login(page, VALID_USER, VALID_PASSWORD);
-});
-
 test('add project ready', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await projectReadyDetails(page)
