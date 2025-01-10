@@ -434,23 +434,6 @@ async function addReadyphaseGallery(page) {
   await page.getByRole('link', { name: 'Project gallery' }).click();
 }
 
-// test('login', async ({ page }) => {
-//   await login(page, VALID_USER, VALID_PASSWORD);
-// });
-
-// test('verify invalid credentials', async ({ page }) => {
-//   await page.goto(`${BASE_URL}/login`);
-//   await page.fill('input[name="user"]', 'admin');
-//   await page.fill('input[name="password"]', 'ahdmin');
-//   await page.click('button[type="submit"]');
-//   await expect(page.getByText(/invalid login credentials/)).toBeVisible();
-// });  
- 
-// test('logout', async ({ page }) => { 
-//   await login(page, VALID_USER, VALID_PASSWORD);
-//   await logout(page);1  
-// });
-
 test('add project offplan', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await addOffPlanDetails(page);

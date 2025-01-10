@@ -333,6 +333,9 @@ async function addPropertyHub(page) {
   await amenities(page);
   // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
   await page.getByRole('button', { name: 'Submit' }).click();
+  await unitType(page);
+  await addGallery(page);
+  await addPlan(page);
 }
 
 async function addGallery(page){
@@ -404,7 +407,4 @@ async function unitType(page){
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
-  await unitType(page);
-  await addGallery(page);
-  await addPlan(page);
 });
