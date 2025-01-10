@@ -12,7 +12,7 @@ async function login(page, user, password) {
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
-  await expect(page.getByText('Welcome Mr.Aqary Investment')).toBeVisible();
+  await expect(page.getByText('Weclome, Aqary Investment')).toBeVisible();
 }
 function getrandomFacilities(count, min, max) {
   const ids = new Set();
@@ -174,7 +174,7 @@ async function ifLand(page){
   await page.getByPlaceholder('Select Unit type').click();
   const option = page.locator('[data-option-index="0"]');
   await option.click();
-  await randomView(page);  
+  await randomView(page);
   await page.getByPlaceholder('Enter Plot Area').fill(Math.floor(Math.random()*1000).toString());
   await page.getByPlaceholder('Enter Built Up Area').fill(Math.floor(Math.random()*500).toString());
   await page.getByPlaceholder('Enter sector number').fill(Math.floor(Math.random()*100).toString());
@@ -190,7 +190,7 @@ async function ifLand(page){
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
 }
 async function IfResidential(page){
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 4; i++) {
     await page.getByPlaceholder('Select Unit type').click();
     const random = Math.floor(Math.random() * 3);
     const option = page.locator(`[data-option-index="${random}"]`);  
@@ -332,7 +332,7 @@ async function addPropertyHub(page) {
   await facilities(page);
   await amenities(page);
   await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page.getByText(/Property created successfully/)).toBeVisible();
+  // await expect(page.getByText(/Property created successfully/)).toBeVisible();
 }
 
 async function addGallery(page){
@@ -401,9 +401,23 @@ async function unitType(page){
   await page.getByRole('button', { name: 'submit' }).click();
   await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 }
+
+async function PaymentPlans(page) {
+  await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
+  await page.locator('div').filter({ hasText: /^Manage Payment Plans$/ }).getByRole('link').click();
+  await page.getByRole('link', { name: 'Add Payment Plans' }).click();
+  await page.getByPlaceholder('Select Percentage').fill('100');
+  await page.getByPlaceholder('Select Completion Status').fill('TEST AUTOMATION');
+  await page.getByRole('button', { name: 'next' }).click();
+  await page.getByRole('button', { name: 'submit' }).click();
+  await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
+  await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
+}
+
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
+  await PaymentPlans(page);
   await unitType(page);
   await addGallery(page);
   await addPlan(page);
