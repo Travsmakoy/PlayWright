@@ -14,7 +14,7 @@ async function login(page, user, password) {
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
-  await expect(page.getByText('Welcome Mr.Super Ahmad')).toBeVisible();
+  await expect(page.getByText('Weclome, Super Ahmad')).toBeVisible();
 }
 
 async function logout(page) {
@@ -440,13 +440,16 @@ test('add project offplan', async ({ page }) => {
   await addOffplanGallery(page);
   await addOffplanPlan(page);
 });
+test('offplan / property', async ({ page }) => {
+  await login(page, VALID_USER, VALID_PASSWORD);
+});
 
 test('add project ready', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await projectReadyDetails(page)
   await addReadyphaseGallery(page);
   await addReadyphasePlan(page);
-  
+
 });
 test('add project multiphase', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);

@@ -331,11 +331,8 @@ async function addPropertyHub(page) {
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
-  // await expect(page.getByText(/invalid login credentials/)).toBeVisible();
   await page.getByRole('button', { name: 'Submit' }).click();
-  await unitType(page);
-  await addGallery(page);
-  await addPlan(page);
+  await expect(page.getByText(/Property created successfully/)).toBeVisible();
 }
 
 async function addGallery(page){
@@ -400,11 +397,14 @@ async function unitType(page){
   if(page.getByPlaceholder('Enter No of Parking').isVisible())
     {
     await page.getByPlaceholder('Enter No of Parking').fill((Math.floor(Math.random() * 100) + 1).toString());
-  };
+    };
   await page.getByRole('button', { name: 'submit' }).click();
   await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 }
 test('add property sale', async ({ page }) => {
   await login(page, 'aqary@aqaryinvestment.com', '123456');
   await addPropertyHub(page);
+  await unitType(page);
+  await addGallery(page);
+  await addPlan(page);
 });
