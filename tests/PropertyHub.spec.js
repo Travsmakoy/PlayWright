@@ -190,68 +190,113 @@ async function ifLand(page){
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
 }
 async function IfResidential(page){
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 2; i++) {
     await page.getByPlaceholder('Select Unit type').click();
     const random = Math.floor(Math.random() * 3);
     const option = page.locator(`[data-option-index="${random}"]`);  
     await option.click();  
   }
   await randomView(page);
-  await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 1000) + 500).toString());
-  await page.getByPlaceholder('Enter Built Up Area').fill((Math.floor(Math.random() * 499) + 1).toString());
+  if(await page.getByPlaceholder('Enter Plot Area').isVisible()){
+    await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 1000) + 500).toString());
+  }
+  if(await page.getByPlaceholder('Enter Built Up Area').isVisible()){
+    await page.getByPlaceholder('Enter Built Up Area').fill((Math.floor(Math.random() * 499) + 1).toString());
+  }
+  // await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 1000) + 500).toString());
+  // await page.getByPlaceholder('Enter Built Up Area').fill((Math.floor(Math.random() * 499) + 1).toString());
   await page.getByPlaceholder('Enter sector number').fill(Math.floor(Math.random()*100).toString());
   await page.getByPlaceholder('Enter Property number').fill(Math.floor(Math.random()*100).toString());
-  await page.getByPlaceholder('Select Ownership').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*4)).click();
+  if(await page.getByPlaceholder('Select Ownership').isVisible()){
+    await page.getByPlaceholder('Select Ownership').click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*4)).click();
+  }
+  // await page.getByPlaceholder('Select Ownership').click();
+  // await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*4)).click();
   await page.getByPlaceholder('Select Life Style').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*1)).click();
   await page.locator('input[name="completion_date"]').fill('01/20/2025');
   await page.locator('input[name="handover_date"]').fill('01/31/2025');
-  await page.locator('input[name="start_date"]').fill('01/01/2025');
-  await page.getByText('currency').click();
-  await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
-  await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
-  await page.getByText('measure', { exact: true }).click();
-  await page.getByRole('option', { name: 'sqft' }).click();
+  if(await page.locator('input[name="start_date"]').isVisible()){
+    await page.locator('input[name="start_date"]').fill('01/01/2025');
+  }
+  if(await page.getByText('currency').isVisible()){
+    await page.getByText('currency').click();
+    await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+    await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+    await page.getByText('measure', { exact: true }).click();
+    await page.getByRole('option', { name: 'sqft' }).click();
+    }
   await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Enter Max Area').fill((Math.floor(Math.random() * 1500) + 1000).toString());
   await page.locator('input[placeholder="Select Furnished"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
   await page.getByPlaceholder('No of units').fill((Math.floor(Math.random() * 100) + 1).toString());
   await page.getByPlaceholder('Enter no of floors').fill((Math.floor(Math.random() * 100) + 1).toString());
-  await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
+  if(await page.getByPlaceholder('Enter no of parking').isVisible()){
+    await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
+  }
+  // await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
   await page.getByPlaceholder('Enter no of pools').fill((Math.floor(Math.random() * 100) + 1).toString());
   await page.getByPlaceholder('Enter no of elevators').fill((Math.floor(Math.random() * 100) + 1).toString());
   const startingPrice = getRandomStartingPrice().toString();
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
   const randomIndex = Math.floor(Math.random() * 1);
-  await page.getByPlaceholder('Select Completion Status').click();
-  const listItems = page.locator('ul[role="listbox"] >> li');
-  const selectedOption = listItems.nth(randomIndex);
-  let selectedText = '';
-  try {
-    selectedText = await selectedOption.textContent();
-  } catch (error) {
-    console.error('Error getting text content:', error);
+  if(await page.getByPlaceholder('Select Completion Status').isVisible()){
+    await page.getByPlaceholder('Select Completion Status').click();
+    const listItems = page.locator('ul[role="listbox"] >> li');
+    const selectedOption = listItems.nth(randomIndex);
+    let selectedText = '';
+    try {
+      selectedText = await selectedOption.textContent();
+    } catch (error) {
+      console.error('Error getting text content:', error);
+    }
+    await selectedOption.click();
+    if (selectedText === 'Off Plan') {
+      await page.locator('input[name="completion_percentage_date"]').fill('01/08/2025');
+      await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
+   }
   }
-  await selectedOption.click();
 
-  if (selectedText === 'Off Plan') {
-     await page.locator('input[name="completion_percentage_date"]').fill('01/08/2025');
-     await page.fill('input[name="completion_percentage"]',(Math.floor(Math.random() * 100) + 1).toString());
-  } else {
-    return null;
-  }
+ if(await page.getByPlaceholder('Select Rent Type').isVisible()){
+   await page.getByPlaceholder('Select Rent Type').click();
+   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*3)).click();
+ } 
+ if(await page.getByPlaceholder('Enter No. of Payments').isVisible()){
+   await page.getByPlaceholder('Enter No. of Payments').fill((Math.floor(Math.random() * 100) + 1).toString());
+ }
 }
 
 async function propertyTypeLogic(page) {
   await page.getByPlaceholder('Select Property type').click();
-  
-  const indices = [8, 11, 2, 3, 4, 0, 2, 1];
-  const randomIndex = Math.floor(Math.random() * indices.length);
-  const randomValue = indices[randomIndex];
-  const listItems = page.locator('ul[role="listbox"] >> li');
-  const selectedOption = listItems.nth(randomValue);
+  let indices = [];
+
+if (categoryRan == 1) {
+    indices = [8, 11, 3, 4];
+} else {
+    indices = [8, 11, 2, 3, 4, 0, 1];
+}
+
+const listItems = page.locator('ul[role="listbox"] >> li');
+
+const listCount = await listItems.count();
+if (listCount === 0) {
+    throw new Error("No items found in the listbox.");
+}
+
+indices = indices.filter(index => index < listCount);
+if (indices.length === 0) {
+    throw new Error("No valid indices available for the list items.");
+}
+
+const randomIndex = Math.floor(Math.random() * indices.length);
+const randomValue = indices[randomIndex];
+
+const selectedOption = listItems.nth(randomValue);
+
+// Optional: Perform actions with `selectedOption`
+// await selectedOption.click(); // Example action: Click on the selected option
  
   let selectedText = '';
   try {
@@ -284,6 +329,8 @@ async function locationRandom(page) {
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
 }
 const propertyHubRan = getRandomProject() + getRandomStartingPrice().toString();
+  const categoryRan = (Math.floor(Math.random() * 2) + 0).toString();
+
 async function addPropertyHub(page) {
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Property Hub' }).click();
@@ -300,20 +347,19 @@ async function addPropertyHub(page) {
   const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
   await secondOption.click();
   await page.locator('input[placeholder="Choose category"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  // const categoryRan = Math.floor(Math.random() * 2);
-  // const listItems = page.locator('ul[role="listbox"] >> li');
-  // const selectedOption = listItems.nth(categoryRan);
+  // await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  const listItems = page.locator('ul[role="listbox"] >> li');
+  const selectedOption = listItems.nth(categoryRan);
  
-  // let selectedText = '';
-  // try {
-  //   selectedText = await selectedOption.textContent();
-  //   console.log('Selected text:', selectedText); 
-  //   console.log(categoryRan);
-  // } catch (error) {
-  //   console.error('Error getting text content:', error);
-  // }
-  // await selectedOption.click();
+  let selectedText = '';
+  try {
+    selectedText = await selectedOption.textContent();
+    console.log('Selected text:', selectedText); 
+    console.log(categoryRan);
+  } catch (error) {
+    console.error('Error getting text content:', error);
+  }
+  await selectedOption.click();
   await locationRandom(page);
 
   const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
@@ -442,5 +488,7 @@ test('add property sale', async ({ page }) => {
   await unitType(page);
   await addGallery(page);
   await addPlan(page);
-  await PaymentPlans(page);
+  // if(categoryRan==0){
+  //   await PaymentPlans(page);
+  // }
 });
