@@ -192,7 +192,7 @@ async function ifLand(page){
 async function IfResidential(page){
   for (let i = 0; i < 2; i++) {
     await page.getByPlaceholder('Select Unit type').click();
-    const random = Math.floor(Math.random() * 3);
+    const random = (Math.floor(Math.random() * 3) + 1).toString();
     const option = page.locator(`[data-option-index="${random}"]`);  
     await option.click();  
   }
