@@ -38,7 +38,7 @@ function getRandomProjectNumber() {
 }
 
 function getRandomProjectRan() {
-  return Math.floor(Math.random() * 1000 ) +1;
+  return Math.floor(Math.random() * 10000 ) +1;
 }
 
 function getRandomStartingPrice() {
