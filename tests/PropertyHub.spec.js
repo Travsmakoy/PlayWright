@@ -406,17 +406,13 @@ async function unitType(page) {
     await page.getByPlaceholder('Enter No of Bedrooms').fill((Math.floor(Math.random() * 10) + 1).toString());
   }
 
-  // Try multiple selector strategies for the submit button
   try {
-    // First attempt: Using role and name (case-insensitive)
     await page.getByRole('button', { name: /submit/i }).click();
   } catch (error) {
     try {
-      // Second attempt: Using CSS selector
       await page.locator('button[type="submit"]').click();
     } catch (error) {
       try {
-        // Third attempt: Using XPath
         await page.locator('//button[contains(translate(text(), "SUBMIT", "submit"), "submit")]').click();
       } catch (error) {
         console.error('Failed to click submit button:', error);
@@ -424,10 +420,7 @@ async function unitType(page) {
       }
     }
   }
-
-  // Add a wait for navigation or element after submit
-  await page.waitForTimeout(2000); // Add a small delay to ensure the submission is processed
-
+  // await page.waitForTimeout(2000);
   await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 }
 
@@ -440,6 +433,7 @@ async function PaymentPlans(page) {
   await page.getByRole('button', { name: 'next' }).click();
   await page.getByRole('button', { name: 'submit' }).click();
   await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
+  await page.getByRole('link', { name: 'Manage Payment Plans' }).click();
 }
 
 test('add property sale', async ({ page }) => {
