@@ -190,7 +190,7 @@ async function ifLand(page){
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
 }
 async function IfResidential(page){
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 6; i++) {
     await page.getByPlaceholder('Select Unit type').click();
     const random = Math.floor(Math.random() * 3);
     const option = page.locator(`[data-option-index="${random}"]`);  
@@ -374,13 +374,14 @@ async function addPlan(page) {
   await page.getByRole('link', { name: 'Properties', exact: true }).click();
 }
 
-async function unitType(page){
+async function unitType(page) {
   await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
   await page.locator('div').filter({ hasText: /^Manage Unit Types$/ }).getByRole('link').click();
   await page.getByRole('button', { name: 'Add Unit Type' }).click();
   await page.getByPlaceholder('Select unit type').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
-  const randomType=['STUDIO','1BHK','2BHK','3BHK','4BHK','5BHK','6BHK','7BHK','8BHK','9BHK','10BHK'];
+
+  const randomType = ['STUDIO', '1BHK', '2BHK', '3BHK', '4BHK', '5BHK', '6BHK', '7BHK', '8BHK', '9BHK', '10BHK'];
   const randomIndex = Math.floor(Math.random() * randomType.length);
   const randomValue = randomType[randomIndex];
   await page.getByPlaceholder('Enter type name').fill(`${randomValue}`);
@@ -389,17 +390,44 @@ async function unitType(page){
   await page.getByPlaceholder('Enter max area').fill((Math.floor(Math.random() * 1800) + 1000).toString());
   await page.getByPlaceholder('Enter min price').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Enter max price').fill((Math.floor(Math.random() * 1800) + 1000).toString());
+
   const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES FOR AUTO\\UNIT TYPES';
   const files = fs.readdirSync(folderPath);
   const randomFile = files[Math.floor(Math.random() * files.length)];
   const filePath = path.join(folderPath, randomFile);
   const fileInput = await page.$('//input[@type="file"]');
   await fileInput.setInputFiles(filePath);
-  if(page.getByPlaceholder('Enter No of Parking').isVisible())
-    {
+
+  if (await page.getByPlaceholder('Enter No of Parking').isVisible()) {
     await page.getByPlaceholder('Enter No of Parking').fill((Math.floor(Math.random() * 100) + 1).toString());
-    };
-  await page.getByRole('button', { name: 'submit' }).click();
+  }
+
+  if (await page.getByPlaceholder('Enter No of Bedrooms').isVisible()) {
+    await page.getByPlaceholder('Enter No of Bedrooms').fill((Math.floor(Math.random() * 10) + 1).toString());
+  }
+
+  // Try multiple selector strategies for the submit button
+  try {
+    // First attempt: Using role and name (case-insensitive)
+    await page.getByRole('button', { name: /submit/i }).click();
+  } catch (error) {
+    try {
+      // Second attempt: Using CSS selector
+      await page.locator('button[type="submit"]').click();
+    } catch (error) {
+      try {
+        // Third attempt: Using XPath
+        await page.locator('//button[contains(translate(text(), "SUBMIT", "submit"), "submit")]').click();
+      } catch (error) {
+        console.error('Failed to click submit button:', error);
+        throw error;
+      }
+    }
+  }
+
+  // Add a wait for navigation or element after submit
+  await page.waitForTimeout(2000); // Add a small delay to ensure the submission is processed
+
   await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 }
 
