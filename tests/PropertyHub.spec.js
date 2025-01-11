@@ -433,7 +433,7 @@ async function PaymentPlans(page) {
   await page.getByRole('button', { name: 'next' }).click();
   await page.getByRole('button', { name: 'submit' }).click();
   await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
-  await page.getByRole('link', { name: 'Manage Payment Plans' }).click();
+  await page.getByRole('checkbox').click();
 }
 
 test('add property sale', async ({ page }) => {
