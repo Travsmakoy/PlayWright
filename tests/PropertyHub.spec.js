@@ -488,7 +488,7 @@ test('add property sale', async ({ page }) => {
   await unitType(page);
   await addGallery(page);
   await addPlan(page);
-  // if(categoryRan==0){
-  //   await PaymentPlans(page);
-  // }
+  if(categoryRan==1){
+    await PaymentPlans(page);
+  }
 });
