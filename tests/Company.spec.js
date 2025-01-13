@@ -68,6 +68,15 @@ async function addCompany(page){
 
   await vatFile(page);
 
+  await page.getByPlaceholder('Enter Company Website').fill('https://'+PROJECT_NAMES[Math.floor(Math.random() * 4)]+ProjectNumber+'.com');
+  await page.getByPlaceholder('Company email address').fill(PROJECT_NAMES[Math.floor(Math.random() * 4)].trim()+ProjectNumber+'@gmail.com');
+  await page.getByPlaceholder('Enter Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
+  await page.getByPlaceholder('Enter Whatsapp No').fill(Math.floor(Math.random() * 1000000000).toString());
+  await page.getByPlaceholder('Please Enter tagline ').fill('Best '+PROJECT_NAMES[Math.floor(Math.random() * 4)]+' Estate Management');
+  await page.getByPlaceholder('Please Enter no of employees').fill((Math.floor(Math.random() * 1000) + 1).toString());
+
+  await companyLogoCover(page);
+
 }
 
 async function licenseFile(page){
@@ -87,6 +96,16 @@ async function vatFile(page){
   await page.locator('input[name="vat_file_url"]').setInputFiles(filePath);
 }
 
+async function companyLogoCover(page){
+  const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+  const files = fs.readdirSync(folderPath);
+  const randomFile = files[Math.floor(Math.random() * files.length)];
+  const filePath = path.join(folderPath, randomFile);
+  await page.locator('input[name="logo_url"]').setInputFiles(filePath);
+  const randomFile1 = files[Math.floor(Math.random() * files.length)];
+  const filePath1 = path.join(folderPath, randomFile1);
+  await page.locator('input[name="cover_image_url"]').setInputFiles(filePath1);
+}
 
 test('add company', async ({page}) => {
     await login(page, VALID_USER, VALID_PASSWORD);
