@@ -399,7 +399,7 @@ async function addGallery(page){
       await page.getByRole('button', { name: 'submit' }).click();
       await expect(page.getByText(/Created successfully/)).toBeVisible();
     }
-    await page.getByRole('link', { name: 'Property gallery' }).click();
+  await page.getByRole('link', { name: 'Property gallery' }).click();
 }
 async function addPlan(page) {
   await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
@@ -417,7 +417,7 @@ async function addPlan(page) {
     await page.getByRole('button', { name: 'submit' }).click();
     await expect(page.getByText(/Created plan successfully/)).toBeVisible();
   }
-  await page.getByRole('link', { name: 'Properties', exact: true }).click();
+ await page.getByRole('link', { name: 'Properties', exact: true }).click();
 }
 
 async function unitType(page) {
@@ -472,14 +472,16 @@ async function unitType(page) {
 
 async function PaymentPlans(page) {
   await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
-  await page.locator('div').filter({ hasText: /^Manage Payment Plans$/ }).getByRole('link').click();
-  await page.getByRole('link', { name: 'Add Payment Plans' }).click();
-  await page.getByPlaceholder('Select Percentage').fill('100');
-  await page.getByPlaceholder('Select Completion Status').fill('TEST AUTOMATION');
-  await page.getByRole('button', { name: 'next' }).click();
-  await page.getByRole('button', { name: 'submit' }).click();
-  await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
-  await page.getByRole('checkbox').click();
+  if(await page.locator('div').filter({ hasText: /^Manage Payment Plans$/ }).getByRole('link')){
+    await page.getByRole('link', { name: 'Add Payment Plans' }).click();
+    await page.getByPlaceholder('Select Percentage').fill('100');
+    await page.getByPlaceholder('Select Completion Status').fill('TEST AUTOMATION');
+    await page.getByRole('button', { name: 'next' }).click();
+    await page.getByRole('button', { name: 'submit' }).click();
+    await page.locator('form').getByRole('link', { name: 'Manage Payment Plans', exact: true }).click();
+    await page.getByRole('checkbox').click();
+  }
+  // await page.locator('div').filter({ hasText: /^Manage Payment Plans$/ }).getByRole('link').click();
 }
 
 test('add property sale', async ({ page }) => {
@@ -488,7 +490,5 @@ test('add property sale', async ({ page }) => {
   await unitType(page);
   await addGallery(page);
   await addPlan(page);
-  if(categoryRan==1){
-    await PaymentPlans(page);
-  }
+  await PaymentPlans(page);
 });
