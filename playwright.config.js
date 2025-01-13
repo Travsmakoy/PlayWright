@@ -43,7 +43,7 @@ module.exports = defineConfig({
         // video:'on',
         trace:'on',
         headless: true,
-        viewport: { width: 1920, height: 1080 },
+        viewport: { width: 1280, height: 1080 },
       },
     },
     // {

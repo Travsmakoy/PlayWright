@@ -190,9 +190,9 @@ async function ifLand(page){
   await page.getByPlaceholder('Enter Price').fill(startingPrice);
 }
 async function IfResidential(page){
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 3; i++) {
     await page.getByPlaceholder('Select Unit type').click();
-    const random = (Math.floor(Math.random() * 3) + 1).toString();
+    const random = (Math.floor(Math.random() * 2) + 1).toString();
     const option = page.locator(`[data-option-index="${random}"]`);  
     await option.click();  
   }
