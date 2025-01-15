@@ -294,9 +294,6 @@ const randomIndex = Math.floor(Math.random() * indices.length);
 const randomValue = indices[randomIndex];
 
 const selectedOption = listItems.nth(randomValue);
-
-// Optional: Perform actions with `selectedOption`
-// await selectedOption.click(); // Example action: Click on the selected option
  
   let selectedText = '';
   try {
@@ -451,7 +448,7 @@ async function unitType(page) {
   if (await page.getByPlaceholder('Enter No of Bedrooms').isVisible()) {
     await page.getByPlaceholder('Enter No of Bedrooms').fill((Math.floor(Math.random() * 10) + 1).toString());
   }
-
+  
   try {
     await page.getByRole('button', { name: /submit/i }).click();
   } catch (error) {

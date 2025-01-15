@@ -69,14 +69,35 @@ async function addCompany(page){
   await vatFile(page);
 
   await page.getByPlaceholder('Enter Company Website').fill('https://'+PROJECT_NAMES[Math.floor(Math.random() * 4)]+ProjectNumber+'.com');
-  await page.getByPlaceholder('Company email address').fill(PROJECT_NAMES[Math.floor(Math.random() * 4)].trim()+ProjectNumber+'@gmail.com');
+  const TRIMMED_PROJECT_NAMES = PROJECT_NAMES.map(name => name.trim());
+  const randomIndex = Math.floor(Math.random() * TRIMMED_PROJECT_NAMES.length);
+  const email = `${TRIMMED_PROJECT_NAMES[randomIndex]}${ProjectNumber}@gmail.com`.replace(/\s+/g, '');
+  await page.getByPlaceholder('Company email address').fill(email);
+
   await page.getByPlaceholder('Enter Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
   await page.getByPlaceholder('Enter Whatsapp No').fill(Math.floor(Math.random() * 1000000000).toString());
   await page.getByPlaceholder('Please Enter tagline ').fill('Best '+PROJECT_NAMES[Math.floor(Math.random() * 4)]+' Estate Management');
   await page.getByPlaceholder('Please Enter no of employees').fill((Math.floor(Math.random() * 1000) + 1).toString());
 
   await companyLogoCover(page);
+  await WriteDescription(page);
 
+  await page.getByPlaceholder('Enter Username').fill('PlaywrightUser'+(Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter First Name ').fill('John');
+  await page.getByPlaceholder('Enter Last Name ').fill('Doe');
+  await page.getByPlaceholder('Enter Admin Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
+  await page.getByPlaceholder('Admin email address').fill('playwrightuser'+(Math.floor(Math.random() * 1000) + 1).toString()+'@gmail.com');
+  await profile(page);
+
+  await page.getByRole('button', { name: 'submit' }).click();
+}
+
+async function profile(page){
+  const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+  const files = fs.readdirSync(folderPath);
+  const randomFile = files[Math.floor(Math.random() * files.length)];
+  const filePath = path.join(folderPath, randomFile);
+  await page.locator('input[name="user_profile_picture"]').setInputFiles(filePath);
 }
 
 async function licenseFile(page){
@@ -84,8 +105,7 @@ async function licenseFile(page){
   const files = fs.readdirSync(folderPath);
   const randomFile = files[Math.floor(Math.random() * files.length)];
   const filePath = path.join(folderPath, randomFile);
-  const fileInput = await page.$('//input[@type="file"]');
-  await fileInput.setInputFiles(filePath);
+  await page.locator('input[name="commercial_license_file_url"]').setInputFiles(filePath);
 }
 
 async function vatFile(page){
@@ -105,6 +125,50 @@ async function companyLogoCover(page){
   const randomFile1 = files[Math.floor(Math.random() * files.length)];
   const filePath1 = path.join(folderPath, randomFile1);
   await page.locator('input[name="cover_image_url"]').setInputFiles(filePath1);
+}
+
+async function WriteDescription(page) {
+  function generateRealEstateDescription() {
+    const phrases = [
+      "Spacious and modern",
+      "Located in the heart of the city",
+      "Breathtaking views of the skyline",
+      "Ideal for families and professionals",
+      "Close to schools, parks, and shopping centers",
+      "Featuring state-of-the-art amenities",
+      "Open-concept living spaces",
+      "Designed for ultimate comfort and convenience",
+      "Perfect for entertaining guests",
+      "Luxury finishes throughout",
+      "Private balcony or patio",
+      "Natural light-filled interiors",
+      "High ceilings and elegant design",
+      "Fully equipped gourmet kitchen",
+      "Top-of-the-line appliances",
+      "Serene and peaceful surroundings",
+      "Walking distance to public transport",
+      "Minutes away from major highways",
+      "Secure and gated community",
+      "Energy-efficient construction",
+      "Pet-friendly policies",
+      "Resort-style pool and fitness center",
+      "Ample storage and parking",
+      "Unmatched investment opportunity",
+      "Customizable options available"
+    ];
+    let description = "";
+    while (description.length < 800) {
+      const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+      if (description.length + randomPhrase.length + 2 <= 800) { // +2 accounts for a period and space
+        description += `${randomPhrase}. `;
+      } else {
+        break;
+      }
+    }
+    return description.trim();
+  }
+  const description = generateRealEstateDescription();
+  await page.getByPlaceholder('Description..').fill(description);
 }
 
 test('add company', async ({page}) => {
