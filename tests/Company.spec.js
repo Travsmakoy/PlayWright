@@ -89,6 +89,16 @@ async function addCompany(page){
   await page.getByPlaceholder('Admin email address').fill('playwrightuser'+(Math.floor(Math.random() * 1000) + 1).toString()+'@gmail.com');
   await profile(page);
 
+  await page.getByPlaceholder('Account number').fill((Math.floor(Math.random() * 987654321) + 12345678).toString());
+  await page.getByPlaceholder('Account Name').fill('John Doe');
+  await page.getByPlaceholder('IBAN Number').fill('AE07 0331 2345 6789 0123 456');
+  await page.getByPlaceholder('Please a Country').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.getByPlaceholder('Please a Currency').click();
+  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 2) + 1)).click();
+  await page.getByPlaceholder('Bank Name').fill('Bank of America');
+  await page.getByPlaceholder('Bank Branch').fill('1234567890');
+  await page.getByPlaceholder('Swift Code').fill('USBAK9000000000000000');
   await page.getByRole('button', { name: 'submit' }).click();
 }
 
