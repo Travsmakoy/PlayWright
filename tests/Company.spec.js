@@ -5,7 +5,7 @@ const { write } = require('fs');
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
+const PROJECT_NAMES = ['Company PlayWright Beta ', 'Company Playwright Alpha ', 'Company Playwright Gamma ', 'Company Playwright Delta '];
 
 async function login(page, user, password) {
   await page.goto(`${BASE_URL}/login`);
