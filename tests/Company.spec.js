@@ -6,7 +6,7 @@ const BASE_URL = 'https://dashboard.aqaryint.com';
 const local = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const PROJECT_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL'];
+const PROJECT_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL','MERAAS','SOBHA REALTY','OMNIYAT','DEYAAR'];
 
 async function login(page, user, password) {
   await page.goto(`${BASE_URL}/login`);
