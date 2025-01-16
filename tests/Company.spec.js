@@ -6,7 +6,7 @@ const BASE_URL = 'https://dashboard.aqaryint.com';
 const local = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const COMPANY_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL','MERAAS','SOBHA REALTY','OMNIYAT','DEYAAR'];
+const COMPANY_NAMES = ['ALDAR BROKER', 'EMAAR BROKER', 'DAMAC BROKER', 'NAKHEEL BROKER','MERAAS BROKER','SOBHA REALTY BROKER','OMNIYAT BROKER','DEYAAR BROKER'];
 
 async function login(page, user, password) {
   await page.goto(`${local}/login`);
@@ -29,19 +29,20 @@ async function locationRandom(page) {
   await page.locator('input[placeholder="Select Sub Community"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 1) + 1 - 1).click();
 }
+const SelectedProject = COMPANY_NAMES[Math.floor(Math.random() * 8)]
 
 async function addCompany(page){
   await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Company', exact: true }).click();
   await page.getByRole('button', { name: 'Add Company' }).click();
   await page.getByPlaceholder('Please Select Company Type').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 ).click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.getByPlaceholder('Choose category').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 ).click();
+  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 3) + 0)).click();
   await page.getByPlaceholder('Choose a company activity').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   const ProjectNumber = Math.floor(Math.random() * 1000000);
-  await page.getByPlaceholder('Enter a company name').fill(COMPANY_NAMES[Math.floor(Math.random() * 8)]);
+  await page.getByPlaceholder('Enter a company name').fill(SelectedProject);
 
   await locationRandom(page);
 
@@ -63,6 +64,20 @@ async function addCompany(page){
   await page.locator('input[name="commercial_issue_date"]').fill('01/25/2025');
   await page.locator('input[name="commercial_license_expiry"]').fill('01/31/2025');
 
+  if(await page.getByPlaceholder('Enter RERA license no').isVisible()) 
+  {
+    await page.getByPlaceholder('Enter RERA license no').fill((Math.floor(Math.random() * 1000000)).toString());
+    await page.locator('input[name="rera_registration_date"]').fill('01/20/2025');
+    await page.locator('input[name="rera_issue_date"]').fill('01/25/2025');
+    await page.locator('input[name="rera_expiry"]').fill('01/31/2025');
+
+    await page.getByPlaceholder('Enter ORN license no').fill((Math.floor(Math.random() * 1000000)).toString());
+    await page.locator('input[name="orn_registration_date"]').fill('01/20/2025');
+    await page.locator('input[name="orn_issue_date"]').fill('01/25/2025');
+    await page.locator('input[name="orn_license_expiry"]').fill('01/31/2025');
+    
+  }
+
   await page.getByPlaceholder('Enter vat number').fill('VAT'+(Math.floor(Math.random() * 1000000)).toString());
   await page.getByPlaceholder('Please Select VAT Status').click();
   await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 2) + 1)).click();
@@ -70,9 +85,9 @@ async function addCompany(page){
   await vatFile(page);
 
   await page.getByPlaceholder('Enter Company Website').fill('https://'+COMPANY_NAMES[Math.floor(Math.random() * 4)]+ProjectNumber+'.com');
-  const TRIMMED_PROJECT_NAMES = COMPANY_NAMES.map(name => name.trim());
-  const randomIndex = Math.floor(Math.random() * TRIMMED_PROJECT_NAMES.length);
-  const email = `${TRIMMED_PROJECT_NAMES[randomIndex]}${ProjectNumber}@gmail.com`.replace(/\s+/g, '');
+  // const TRIMMED_PROJECT_NAMES = SelectedProject.map(name => name.trim());
+  // const randomIndex = Math.floor(Math.random() * TRIMMED_PROJECT_NAMES.length);
+  const email = `${SelectedProject}123@gmail.com`.replace(/\s+/g, ''); //${ProjectNumber} fop dyanmic 
   await page.getByPlaceholder('Company email address').fill(email);
 
   await page.getByPlaceholder('Enter Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
@@ -87,7 +102,7 @@ async function addCompany(page){
   await page.getByPlaceholder('Enter First Name ').fill('John');
   await page.getByPlaceholder('Enter Last Name ').fill('Doe');
   await page.getByPlaceholder('Enter Admin Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
-  await page.getByPlaceholder('Admin email address').fill('playwrightuser'+(Math.floor(Math.random() * 1000) + 1).toString()+'@gmail.com');
+  await page.getByPlaceholder('Admin email address').fill(SelectedProject.replace(/\s+/g, '')+(Math.floor(Math.random() * 1000) + 1).toString()+'@gmail.com');
   await profile(page);
 
   await page.getByPlaceholder('Account number').fill((Math.floor(Math.random() * 987654321) + 12345678).toString());

@@ -1,4 +1,4 @@
-import {test,expect, Page} from '@playwright/test';
+import {expect, Page} from '@playwright/test';
 
 export default class LoginPage
 {
@@ -9,15 +9,27 @@ export default class LoginPage
     public async goto(){
         await this.page.goto('https://192.168.1.193:8080/');
     }
-    //Locators Global variables
-    EnterUser = ()  => this.page.fill('input[name="user"]', 'admin');       
-    EnterPassword = (password: string) => this.page.fill('input[name="password"]', password);
-    ClickLogin = () => this.page.click('button[type="submit"]');
+
+    EnterUser = ()  => this.page.locator('input[name="user"]');   
+    EnterPassword = () => this.page.locator('input[name="password"]');
+    ClickLogin = () => this.page.locator('button[type="submit"]');
     
-    //Actions Global functions
     VerifyLoginSuccess = async () => 
         {
-        await expect(this.page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
-        await expect(this.page.getByText('Weclome, Super Ahmad')).toBeVisible();
-         }
+            await expect(this.page).toHaveURL('https://192.168.1.193:8080/');
+            await expect(this.EnterUser()).toBeVisible();
+            await expect(this.EnterPassword()).toBeVisible();
+            await expect(this.ClickLogin()).toBeVisible();
+            await this.EnterUser().fill('admin');
+            await this.EnterPassword().fill('password');
+            await this.ClickLogin().click();
+        }
+    veroyInvalidLogin = async () =>
+        {
+            await this.EnterUser().fill('invalidUser');
+            await this.EnterPassword().fill('invalidPassword');
+            await this.ClickLogin().click();
+            await expect(this.page).toHaveURL('https://192.168.1.193:8080/login');
+            await expect(this.page.getByText('Invalid username or password.')).toBeVisible();
+        }
 }
