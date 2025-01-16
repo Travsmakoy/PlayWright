@@ -6,10 +6,10 @@ const BASE_URL = 'https://dashboard.aqaryint.com';
 const local = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const PROJECT_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL','MERAAS','SOBHA REALTY','OMNIYAT','DEYAAR'];
+const COMPANY_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL','MERAAS','SOBHA REALTY','OMNIYAT','DEYAAR'];
 
 async function login(page, user, password) {
-  await page.goto(`${BASE_URL}/login`);
+  await page.goto(`${local}/login`);
   await page.fill('input[name="user"]', user);
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
@@ -37,11 +37,11 @@ async function addCompany(page){
   await page.getByPlaceholder('Please Select Company Type').click();
   await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 ).click();
   await page.getByPlaceholder('Choose category').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3) + 1 ).click();
   await page.getByPlaceholder('Choose a company activity').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   const ProjectNumber = Math.floor(Math.random() * 1000000);
-  await page.getByPlaceholder('Enter a company name').fill(PROJECT_NAMES[Math.floor(Math.random() * 4)]);
+  await page.getByPlaceholder('Enter a company name').fill(COMPANY_NAMES[Math.floor(Math.random() * 8)]);
 
   await locationRandom(page);
 
@@ -69,15 +69,15 @@ async function addCompany(page){
 
   await vatFile(page);
 
-  await page.getByPlaceholder('Enter Company Website').fill('https://'+PROJECT_NAMES[Math.floor(Math.random() * 4)]+ProjectNumber+'.com');
-  const TRIMMED_PROJECT_NAMES = PROJECT_NAMES.map(name => name.trim());
+  await page.getByPlaceholder('Enter Company Website').fill('https://'+COMPANY_NAMES[Math.floor(Math.random() * 4)]+ProjectNumber+'.com');
+  const TRIMMED_PROJECT_NAMES = COMPANY_NAMES.map(name => name.trim());
   const randomIndex = Math.floor(Math.random() * TRIMMED_PROJECT_NAMES.length);
   const email = `${TRIMMED_PROJECT_NAMES[randomIndex]}${ProjectNumber}@gmail.com`.replace(/\s+/g, '');
   await page.getByPlaceholder('Company email address').fill(email);
 
   await page.getByPlaceholder('Enter Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
   await page.getByPlaceholder('Enter Whatsapp No').fill(Math.floor(Math.random() * 1000000000).toString());
-  await page.getByPlaceholder('Please Enter tagline ').fill('Best '+PROJECT_NAMES[Math.floor(Math.random() * 4)]+' Estate Management');
+  await page.getByPlaceholder('Please Enter tagline ').fill('Best '+COMPANY_NAMES[Math.floor(Math.random() * 4)]+' Estate Management');
   await page.getByPlaceholder('Please Enter no of employees').fill((Math.floor(Math.random() * 1000) + 1).toString());
 
   await companyLogoCover(page);

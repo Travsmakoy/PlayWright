@@ -240,9 +240,8 @@ function getrandomFacilities(count, min, max) {
 async function facilities(page){
 const randomIds = getrandomFacilities(10, 1, 77);
     for (const id of randomIds) {
-        const testId = id.toString(); // Convert number to string for test ID
+        const testId = id.toString(); 
         try {
-            // Attempt to click the element with the corresponding test ID
             await page.getByTestId(testId).click();
         } catch (error) {
           return error;
@@ -260,9 +259,8 @@ function getrandomAmenities(count, min, max) {
 async function amenities(page){
   const randomIds = getrandomAmenities(10, 78, 200);
       for (const id of randomIds) {
-          const testId = id.toString(); // Convert number to string for test ID
+          const testId = id.toString();
           try {
-              // Attempt to click the element with the corresponding test ID
               await page.getByTestId(testId).click();
           } catch (error) {
             return error;
