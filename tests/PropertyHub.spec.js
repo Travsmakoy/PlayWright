@@ -560,7 +560,7 @@ async function PaymentPlans(page) {
   // await page.locator('div').filter({ hasText: /^Manage Payment Plans$/ }).getByRole('link').click();
 }
 
-test('add property sale', async ({ page }) => {
+test('add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(3000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
   await login(page, 'admin', 'newadmin');
