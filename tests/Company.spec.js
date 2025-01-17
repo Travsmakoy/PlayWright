@@ -6,7 +6,7 @@ const BASE_URL = 'https://dashboard.aqaryint.com';
 const local = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
-const COMPANY_NAMES = ['ALDAR BROKER', 'EMAAR BROKER', 'DAMAC BROKER', 'NAKHEEL BROKER','MERAAS BROKER','SOBHA REALTY BROKER','OMNIYAT BROKER','DEYAAR BROKER'];
+const COMPANY_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL','MERAAS','SOBHA REALTY','OMNIYAT','DEYAAR'];
 
 async function login(page, user, password) {
   await page.goto(`${local}/login`);
@@ -36,13 +36,26 @@ async function addCompany(page){
   await page.getByRole('button', { name: 'Company', exact: true }).click();
   await page.getByRole('button', { name: 'Add Company' }).click();
   await page.getByPlaceholder('Please Select Company Type').click();
-  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  const CompanyType = (Math.floor(Math.random()*3)+0).toString();
+  await page.locator('ul[role="listbox"] >> li').nth(CompanyType).click(); //0 make static
   await page.getByPlaceholder('Choose category').click();
   await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 3) + 0)).click();
   await page.getByPlaceholder('Choose a company activity').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   const ProjectNumber = Math.floor(Math.random() * 1000000);
-  await page.getByPlaceholder('Enter a company name').fill(SelectedProject);
+  if (CompanyType === '3') {
+    await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' PRODUCT');
+  }
+  if (CompanyType === '2') {
+    await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' SERVICES');
+  }
+  if (CompanyType === '1') {
+    await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' DEVELOPER');
+  }
+  if (CompanyType === '0') {
+    await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' BROKER');
+  }
+  // await page.getByPlaceholder('Enter a company name').fill(SelectedProject);
 
   await locationRandom(page);
 
@@ -75,7 +88,7 @@ async function addCompany(page){
     await page.locator('input[name="orn_registration_date"]').fill('01/20/2025');
     await page.locator('input[name="orn_issue_date"]').fill('01/25/2025');
     await page.locator('input[name="orn_license_expiry"]').fill('01/31/2025');
-    
+    await ReraORN(page);
   }
 
   await page.getByPlaceholder('Enter vat number').fill('VAT'+(Math.floor(Math.random() * 1000000)).toString());
@@ -84,7 +97,7 @@ async function addCompany(page){
 
   await vatFile(page);
 
-  await page.getByPlaceholder('Enter Company Website').fill('https://'+COMPANY_NAMES[Math.floor(Math.random() * 4)]+ProjectNumber+'.com');
+  await page.getByPlaceholder('Enter Company Website').fill('https://'+SelectedProject.replace(/\s+/g, '')+ProjectNumber+'.com');
   // const TRIMMED_PROJECT_NAMES = SelectedProject.map(name => name.trim());
   // const randomIndex = Math.floor(Math.random() * TRIMMED_PROJECT_NAMES.length);
   const email = `${SelectedProject}123@gmail.com`.replace(/\s+/g, ''); //${ProjectNumber} fop dyanmic 
@@ -92,14 +105,14 @@ async function addCompany(page){
 
   await page.getByPlaceholder('Enter Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
   await page.getByPlaceholder('Enter Whatsapp No').fill(Math.floor(Math.random() * 1000000000).toString());
-  await page.getByPlaceholder('Please Enter tagline ').fill('Best '+COMPANY_NAMES[Math.floor(Math.random() * 4)]+' Estate Management');
+  await page.getByPlaceholder('Please Enter tagline ').fill('Best '+SelectedProject+' Estate Management');
   await page.getByPlaceholder('Please Enter no of employees').fill((Math.floor(Math.random() * 1000) + 1).toString());
 
   await companyLogoCover(page);
   await WriteDescription(page);
 
-  await page.getByPlaceholder('Enter Username').fill('PlaywrightUser'+(Math.floor(Math.random() * 1000) + 1).toString());
-  await page.getByPlaceholder('Enter First Name ').fill('John');
+  await page.getByPlaceholder('Enter Username').fill(SelectedProject+(Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter First Name ').fill(SelectedProject);
   await page.getByPlaceholder('Enter Last Name ').fill('Doe');
   await page.getByPlaceholder('Enter Admin Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
   await page.getByPlaceholder('Admin email address').fill(SelectedProject.replace(/\s+/g, '')+(Math.floor(Math.random() * 1000) + 1).toString()+'@gmail.com');
@@ -111,11 +124,15 @@ async function addCompany(page){
   await page.getByPlaceholder('Please a Country').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.getByPlaceholder('Please a Currency').click();
-  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 2) + 1)).click();
-  await page.getByPlaceholder('Bank Name').fill('Bank of America');
-  await page.getByPlaceholder('Bank Branch').fill('1234567890');
-  await page.getByPlaceholder('Swift Code').fill('USBAK9000000000000000');
-  await page.getByRole('button', { name: 'submit' }).click();
+  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 50) + 1)).click();
+  const bank = ['United States', 'United Kingdom', 'Australia', 'Germany', 'Canada', 'France', 'Italy', 'Spain', 'Netherlands', 'Belg'];
+  const bankselector = bank[Math.floor(Math.random() * bank.length)];
+  await page.getByPlaceholder('Bank Name').fill(bankselector);
+  const bankBranch = (Math.floor(Math.random() * 11234567890) + 1234567890).toString();
+  await page.getByPlaceholder('Bank Branch').fill(bankBranch);
+  const swiftcode = (Math.floor(Math.random() * 9000000000000000) + 1000000000000000).toString();
+  await page.getByPlaceholder('Swift Code').fill(swiftcode);
+  // await page.getByRole('button', { name: 'submit' }).click();
 }
 
 async function profile(page){
@@ -151,6 +168,17 @@ async function companyLogoCover(page){
   const randomFile1 = files[Math.floor(Math.random() * files.length)];
   const filePath1 = path.join(folderPath, randomFile1);
   await page.locator('input[name="cover_image_url"]').setInputFiles(filePath1);
+}
+async function ReraORN(page){
+  const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES';
+  const files = fs.readdirSync(folderPath);
+  const randomFile = files[Math.floor(Math.random() * files.length)];
+  const filePath = path.join(folderPath, randomFile);
+  await page.locator('input[name="logo_url"]').setInputFiles(filePath);
+  const randomFile1 = files[Math.floor(Math.random() * files.length)];
+  const filePath1 = path.join(folderPath, randomFile1);
+  await page.locator('input[name="rera_file_url"]').setInputFiles(filePath1);
+  await page.locator('input[name="orn_license_file_url"]').setInputFiles(filePath1);
 }
 
 async function WriteDescription(page) {
