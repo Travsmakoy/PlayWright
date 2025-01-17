@@ -111,6 +111,14 @@ async function addCompany(page){
   await companyLogoCover(page);
   await WriteDescription(page);
 
+  await page.getByPlaceholder('Enter Facebook url').fill('https://www.facebook.com/'+SelectedProject.replace(/\s+/g, ''));
+  await page.getByPlaceholder('Enter Instagram url').fill('https://www.instagram.com/'+SelectedProject.replace(/\s+/g, ''));
+  await page.getByPlaceholder('Enter LinkedIn url').fill('https://www.linkedin.com/'+SelectedProject.replace(/\s+/g, ''));
+  await page.getByPlaceholder('Enter Twitter url').fill('https://www.twitter.com/'+SelectedProject.replace(/\s+/g, ''));
+  await page.getByPlaceholder('Enter YouTube url').fill('https://www.youtube.com/'+SelectedProject.replace(/\s+/g, ''));
+  await page.getByPlaceholder('ex: http://example.com;').fill('https://www.others.com/'+SelectedProject.replace(/\s+/g, ''));
+
+
   await page.getByPlaceholder('Enter Username').fill(SelectedProject+(Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Enter First Name ').fill(SelectedProject);
   await page.getByPlaceholder('Enter Last Name ').fill('Doe');
@@ -132,6 +140,7 @@ async function addCompany(page){
   await page.getByPlaceholder('Bank Branch').fill(bankBranch);
   const swiftcode = (Math.floor(Math.random() * 9000000000000000) + 1000000000000000).toString();
   await page.getByPlaceholder('Swift Code').fill(swiftcode);
+
   // await page.getByRole('button', { name: 'submit' }).click();
 }
 

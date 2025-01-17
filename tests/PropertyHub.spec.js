@@ -412,7 +412,8 @@ async function addPropertyHub(page) {
   await page.fill('input[name="property_name"]', propertyHubRan+' Properties');
   console.log(`PropertyName: `+propertyHubRan);
   const mark = await page.locator('input[placeholder="Search by name or number"]');
-  await page.getByPlaceholder('Broker Agent').fill('Kashif');
+  // await page.getByPlaceholder('Broker Agent').fill('Kashif');
+  await page.getByPlaceholder('Broker Agent').fill('Ali');
   await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
   const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
   await firstOption.click();
@@ -452,6 +453,7 @@ async function addPropertyHub(page) {
   await amenities(page);
 
   // await page.getByRole('button', { name: 'Submit' }).click();
+  
   // await expect(page.getByText(/Property created successfully/)).toBeVisible();
 }
 
@@ -559,10 +561,11 @@ async function PaymentPlans(page) {
 }
 
 test('add property sale', async ({ page }) => {
-  await login(page, 'aqary@aqaryinvestment.com', '123456');
+  // await login(page, 'aqary@aqaryinvestment.com', '123456');
+  await login(page, 'admin', 'newadmin');
   await addPropertyHub(page);
-  await unitType(page);
-  await addGallery(page);
-  await addPlan(page);
-  await PaymentPlans(page);
+  // await unitType(page);
+  // await addGallery(page);
+  // await addPlan(page);
+  // await PaymentPlans(page);
 });

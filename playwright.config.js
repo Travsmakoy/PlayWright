@@ -39,11 +39,11 @@ module.exports = defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
-        // screenshot:'on',
-        // video:'on',
+        // screenshot:'on', //THIS IS FOR SCREENSHOTS
+        // video:'on',   //THIS IS FOR VIDEOS
         trace:'on',
         headless: true,
-        viewport: { width: 1280, height: 1080 },
+        viewport: { width: 1080, height: 1330 },
       },
     },
     // {
