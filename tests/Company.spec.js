@@ -7,7 +7,7 @@ const local = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
 const COMPANY_NAMES = ['ALDAR', 'EMAAR', 'DAMAC', 'NAKHEEL','MERAAS','SOBHA REALTY','OMNIYAT','DEYAAR'];
-
+       
 async function login(page, user, password) {
   await page.goto(`${local}/login`);
   await page.fill('input[name="user"]', user);
