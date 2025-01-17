@@ -75,6 +75,7 @@ async function locationRandom(page) {
 }
 
 test('add company user', async ({page}) => {
+  page.setDefaultTimeout(3000);
     // await login(page,'admin@aqaryinvestment.com','123456' );
     await login(page,'aqary@aqaryinvestment.com','123456' );
     await addCompanyUser(page);

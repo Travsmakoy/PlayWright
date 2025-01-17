@@ -234,6 +234,7 @@ async function WriteDescription(page) {
 }
 
 test('add company', async ({page}) => {
+  page.setDefaultTimeout(3000);
     await login(page, VALID_USER, VALID_PASSWORD);
     await addCompany(page);
     });

@@ -29,11 +29,13 @@ async function addBank(page){
 }
 
 test('add bank',async ({page}) => {
+    page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     await addBank(page);
 });
 
 test('add view', async ({page}) => {
+    page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();
@@ -46,6 +48,7 @@ test('add view', async ({page}) => {
 });
 
 test('add luxury brand', async ({page}) => {
+    page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();

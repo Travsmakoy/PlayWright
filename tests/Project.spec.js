@@ -85,7 +85,7 @@ const PROJECT_NAMES = ["Burj Khalifa Residences", "Palm Jumeirah Villas", "Jumei
 const START_PRICE_RANGE = { min: 1, max: 9999999 };
 
 async function login(page, user, password) {
-  await page.goto(`${BASE_URL}/login`);
+  await page.goto(`${local}/login`);
   await page.fill('input[name="user"]', user);
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
@@ -313,12 +313,12 @@ async function readyDetails(page) {
   await page.getByText('measure', { exact: true }).click();
   await page.getByRole('option', { name: 'sqft' }).click();
 }
-const randomProjectOffPlan = getRandomProject() + getRandomProjectRan().toString();
+const randomProjectOffPlan = getRandomProject();
 async function addOffPlanDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-  await page.getByLabel('open drawer').click();
+  await page.getByLabel('open drawer').click({timeout: 3500});
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
@@ -339,12 +339,12 @@ async function addOffPlanDetails(page) {
   await page.getByRole('button', { name: 'submit' }).click();
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
 }
-const randomProjectReady = getRandomProject() + getRandomProjectRan().toString();
+const randomProjectReady = getRandomProject();
 async function projectReadyDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-  await page.getByLabel('open drawer').click();
+  await page.getByLabel('open drawer').click({timeout: 3500});
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
@@ -366,12 +366,12 @@ async function projectReadyDetails(page) {
   await expect(page.getByText(/Project created successfully/)).toBeVisible();
   
 }
-const randomProjectPhase = getRandomProject() + getRandomProjectRan().toString();
+const randomProjectPhase = getRandomProject();
 async function multiphaseDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-  await page.getByLabel('open drawer').click();
+  await page.getByLabel('open drawer').click({timeout: 3500});
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
@@ -509,12 +509,14 @@ async function addReadyphaseGallery(page) {
 }
 
 test('add project offplan', async ({ page }) => {
+  page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await addOffPlanDetails(page);
   await addOffplanGallery(page);
   await addOffplanPlan(page);
 });
 test('add project ready', async ({ page }) => {
+  page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await projectReadyDetails(page)
   await addReadyphaseGallery(page);
@@ -522,6 +524,7 @@ test('add project ready', async ({ page }) => {
 
 });
 test('add project multiphase', async ({ page }) => {
+  page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await multiphaseDetails(page);
   await addMultiphaseGallery(page);

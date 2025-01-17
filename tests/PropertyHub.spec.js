@@ -390,7 +390,7 @@ const selectedOption = listItems.nth(randomValue);
 }
 
 async function locationRandom(page) {
-  await page.locator('input[placeholder="Select Country"]').click();
+  await page.locator('input[placeholder="Select Country"]').click(),{timeout:1000};
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.locator('input[placeholder="Select State"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -561,6 +561,7 @@ async function PaymentPlans(page) {
 }
 
 test('add property sale', async ({ page }) => {
+  page.setDefaultTimeout(3000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
   await login(page, 'admin', 'newadmin');
   await addPropertyHub(page);
