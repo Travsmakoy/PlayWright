@@ -50,12 +50,11 @@ async function addCompany(page){
     await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' SERVICES');
   }
   if (CompanyType === '1') {
-    await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' DEVELOPER');
+    await page.getByPlaceholder('Enter a company name').fill(SelectedProject);
   }
   if (CompanyType === '0') {
     await page.getByPlaceholder('Enter a company name').fill(SelectedProject+' BROKER');
   }
-  // await page.getByPlaceholder('Enter a company name').fill(SelectedProject);
 
   await locationRandom(page);
 
