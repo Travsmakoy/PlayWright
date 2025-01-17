@@ -4,11 +4,86 @@ const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
 const BASE_URL = 'https://dashboard.aqaryint.com';
 const local = 'http://192.168.1.193:3000/en';
-const PROJECT_NAMES = ['PlayWright Beta ', 'Playwright Alpha ', 'Playwright Gamma ', 'Playwright Delta '];
+const PROJECT_NAMES = ["Burj Khalifa Residences", "Palm Jumeirah Villas", "Jumeirah Beach Apartments",
+  "Downtown Dubai Towers", "Business Bay Heights", "Dubai Marina Skyrise",
+  "Emaar Beachfront", "Bluewaters Island Residences", "Meydan Heights Villas",
+  "Al Barari Oasis", "DAMAC Hills Residences", "Arabian Ranches Villas",
+  "City Walk Dubai", "La Mer Beachfront", "Dubai Creek Harbour Residences",
+  "Dubai Hills Estate", "Tilal Al Ghaf Residences", "Port de La Mer Apartments",
+  "Madinat Jumeirah Living", "Serenia Residences Palm Jumeirah",
+  "Vida Residences Downtown", "The Address Sky View", "One Za’abeel Residences",
+  "Opera Grand Downtown", "Safa Two by DAMAC", "Park Ridge by Emaar",
+  "The Cove Dubai Creek", "Al Furjan Residences", "Green Community Villas",
+  "The Meadows Dubai", "The Springs Dubai", "Jumeirah Golf Estates",
+  "Victory Heights Villas", "The Sustainable City", "Dubai South Residences",
+  "Mudon Villas", "Remraam Apartments", "Dubai Silicon Oasis Residences",
+  "The Executive Towers", "Zabeel Saray Villas", "Amna Tower Al Habtoor City",
+  "Shams JBR Apartments", "Rimal Residences", "Sadaf Apartments JBR",
+  "Golden Mile Palm Jumeirah", "Jade at the Fields", "Gardenia Villas by Nakheel",
+  "Dragon City Residences", "Sobha Hartland Greens", "Mohammed Bin Rashid City",
+  "Nad Al Sheba Villas", "Al Khail Heights", "Azizi Riviera Apartments",
+  "Creek Palace Residences", "Sunset at Creek Beach", "Lotus Creek Beach",
+  "Eden at The Valley", "Bayshore Creek Beach", "Maple Townhouses Dubai Hills",
+  "Sidra Villas Dubai Hills", "Golf Place Villas", "Acacia Park Heights",
+  "Park Point Residences", "The Pinnacle Dubai Hills", "Ellington Belgravia",
+  "Wilton Terraces by Ellington", "Collective Apartments", "Executive Residences",
+  "The Terraces Sobha Hartland", "Wilton Park Residences", "Marsa Plaza Residences",
+  "Al Badia Residences", "Dubai Festival City Apartments", "Deira Islands Residences",
+  "Plazzo Heights JVC", "Vincitore Boulevard", "Pantheon Boulevard",
+  "District One Residences", "Azizi Mirage Apartments", "Azizi Aura Residences",
+  "Signature Livings JVC", "Seventh Heaven Al Barari", "Ashjar Al Barari",
+  "The Nest Al Barari", "West Yas Residences", "The Address Dubai Mall",
+  "The Address Fountain Views", "Burj Royale Downtown", "South Ridge Downtown",
+  "Marina Promenade Dubai", "Silverene Tower Dubai Marina", "The Torch Tower Marina",
+  "Princess Tower Marina", "Marina Gate Residences", "Vida Marina Residences",
+  "Jumeirah Living Marina Gate", "Cayan Tower Marina", "Le Reve Marina",
+  "Jumeirah Bay X1 JLT", "Jumeirah Bay X2 JLT", "Saba Tower JLT",
+  "Concorde Tower JLT", "Almas Tower JLT", "Green Lakes Towers JLT",
+  "Lake Terrace JLT", "Lake View JLT", "Laguna Tower JLT", "ICON Tower JLT",
+  "DAMAC Heights Marina", "The One JLT Residences", "Grosvenor House Apartments",
+  "Al Seef Towers", "Bahar Residences JBR", "Shoreline Apartments Palm Jumeirah",
+  "Garden Homes Palm Jumeirah", "Signature Villas Palm Jumeirah",
+  "Fairmont Residences Palm Jumeirah", "One Palm Jumeirah", "Muraba Residences Palm",
+  "Atlantis The Royal Residences", "W Residences Palm Jumeirah",
+  "Serenia Living Palm Jumeirah", "Six Senses Residences The Palm",
+  "SO/ Residences Uptown Dubai", "Signature Mansions Tilal Al Ghaf",
+  "Harmony Villas Tilal Al Ghaf", "AURA Tilal Al Ghaf", "Elysian Mansions",
+  "Marasi Riverside Apartments", "Central Park City Walk", "The Residences JBR",
+  "Vida Dubai Marina", "St. Regis Residences Downtown", "Ritz-Carlton Residences",
+  "Palm Tower Apartments", "The Royal Atlantis Palm", "Dubai Wharf Residences",
+  "Sobha Hartland Forest Villas", "Imperial Avenue Downtown", "One Park Avenue",
+  "Anwa Residences Dubai Maritime City", "The Opus by Zaha Hadid",
+  "Meliá Desert Palm Residences", "Al Seef 2 Tower JLT", "Artesia DAMAC Hills",
+  "Carson Towers DAMAC Hills", "The Legends DAMAC Hills", "DAMAC Lagoons",
+  "Santorini DAMAC Lagoons", "Costa Brava DAMAC Lagoons",
+  "Monte Carlo DAMAC Lagoons", "Emaar South Expo Golf Villas",
+  "Al Wasl 1 Residences", "Harbour Gate Dubai Creek", "Harbour Views Towers",
+  "Creek Edge Residences", "Creek Rise Residences", "Palace Residences",
+  "Cedar Creek Beach", "Lotus Dubai Creek", "Marina Shores Dubai Marina",
+  "Marina Vista Emaar Beachfront", "South Beach Holiday Homes",
+  "Beach Isle Emaar Beachfront", "Sunrise Bay Emaar Beachfront",
+  "Grand Bleu Tower by Elie Saab", "Seagate Rashid Yachts & Marina",
+  "Sirdhana Residences Rashid Port", "Orchid at Creek Beach", "Rosewater Creek Beach",
+  "Lime Gardens Dubai Hills", "Elvira Dubai Hills", "Park Horizon Dubai Hills",
+  "Palm Views Apartments", "Al Bandar Residences", "Al Zeina Residences",
+  "Al Muneera Residences", "Raha Gardens", "Al Reef Villas",
+  "The Bridges Al Reem Island", "Waters Edge Yas Island",
+  "Mayan Residences Yas Island", "The Cedars Yas Acres",
+  "Al Ghadeer Phase 2", "Jumeirah Luxury Villas", "Silver Springs Villas",
+  "Veneto Residences Dubai Waterfront", "Nikki Beach Residences",
+  "Nad Al Hamar Villas", "District 2020 Residences", "One Central Residences",
+  "Bayz Tower Business Bay", "DAMAC Maison Prive", "Millennium Binghatti Residences",
+  "Oasis Residences Masdar City", "Al Maryah Vista", "Waterfront City Al Zorah",
+  "Al Mahra Desert Resort Villas", "Sharjah Waterfront City Residences",
+  "Ajmal Makan Sharjah Waterfront", "Aljada by ARADA Residences", "Reem Hills",
+  "Mamsha Al Saadiyat", "Jubail Island Villas", "Nurai Island Villas",
+  "Lea at Yas Acres", "Saadiyat Reserve Residences", "Bloom Gardens Abu Dhabi",
+  "Faya Residences Abu Dhabi", "Park View Residences Saadiyat",
+  "Pixel Residences Al Reem Island", "Louvre Abu Dhabi Residences"];
 const START_PRICE_RANGE = { min: 1, max: 999999 };
 
 async function login(page, user, password) {
-  await page.goto(`${BASE_URL}/login`);
+  await page.goto(`${local}/login`);
   await page.fill('input[name="user"]', user);
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
@@ -326,7 +401,7 @@ async function locationRandom(page) {
   await page.locator('input[placeholder="Select Sub Community"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
 }
-const propertyHubRan = getRandomProject() + getRandomStartingPrice().toString();
+const propertyHubRan = getRandomProject();
   const categoryRan = (Math.floor(Math.random() * 2) + 0).toString();
 
 async function addPropertyHub(page) {
@@ -334,7 +409,7 @@ async function addPropertyHub(page) {
   await page.getByRole('button', { name: 'Property Hub' }).click();
   await page.getByRole('button', { name: 'Add Property' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
-  await page.fill('input[name="property_name"]', propertyHubRan);
+  await page.fill('input[name="property_name"]', propertyHubRan+' Properties');
   console.log(`PropertyName: `+propertyHubRan);
   const mark = await page.locator('input[placeholder="Search by name or number"]');
   await page.getByPlaceholder('Broker Agent').fill('Kashif');
@@ -375,7 +450,8 @@ async function addPropertyHub(page) {
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
-  await page.getByRole('button', { name: 'Submit' }).click();
+
+  // await page.getByRole('button', { name: 'Submit' }).click();
   // await expect(page.getByText(/Property created successfully/)).toBeVisible();
 }
 
