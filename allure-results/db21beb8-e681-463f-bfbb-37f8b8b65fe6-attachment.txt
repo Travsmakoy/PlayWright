@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 369791 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Serene and peaceful surroundings. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Luxury finishes throughout. High ceilings and elegant design. Open-concept living spaces. Fully equipped gourmet kitchen. Top-of-the-line appliances. Close to schools, parks, and shopping centers. Energy-efficient construction. Ideal for families and professionals. Ample storage and parking. Secure and gated community. Resort-style pool and fitness center. Perfect for entertaining guests. Ample storage and parking. Ample storage and parking. Located in the heart of the city. Resort-style pool and fitness center. Spacious and modern. Energy-efficient construction. Secure and gated community. Featuring state-of-the-art amenities.

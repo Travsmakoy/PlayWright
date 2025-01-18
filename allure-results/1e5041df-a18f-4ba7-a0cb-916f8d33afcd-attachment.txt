@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 334706 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Spacious and modern. Energy-efficient construction. Walking distance to public transport. Secure and gated community. Close to schools, parks, and shopping centers. Open-concept living spaces. Pet-friendly policies. High ceilings and elegant design. Private balcony or patio. Designed for ultimate comfort and convenience. Designed for ultimate comfort and convenience. Secure and gated community. Natural light-filled interiors. Pet-friendly policies. Natural light-filled interiors. Top-of-the-line appliances. Natural light-filled interiors. Ideal for families and professionals. Pet-friendly policies. Customizable options available. Minutes away from major highways. Perfect for entertaining guests. Top-of-the-line appliances. Customizable options available.

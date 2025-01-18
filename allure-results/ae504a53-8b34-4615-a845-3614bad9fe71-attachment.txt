@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 153820 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Luxury finishes throughout. Customizable options available. Top-of-the-line appliances. Designed for ultimate comfort and convenience. Private balcony or patio. Top-of-the-line appliances. Ample storage and parking. Energy-efficient construction. Breathtaking views of the skyline. Pet-friendly policies. Fully equipped gourmet kitchen. Secure and gated community. Fully equipped gourmet kitchen. Spacious and modern. Secure and gated community. Featuring state-of-the-art amenities. High ceilings and elegant design. Pet-friendly policies. Walking distance to public transport. Customizable options available. Open-concept living spaces. Ideal for families and professionals. Ideal for families and professionals. Unmatched investment opportunity.

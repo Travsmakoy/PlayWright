@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 500115
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Ample storage and parking. Perfect for entertaining guests. Spacious and modern. Top-of-the-line appliances. Perfect for entertaining guests. Close to schools, parks, and shopping centers. Top-of-the-line appliances. Perfect for entertaining guests. Top-of-the-line appliances. Designed for ultimate comfort and convenience. Customizable options available. Featuring state-of-the-art amenities. Energy-efficient construction. Perfect for entertaining guests. Ideal for families and professionals. Located in the heart of the city. Private balcony or patio. Energy-efficient construction. Fully equipped gourmet kitchen. Unmatched investment opportunity. Fully equipped gourmet kitchen. Fully equipped gourmet kitchen. Ample storage and parking. Open-concept living spaces.

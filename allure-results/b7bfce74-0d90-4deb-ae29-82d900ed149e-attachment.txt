@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 279148
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Designed for ultimate comfort and convenience. Minutes away from major highways. Featuring state-of-the-art amenities. Top-of-the-line appliances. Featuring state-of-the-art amenities. Ample storage and parking. Resort-style pool and fitness center. Private balcony or patio. Close to schools, parks, and shopping centers. Featuring state-of-the-art amenities. Luxury finishes throughout. Featuring state-of-the-art amenities. Energy-efficient construction. Minutes away from major highways. Fully equipped gourmet kitchen. Open-concept living spaces. Customizable options available. Open-concept living spaces. Close to schools, parks, and shopping centers. Breathtaking views of the skyline. Walking distance to public transport. Luxury finishes throughout.

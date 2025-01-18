@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 298120 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Natural light-filled interiors. Minutes away from major highways. Minutes away from major highways. Luxury finishes throughout. Designed for ultimate comfort and convenience. Breathtaking views of the skyline. Breathtaking views of the skyline. Close to schools, parks, and shopping centers. Spacious and modern. Located in the heart of the city. Breathtaking views of the skyline. Resort-style pool and fitness center. Resort-style pool and fitness center. Natural light-filled interiors. Located in the heart of the city. Top-of-the-line appliances. Minutes away from major highways. Ample storage and parking. Fully equipped gourmet kitchen. High ceilings and elegant design. Customizable options available. Ample storage and parking. Luxury finishes throughout.

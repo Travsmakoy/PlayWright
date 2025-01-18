@@ -1,9 +1,0 @@
-Project Name: Playwright Alpha 551050 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Customizable options available. Serene and peaceful surroundings. High ceilings and elegant design. Breathtaking views of the skyline. Energy-efficient construction. High ceilings and elegant design. Serene and peaceful surroundings. Energy-efficient construction. Pet-friendly policies. Spacious and modern. Pet-friendly policies. Secure and gated community. Minutes away from major highways. Unmatched investment opportunity. Unmatched investment opportunity. Private balcony or patio. Designed for ultimate comfort and convenience. Minutes away from major highways. Fully equipped gourmet kitchen. Ideal for families and professionals. Resort-style pool and fitness center. High ceilings and elegant design. Resort-style pool and fitness center.

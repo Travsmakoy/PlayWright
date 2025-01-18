@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 829977 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Luxury finishes throughout. Breathtaking views of the skyline. Close to schools, parks, and shopping centers. Open-concept living spaces. High ceilings and elegant design. Open-concept living spaces. Breathtaking views of the skyline. Serene and peaceful surroundings. Energy-efficient construction. Spacious and modern. Minutes away from major highways. Private balcony or patio. Featuring state-of-the-art amenities. Energy-efficient construction. Serene and peaceful surroundings. Ideal for families and professionals. Private balcony or patio. Unmatched investment opportunity. Luxury finishes throughout. Walking distance to public transport. Resort-style pool and fitness center. Serene and peaceful surroundings. Serene and peaceful surroundings.

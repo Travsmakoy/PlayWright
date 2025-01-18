@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 472390
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Resort-style pool and fitness center. Close to schools, parks, and shopping centers. Open-concept living spaces. Top-of-the-line appliances. High ceilings and elegant design. High ceilings and elegant design. Close to schools, parks, and shopping centers. Secure and gated community. Walking distance to public transport. Close to schools, parks, and shopping centers. Walking distance to public transport. Located in the heart of the city. Pet-friendly policies. Customizable options available. Secure and gated community. Ideal for families and professionals. Top-of-the-line appliances. Ample storage and parking. Ideal for families and professionals. Spacious and modern. Breathtaking views of the skyline. Top-of-the-line appliances. Energy-efficient construction.

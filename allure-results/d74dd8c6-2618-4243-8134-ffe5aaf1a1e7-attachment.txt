@@ -1,9 +1,0 @@
-Project Name: Playwright Alpha 553202 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Natural light-filled interiors. Luxury finishes throughout. Located in the heart of the city. Fully equipped gourmet kitchen. Secure and gated community. Fully equipped gourmet kitchen. Private balcony or patio. Luxury finishes throughout. Designed for ultimate comfort and convenience. Walking distance to public transport. Natural light-filled interiors. Ample storage and parking. Natural light-filled interiors. Designed for ultimate comfort and convenience. Open-concept living spaces. Secure and gated community. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Natural light-filled interiors. Serene and peaceful surroundings. Fully equipped gourmet kitchen. Luxury finishes throughout. Located in the heart of the city.

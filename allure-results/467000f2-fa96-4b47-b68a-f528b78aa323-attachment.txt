@@ -1,8 +1,0 @@
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Designed for ultimate comfort and convenience. Spacious and modern. Luxury finishes throughout. Located in the heart of the city. Open-concept living spaces. Open-concept living spaces. Featuring state-of-the-art amenities. Perfect for entertaining guests. Located in the heart of the city. Luxury finishes throughout. Featuring state-of-the-art amenities. Located in the heart of the city. Close to schools, parks, and shopping centers. Open-concept living spaces. Luxury finishes throughout. Located in the heart of the city. Breathtaking views of the skyline. Luxury finishes throughout. Breathtaking views of the skyline. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Featuring state-of-the-art amenities.

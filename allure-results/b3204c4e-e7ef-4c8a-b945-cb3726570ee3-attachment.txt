@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 321443 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Spacious and modern. Breathtaking views of the skyline. Pet-friendly policies. Fully equipped gourmet kitchen. Ideal for families and professionals. Ideal for families and professionals. Pet-friendly policies. Customizable options available. Walking distance to public transport. Spacious and modern. Fully equipped gourmet kitchen. Walking distance to public transport. Secure and gated community. Pet-friendly policies. Natural light-filled interiors. Featuring state-of-the-art amenities. Perfect for entertaining guests. Spacious and modern. Ample storage and parking. Featuring state-of-the-art amenities. Natural light-filled interiors. High ceilings and elegant design. Fully equipped gourmet kitchen. Luxury finishes throughout.

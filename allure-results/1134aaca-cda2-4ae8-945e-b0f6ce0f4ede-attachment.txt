@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 10302 Ready
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Unmatched investment opportunity. Fully equipped gourmet kitchen. Walking distance to public transport. Designed for ultimate comfort and convenience. Walking distance to public transport. Fully equipped gourmet kitchen. Breathtaking views of the skyline. Customizable options available. Designed for ultimate comfort and convenience. Minutes away from major highways. Close to schools, parks, and shopping centers. Top-of-the-line appliances. Designed for ultimate comfort and convenience. Natural light-filled interiors. Featuring state-of-the-art amenities. Secure and gated community. Designed for ultimate comfort and convenience. Top-of-the-line appliances. Pet-friendly policies. Luxury finishes throughout. Located in the heart of the city.

@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 343540 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Close to schools, parks, and shopping centers. Spacious and modern. Spacious and modern. Customizable options available. Top-of-the-line appliances. Top-of-the-line appliances. Ideal for families and professionals. Close to schools, parks, and shopping centers. Located in the heart of the city. High ceilings and elegant design. Walking distance to public transport. Unmatched investment opportunity. Fully equipped gourmet kitchen. Pet-friendly policies. Designed for ultimate comfort and convenience. Ample storage and parking. Serene and peaceful surroundings. Designed for ultimate comfort and convenience. Pet-friendly policies. High ceilings and elegant design. Serene and peaceful surroundings. Designed for ultimate comfort and convenience.

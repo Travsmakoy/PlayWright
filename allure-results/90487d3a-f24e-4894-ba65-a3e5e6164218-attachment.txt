@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 142607 Ready
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Walking distance to public transport. Breathtaking views of the skyline. Ideal for families and professionals. Perfect for entertaining guests. Walking distance to public transport. Fully equipped gourmet kitchen. Featuring state-of-the-art amenities. Energy-efficient construction. Perfect for entertaining guests. Featuring state-of-the-art amenities. Close to schools, parks, and shopping centers. Energy-efficient construction. Minutes away from major highways. Walking distance to public transport. Open-concept living spaces. Customizable options available. Luxury finishes throughout. Open-concept living spaces. Natural light-filled interiors. Pet-friendly policies. Ample storage and parking. Customizable options available. Featuring state-of-the-art amenities.

@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 931310 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Energy-efficient construction. Luxury finishes throughout. Natural light-filled interiors. Breathtaking views of the skyline. Open-concept living spaces. Natural light-filled interiors. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Breathtaking views of the skyline. Open-concept living spaces. Luxury finishes throughout. Top-of-the-line appliances. Unmatched investment opportunity. Unmatched investment opportunity. Secure and gated community. Spacious and modern. Spacious and modern. Perfect for entertaining guests. Secure and gated community. Breathtaking views of the skyline. Fully equipped gourmet kitchen. Secure and gated community. Featuring state-of-the-art amenities. Open-concept living spaces. Pet-friendly policies.

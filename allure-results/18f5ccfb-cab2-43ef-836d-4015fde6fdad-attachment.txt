@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 821449 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Open-concept living spaces. Resort-style pool and fitness center. Featuring state-of-the-art amenities. Featuring state-of-the-art amenities. Private balcony or patio. Resort-style pool and fitness center. Breathtaking views of the skyline. Featuring state-of-the-art amenities. Private balcony or patio. Private balcony or patio. Ample storage and parking. Private balcony or patio. Resort-style pool and fitness center. Minutes away from major highways. Designed for ultimate comfort and convenience. Featuring state-of-the-art amenities. Unmatched investment opportunity. Perfect for entertaining guests. Private balcony or patio. Designed for ultimate comfort and convenience. Featuring state-of-the-art amenities. Walking distance to public transport.

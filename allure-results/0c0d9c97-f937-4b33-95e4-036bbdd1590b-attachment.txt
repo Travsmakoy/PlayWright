@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 252245 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Top-of-the-line appliances. Natural light-filled interiors. Fully equipped gourmet kitchen. Unmatched investment opportunity. Ideal for families and professionals. Secure and gated community. Breathtaking views of the skyline. Private balcony or patio. Luxury finishes throughout. Customizable options available. Breathtaking views of the skyline. Resort-style pool and fitness center. Close to schools, parks, and shopping centers. Resort-style pool and fitness center. Spacious and modern. Perfect for entertaining guests. Featuring state-of-the-art amenities. Located in the heart of the city. Ample storage and parking. Private balcony or patio. Unmatched investment opportunity. High ceilings and elegant design. Energy-efficient construction. Spacious and modern.

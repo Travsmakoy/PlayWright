@@ -1,4 +1,0 @@
-Project Name: Playwright Gamma 94 Multiphase
-Closed the box
-Completed the box selection
-Randomly selected IDs: 16,43,63,20,38,7,45,33,1,49

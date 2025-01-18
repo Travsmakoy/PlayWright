@@ -1,4 +1,0 @@
-Project Name: Playwright Delta 592 Ready
-Closed the box
-Completed the box selection
-Randomly selected IDs: 145,157,147,142,178,183,111,188,80,151

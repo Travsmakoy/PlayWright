@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 183037
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Open-concept living spaces. Unmatched investment opportunity. Located in the heart of the city. Ample storage and parking. Unmatched investment opportunity. Serene and peaceful surroundings. Spacious and modern. Breathtaking views of the skyline. Fully equipped gourmet kitchen. Walking distance to public transport. Secure and gated community. Spacious and modern. Resort-style pool and fitness center. Serene and peaceful surroundings. Ideal for families and professionals. Secure and gated community. Spacious and modern. Unmatched investment opportunity. Ample storage and parking. Perfect for entertaining guests. Close to schools, parks, and shopping centers. Secure and gated community. Customizable options available. Located in the heart of the city.

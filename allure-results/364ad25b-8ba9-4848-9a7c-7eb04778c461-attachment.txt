@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 127943 Ready
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Located in the heart of the city. High ceilings and elegant design. Pet-friendly policies. Customizable options available. Open-concept living spaces. Minutes away from major highways. Unmatched investment opportunity. Luxury finishes throughout. Ideal for families and professionals. Perfect for entertaining guests. Private balcony or patio. Serene and peaceful surroundings. Energy-efficient construction. Pet-friendly policies. Breathtaking views of the skyline. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Minutes away from major highways. Perfect for entertaining guests. Perfect for entertaining guests. Top-of-the-line appliances. Unmatched investment opportunity. Perfect for entertaining guests. Top-of-the-line appliances.

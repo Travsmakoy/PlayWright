@@ -1,9 +1,0 @@
-Project Name: Playwright Alpha 421927 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Breathtaking views of the skyline. Ideal for families and professionals. Open-concept living spaces. Designed for ultimate comfort and convenience. Ideal for families and professionals. Unmatched investment opportunity. High ceilings and elegant design. Pet-friendly policies. Pet-friendly policies. Open-concept living spaces. Spacious and modern. Pet-friendly policies. Natural light-filled interiors. Minutes away from major highways. Top-of-the-line appliances. Ample storage and parking. Located in the heart of the city. Walking distance to public transport. Energy-efficient construction. Designed for ultimate comfort and convenience. Top-of-the-line appliances. Minutes away from major highways. Secure and gated community. Pet-friendly policies.

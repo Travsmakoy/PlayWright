@@ -1,5 +1,0 @@
-Project Name: PlayWright Beta 640 Multiphase
-Closed the box
-Completed the box selection
-Randomly selected IDs: 63,15,51,23,70,20,21,48,9,62
-Clicked on test ID: 63

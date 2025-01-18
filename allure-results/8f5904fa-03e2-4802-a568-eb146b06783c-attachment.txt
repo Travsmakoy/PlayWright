@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 65616 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Secure and gated community. Breathtaking views of the skyline. Energy-efficient construction. Energy-efficient construction. Breathtaking views of the skyline. Perfect for entertaining guests. Fully equipped gourmet kitchen. Ideal for families and professionals. Serene and peaceful surroundings. Ample storage and parking. Breathtaking views of the skyline. Perfect for entertaining guests. Walking distance to public transport. Pet-friendly policies. Ample storage and parking. Ideal for families and professionals. High ceilings and elegant design. Walking distance to public transport. Perfect for entertaining guests. Spacious and modern. Top-of-the-line appliances. Located in the heart of the city. High ceilings and elegant design. Spacious and modern.

@@ -1,9 +1,0 @@
-Project Name: Playwright Alpha 887231 Offplan
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Top-of-the-line appliances. Customizable options available. Natural light-filled interiors. Private balcony or patio. Ample storage and parking. Spacious and modern. Close to schools, parks, and shopping centers. Close to schools, parks, and shopping centers. Unmatched investment opportunity. Ample storage and parking. Resort-style pool and fitness center. Resort-style pool and fitness center. Located in the heart of the city. Natural light-filled interiors. Breathtaking views of the skyline. Breathtaking views of the skyline. Close to schools, parks, and shopping centers. Open-concept living spaces. Customizable options available. Unmatched investment opportunity. Luxury finishes throughout. Serene and peaceful surroundings. Spacious and modern.

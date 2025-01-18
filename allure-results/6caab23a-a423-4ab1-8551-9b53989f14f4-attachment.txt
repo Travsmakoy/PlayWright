@@ -1,9 +1,0 @@
-Project Name: PlayWrightAuto 453607 Ready
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Secure and gated community. Top-of-the-line appliances. Open-concept living spaces. Spacious and modern. Open-concept living spaces. Unmatched investment opportunity. Minutes away from major highways. Unmatched investment opportunity. Fully equipped gourmet kitchen. Pet-friendly policies. Unmatched investment opportunity. Spacious and modern. Natural light-filled interiors. Located in the heart of the city. Serene and peaceful surroundings. Natural light-filled interiors. Open-concept living spaces. Open-concept living spaces. Resort-style pool and fitness center. Natural light-filled interiors. Customizable options available. Designed for ultimate comfort and convenience. Spacious and modern. Ideal for families and professionals.

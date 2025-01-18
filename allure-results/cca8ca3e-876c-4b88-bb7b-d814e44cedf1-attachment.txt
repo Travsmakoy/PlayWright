@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 780231 Ready
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Secure and gated community. Energy-efficient construction. Open-concept living spaces. Customizable options available. Ideal for families and professionals. Natural light-filled interiors. Pet-friendly policies. Secure and gated community. Perfect for entertaining guests. Serene and peaceful surroundings. Serene and peaceful surroundings. Secure and gated community. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Customizable options available. Featuring state-of-the-art amenities. Natural light-filled interiors. Private balcony or patio. Luxury finishes throughout. Close to schools, parks, and shopping centers. Open-concept living spaces. Minutes away from major highways. Close to schools, parks, and shopping centers.

@@ -1,3 +1,0 @@
-Project Name: Playwright Alpha 374 Multiphase
-Closed the box
-Completed the box selection

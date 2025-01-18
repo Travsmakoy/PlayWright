@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 72895 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: High ceilings and elegant design. Luxury finishes throughout. Energy-efficient construction. Spacious and modern. Perfect for entertaining guests. Designed for ultimate comfort and convenience. Customizable options available. Located in the heart of the city. Private balcony or patio. Pet-friendly policies. Customizable options available. Located in the heart of the city. Ample storage and parking. Customizable options available. Pet-friendly policies. Close to schools, parks, and shopping centers. Minutes away from major highways. Pet-friendly policies. Luxury finishes throughout. Pet-friendly policies. Top-of-the-line appliances. Breathtaking views of the skyline. Open-concept living spaces. Located in the heart of the city. Customizable options available.

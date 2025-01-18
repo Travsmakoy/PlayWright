@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 338182 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Luxury finishes throughout. Close to schools, parks, and shopping centers. Customizable options available. Private balcony or patio. Customizable options available. Open-concept living spaces. High ceilings and elegant design. Top-of-the-line appliances. Natural light-filled interiors. Ample storage and parking. Serene and peaceful surroundings. Close to schools, parks, and shopping centers. Private balcony or patio. Unmatched investment opportunity. Featuring state-of-the-art amenities. Designed for ultimate comfort and convenience. Close to schools, parks, and shopping centers. Breathtaking views of the skyline. Open-concept living spaces. Resort-style pool and fitness center. Customizable options available. Private balcony or patio. Fully equipped gourmet kitchen.

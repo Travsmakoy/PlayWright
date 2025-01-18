@@ -1,9 +1,0 @@
-Project Name: Playwright Gamma 719516
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: High ceilings and elegant design. Serene and peaceful surroundings. Secure and gated community. Designed for ultimate comfort and convenience. Spacious and modern. Secure and gated community. Featuring state-of-the-art amenities. Located in the heart of the city. Ideal for families and professionals. Unmatched investment opportunity. Located in the heart of the city. High ceilings and elegant design. Ample storage and parking. Fully equipped gourmet kitchen. High ceilings and elegant design. Designed for ultimate comfort and convenience. Open-concept living spaces. Ample storage and parking. Fully equipped gourmet kitchen. Top-of-the-line appliances. Walking distance to public transport. Open-concept living spaces. Private balcony or patio.

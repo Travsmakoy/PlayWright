@@ -1,9 +1,0 @@
-Project Name: Playwright Alpha 94581 Multiphase
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Natural light-filled interiors. Walking distance to public transport. Serene and peaceful surroundings. Breathtaking views of the skyline. Designed for ultimate comfort and convenience. Top-of-the-line appliances. Close to schools, parks, and shopping centers. Pet-friendly policies. Ample storage and parking. Designed for ultimate comfort and convenience. Ideal for families and professionals. Fully equipped gourmet kitchen. Energy-efficient construction. Luxury finishes throughout. Resort-style pool and fitness center. Walking distance to public transport. Private balcony or patio. Designed for ultimate comfort and convenience. Perfect for entertaining guests. Energy-efficient construction. Ample storage and parking. Open-concept living spaces.

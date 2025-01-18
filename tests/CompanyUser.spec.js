@@ -36,7 +36,7 @@ async function login(page, user, password) {
     await page.locator('ul[role="listbox"] >> li').nth(parseInt(selectedType) - 1).click(); // Adjust for zero-based index
     
     if (selectedType == '1') {
-
+      
     }
     if (selectedType == '2') {
         await page.getByPlaceholder('Enter BRN No').fill((Math.floor(Math.random() * 1000000) + 100000).toString());

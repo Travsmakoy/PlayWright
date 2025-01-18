@@ -1,9 +1,0 @@
-Project Name: Playwright Delta 738061 Ready
-Clicked on the polygon icon
-Started at top-left corner
-Drew top edge
-Drew right edge
-Drew bottom edge
-Closed the box
-Completed the box selection
-Description filled with: Featuring state-of-the-art amenities. Close to schools, parks, and shopping centers. Breathtaking views of the skyline. Featuring state-of-the-art amenities. Featuring state-of-the-art amenities. Private balcony or patio. Breathtaking views of the skyline. Luxury finishes throughout. Minutes away from major highways. Top-of-the-line appliances. Minutes away from major highways. Walking distance to public transport. Breathtaking views of the skyline. Featuring state-of-the-art amenities. High ceilings and elegant design. Ideal for families and professionals. Top-of-the-line appliances. High ceilings and elegant design. Luxury finishes throughout. Resort-style pool and fitness center. Luxury finishes throughout. Ample storage and parking. Top-of-the-line appliances.
