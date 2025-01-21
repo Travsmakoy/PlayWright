@@ -536,21 +536,17 @@ async function clickCenterMap(page) {
   const mapContainer = await page.waitForSelector('#map', { state: 'visible' });
   await mapContainer.scrollIntoViewIfNeeded();
 
-  // Wait briefly to ensure the map is ready
   await page.waitForTimeout(500);
 
-  // Get the bounding box of the map container
   const mapBoundingBox = await mapContainer.boundingBox();
   if (!mapBoundingBox) {
     throw new Error('Failed to retrieve map bounding box');
   }
 
-  // Calculate the center coordinates of the map container
   const { width: mapWidth, height: mapHeight, x: mapX, y: mapY } = mapBoundingBox;
   const centerX = mapX + mapWidth / 2;
   const centerY = mapY + mapHeight / 2;
 
-  // Perform a click at the center of the map
   await page.mouse.click(centerX, centerY);
 
 }
