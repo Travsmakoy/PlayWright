@@ -560,6 +560,25 @@ async function PaymentPlans(page) {
   // await page.locator('div').filter({ hasText: /^Manage Payment Plans$/ }).getByRole('link').click();
 }
 
+async function addUnit(page) {
+  await page.getByRole('row', { name: `${propertyHubRan}` }).getByRole('button').nth(7).click();
+  await page.locator('#actions-popover div').filter({ hasText: /^Units$/ }).getByRole('link').click();
+  await page.getByRole('button', { name: 'Add Unit' }).click();
+  await page.getByPlaceholder('Select Unit Type').click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.getByPlaceholder('Select Type Name').click(); 
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  await page.getByPlaceholder('Select the view types').click();
+  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*2)+1)).click();
+  await page.locator('input[name="unit_no"]').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter commercial tax').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter municipality tax').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Select Rent Type').click();
+  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*4)+1)).click();
+
+
+}
+
 test('add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(3000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
@@ -569,4 +588,5 @@ test('add propertyhub', async ({ page }) => {
   // await addGallery(page);
   // await addPlan(page);
   // await PaymentPlans(page);
+  // await addUnit(page);
 });
