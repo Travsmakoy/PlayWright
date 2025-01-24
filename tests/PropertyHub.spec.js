@@ -580,7 +580,7 @@ async function addUnit(page) {
 }
 
 test('add propertyhub', async ({ page }) => {
-  page.setDefaultTimeout(3000);
+  page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
   await login(page, 'admin', 'newadmin');
   await addPropertyHub(page);

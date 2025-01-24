@@ -76,7 +76,17 @@ async function locationRandom(page) {
 
 test('add company user', async ({page}) => {
   page.setDefaultTimeout(3000);
-    // await login(page,'admin@aqaryinvestment.com','123456' );
-    await login(page,'aqary@aqaryinvestment.com','123456' );
+    await login(page,'mark.admin@gmail.com','123456' );
+    // await login(page,'aqary@aqaryinvestment.com','123456' );
     await addCompanyUser(page);
 })
+
+// Company Admin Broker
+// mark.admin@gmail.com
+
+
+// Company Email address
+// mark.casuco5@gmail.com
+
+//DEYAAR297@gmail.com
+// $2a$06$nV4o2DptjJtXphGTdJcRbOXbeVNZDov09RcGKbuMzyPnIo6VLYXLu = 123456

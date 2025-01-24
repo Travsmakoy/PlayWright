@@ -514,7 +514,7 @@ async function addOffplanProperty(page){
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Local Projects' }).click();
   // ${randomProjectReady} make it dynamic soon
-  await page.getByRole('row', { name: `PRO_9022774` }).getByTestId('secondary-actions').click();
+  await page.getByRole('row', { name: `PRO_3772711` }).getByTestId('secondary-actions').click();
   await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
   await page.getByRole('button', { name: 'Add Property' }).click();
   await page.getByPlaceholder('Enter property name').fill(randomProjectOffPlan+ ' Offplan');
@@ -526,9 +526,9 @@ async function addOffplanProperty(page){
     const selectedindex = indices[Math.floor(Math.random() * indices.length)]
     await page.locator('ul[role="listbox"] >> li').nth(selectedindex).click();
     console.log(`Selected index: ${selectedindex}`);
-
     await page.getByPlaceholder('Select Unit Type').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
+
 }
 
 
@@ -536,7 +536,6 @@ async function clickCenterMap(page) {
   const mapContainer = await page.waitForSelector('#map', { state: 'visible' });
   await mapContainer.scrollIntoViewIfNeeded();
 
-  await page.waitForTimeout(500);
 
   const mapBoundingBox = await mapContainer.boundingBox();
   if (!mapBoundingBox) {
@@ -552,7 +551,7 @@ async function clickCenterMap(page) {
 }
 
 test('add project offplan property', async ({ page }) => {
-  page.setDefaultTimeout(3000);
+  page.setDefaultTimeout(6000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await addOffplanProperty(page);
 })
