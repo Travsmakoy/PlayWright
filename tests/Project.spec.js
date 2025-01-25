@@ -509,17 +509,16 @@ async function addReadyphaseGallery(page) {
 }
 
 async function addOffplanProperty(page){
+    await page.getByLabel('open drawer').click({timeout: 3500});
+    await page.getByRole('button', { name: 'Projects' }).click();
+    await page.getByRole('button', { name: 'Local Projects' }).click();
+    // ${randomProjectReady} make it dynamic soon
+    await page.getByRole('row', { name: `PRO_3772711` }).getByTestId('secondary-actions').click();
+    await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
+    await page.getByRole('button', { name: 'Add Property' }).click();
+    await page.getByPlaceholder('Enter property name').fill(randomProjectOffPlan+ ' Offplan');
 
-  await page.getByLabel('open drawer').click({timeout: 3500});
-  await page.getByRole('button', { name: 'Projects' }).click();
-  await page.getByRole('button', { name: 'Local Projects' }).click();
-  // ${randomProjectReady} make it dynamic soon
-  await page.getByRole('row', { name: `PRO_3772711` }).getByTestId('secondary-actions').click();
-  await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
-  await page.getByRole('button', { name: 'Add Property' }).click();
-  await page.getByPlaceholder('Enter property name').fill(randomProjectOffPlan+ ' Offplan');
-
-  await clickCenterMap(page);
+    await clickCenterMap(page);
 
     await page.getByPlaceholder('Select Property type').click();
     const indices = [0, 1, 3, 4, 5, 6, 9, 10, 11];
@@ -528,30 +527,25 @@ async function addOffplanProperty(page){
     console.log(`Selected index: ${selectedindex}`);
     await page.getByPlaceholder('Select Unit Type').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
-
 }
 
 
 async function clickCenterMap(page) {
   const mapContainer = await page.waitForSelector('#map', { state: 'visible' });
   await mapContainer.scrollIntoViewIfNeeded();
-
-
   const mapBoundingBox = await mapContainer.boundingBox();
   if (!mapBoundingBox) {
     throw new Error('Failed to retrieve map bounding box');
   }
-
   const { width: mapWidth, height: mapHeight, x: mapX, y: mapY } = mapBoundingBox;
   const centerX = mapX + mapWidth / 2;
   const centerY = mapY + mapHeight / 2;
-
+  await page.waitForTimeout(500);
   await page.mouse.click(centerX, centerY);
-
 }
 
 test('add project offplan property', async ({ page }) => {
-  page.setDefaultTimeout(6000);
+  page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await addOffplanProperty(page);
 })

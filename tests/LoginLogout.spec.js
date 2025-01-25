@@ -14,7 +14,7 @@ async function login(page, user, password) {
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
-  await expect(page.getByText('Weclome, Super Ahmad')).toBeVisible();
+  await expect(page.getByText('Welcome, Super Ahmad')).toBeVisible();
 }
 
 async function logout(page) {
