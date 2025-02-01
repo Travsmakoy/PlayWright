@@ -27,6 +27,7 @@ async function logout(page) {
 
 test('login', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
+  
   await page.context().storageState({ path: 'auth.json' });
 
 });
