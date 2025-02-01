@@ -14,7 +14,7 @@ async function login(page, user, password) {
   await page.fill('input[name="password"]', password);
   await page.click('button[type="submit"]');
   await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
-  await expect(page.getByText('Welcome, Super Ahmad')).toBeVisible();
+  await expect(page.getByText('Good Morning, Super Ahmad')).toBeVisible();
 }
 
 async function logout(page) {
@@ -22,10 +22,13 @@ async function logout(page) {
   await page.getByRole('button', { name: 'Logout' }).click();
   await expect(page).toHaveURL(`${BASE_URL}/login`);
   await expect(page.getByRole('heading', { name: 'Hi, Welcome Back' })).toBeVisible();
+  await expect(page).toHaveURL("http://192.168.1.193:3000/en/login");
 }
 
 test('login', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
+  await page.context().storageState({ path: 'auth.json' });
+
 });
 
 test('verify invalid credentials', async ({ page }) => {
@@ -38,6 +41,6 @@ test('verify invalid credentials', async ({ page }) => {
  
 test('logout', async ({ page }) => { 
   await login(page, VALID_USER, VALID_PASSWORD);
-  await logout(page);1  
+  await logout(page);
 });
   

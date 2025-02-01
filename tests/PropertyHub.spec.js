@@ -583,6 +583,7 @@ test('add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
   await login(page, 'admin', 'newadmin');
+  // await login(page, 'mark.admin@gmail.com', '123456');
   await addPropertyHub(page);
   // await unitType(page);
   // await addGallery(page);

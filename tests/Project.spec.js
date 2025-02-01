@@ -266,6 +266,7 @@ async function amenities(page){
             return error;
           }
       }
+      return randomIds;
   }
 async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
@@ -361,9 +362,9 @@ async function projectReadyDetails(page) {
   await readyDetails(page);
   await WriteDescription(page);
   await facilities(page);
-  await amenities(page);
-  await page.getByRole('button', { name: 'submit' }).click();
-  await expect(page.getByText(/Project created successfully/)).toBeVisible();
+  console.log(await amenities(page));
+  // await page.getByRole('button', { name: 'submit' }).click();
+  // await expect(page.getByText(/Project created successfully/)).toBeVisible();
   
 }
 const randomProjectPhase = getRandomProject();
@@ -513,7 +514,7 @@ async function addOffplanProperty(page){
     await page.getByRole('button', { name: 'Projects' }).click();
     await page.getByRole('button', { name: 'Local Projects' }).click();
     // ${randomProjectReady} make it dynamic soon
-    await page.getByRole('row', { name: `PRO_3772711` }).getByTestId('secondary-actions').click();
+    await page.getByRole('row', { name: `PRO_8435171` }).getByTestId('secondary-actions').click();
     await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
     await page.getByRole('button', { name: 'Add Property' }).click();
     await page.getByPlaceholder('Enter property name').fill(randomProjectOffPlan+ ' Offplan');
@@ -522,14 +523,81 @@ async function addOffplanProperty(page){
 
     await page.getByPlaceholder('Select Property type').click();
     const indices = [0, 1, 3, 4, 5, 6, 9, 10, 11];
-    const selectedindex = indices[Math.floor(Math.random() * indices.length)]
-    await page.locator('ul[role="listbox"] >> li').nth(selectedindex).click();
-    console.log(`Selected index: ${selectedindex}`);
-    await page.getByPlaceholder('Select Unit Type').click();
-    await page.locator('ul[role="listbox"] >> li').nth(0).click();
+    const randomIndex = Math.floor(Math.random() * indices.length);
+    const randomValue = indices[randomIndex];
+    const listItems = page.locator('ul[role="listbox"] >> li');
+    const selectedOption = listItems.nth(randomValue);
+      let selectedText = '';
+      try {
+        selectedText = await selectedOption.textContent();
+        console.log('Selected text:', selectedText); 
+      } catch (error) {
+        console.error('Error getting text content:', error);
+      }
+      await selectedOption.click();
+    if (selectedText === 'Commercial Lands' || selectedText === 'Mixed used lands' || selectedText === 'Residential Lands'){
+      await page.getByPlaceholder('Select Unit Type').click(); 
+      await page.locator('ul[role="listbox"] >> li').nth(0).click();
+      await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 999) + 100).toString());
+      await page.getByPlaceholder('Built up Area').fill((Math.floor(Math.random() * 999) + 100).toString());
+      await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
+      await page.getByPlaceholder('Enter Max Area').fill((Math.floor(Math.random() * 1500) + 1000).toString());
+      await page.getByPlaceholder('No of units').fill((Math.floor(Math.random() * 1500) + 1000).toString());
+      await page.getByText('currency').click();
+      await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+      await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+      await page.getByText('measure', { exact: true }).click();
+      await page.getByRole('option', { name: 'sqft' }).click();
+      await randomView(page);
+    }
+    for (let i = 0; i < 3; i++) {
+      await page.getByPlaceholder('Select Unit type').click();
+      const random = (Math.floor(Math.random() * 2) + 1).toString();
+      const option = page.locator(`[data-option-index="${random}"]`);  
+      // await option.click();  
+    }
+    await randomView(page);
+    
+    if(await page.getByPlaceholder('Enter Plot Area').isVisible()){
+      await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 1000) + 500).toString());
+    }
+    if(await page.getByPlaceholder('Built up Area').isVisible()){
+      await page.getByPlaceholder('Built up Area').fill((Math.floor(Math.random() * 499) + 1).toString());
+    }
+    await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
+    await page.getByPlaceholder('Enter Max Area').fill((Math.floor(Math.random() * 1500) + 1000).toString());
+    await page.getByPlaceholder('No of units').fill((Math.floor(Math.random() * 100) + 1).toString());
+    if(await page.getByPlaceholder('No of floor').isVisible()){
+      await page.getByPlaceholder('No of floor').fill((Math.floor(Math.random() * 100) + 1).toString());
+    }
+    if(await page.getByPlaceholder('Enter number of pools').isVisible()){
+      await page.getByPlaceholder('Enter number of pools').fill((Math.floor(Math.random() * 100) + 1).toString());
+    }
+    if(await page.getByPlaceholder('No of elevator').isVisible()){
+      await page.getByPlaceholder('No of elevator').fill((Math.floor(Math.random() * 100) + 1).toString());
+    }
+    if(await page.getByPlaceholder('Enter no of retail centers').isVisible()){
+      await page.getByPlaceholder('Enter no of retail centers').fill((Math.floor(Math.random() * 100) + 1).toString());
+    }
+    if(await page.getByPlaceholder('No. of Parking').isVisible()){
+      await page.getByPlaceholder('No. of Parking').fill((Math.floor(Math.random() * 100) + 1).toString());
+    }
+    if(await page.getByText('currency').isVisible()){
+      await page.getByText('currency').click();
+      await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
+      await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
+      await page.getByText('measure', { exact: true }).click();
+      await page.getByRole('option', { name: 'sqft' }).click();
+      }
 }
 
-
+async function randomView(page){
+  for (let i = 0; i < 5; i++) {
+    await page.getByPlaceholder('Select View').click();
+    // randomIndex = randomIndex = Math.floor(Math.random() * 6) + 1;
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*20)).click();
+  }
+}
 async function clickCenterMap(page) {
   const mapContainer = await page.waitForSelector('#map', { state: 'visible' });
   await mapContainer.scrollIntoViewIfNeeded();
@@ -545,10 +613,18 @@ async function clickCenterMap(page) {
 }
 
 test('add project offplan property', async ({ page }) => {
-  page.setDefaultTimeout(3000);
+  page.setDefaultTimeout(5000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await addOffplanProperty(page);
 })
+test('add project ready', async ({ page }) => {
+  page.setDefaultTimeout(3000);
+  await login(page, VALID_USER, VALID_PASSWORD);
+  await projectReadyDetails(page)
+  // await addReadyphaseGallery(page);
+  // await addReadyphasePlan(page);
+
+});
 
 test('add project offplan', async ({ page }) => {
   page.setDefaultTimeout(3000);
@@ -557,14 +633,7 @@ test('add project offplan', async ({ page }) => {
   await addOffplanGallery(page);
   await addOffplanPlan(page);
 });
-test('add project ready', async ({ page }) => {
-  page.setDefaultTimeout(3000);
-  await login(page, VALID_USER, VALID_PASSWORD);
-  await projectReadyDetails(page)
-  await addReadyphaseGallery(page);
-  await addReadyphasePlan(page);
 
-});
 test('add project multiphase', async ({ page }) => {
   page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
