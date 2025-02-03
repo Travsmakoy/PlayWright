@@ -256,18 +256,21 @@ function getrandomAmenities(count, min, max) {
   }
   return Array.from(ids);
 }
-async function amenities(page){
-  const randomIds = getrandomAmenities(10, 78, 200);
-      for (const id of randomIds) {
-          const testId = id.toString();
-          try {
-              await page.getByTestId(testId).click();
-          } catch (error) {
-            return error;
-          }
-      }
-      return randomIds;
+
+let randomIds = [];  // Define a global variable to store randomIds
+async function amenities(page) {
+  randomIds = getrandomAmenities(10, 78, 200);
+  for (const id of randomIds) {
+    const testId = id.toString();
+    try {
+      await page.getByTestId(testId).click();
+    } catch (error) {
+      return error;
+    }
   }
+  return randomIds;
+}
+
 async function projectDetails(page) {
   await page.locator('input[placeholder="Select Completion Status"]').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -319,7 +322,7 @@ async function addOffPlanDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-  await page.getByLabel('open drawer').click({timeout: 3500});
+  // await page.getByLabel('open drawer').click({timeout: 3500});
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
@@ -345,7 +348,7 @@ async function projectReadyDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-  await page.getByLabel('open drawer').click({timeout: 3500});
+  // await page.getByLabel('open drawer').click({timeout: 3500});
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
@@ -362,17 +365,16 @@ async function projectReadyDetails(page) {
   await readyDetails(page);
   await WriteDescription(page);
   await facilities(page);
-  console.log(await amenities(page));
-  // await page.getByRole('button', { name: 'submit' }).click();
+  await amenities(page);
+  await page.getByRole('button', { name: 'submit' }).click();
   // await expect(page.getByText(/Project created successfully/)).toBeVisible();
-  
 }
 const randomProjectPhase = getRandomProject();
 async function multiphaseDetails(page) {
   const licenseNumber = getRandomLicenseNumber().toString();
   const projectNumber = getRandomProjectNumber().toString();
   const startingPrice = getRandomStartingPrice().toString();
-  await page.getByLabel('open drawer').click({timeout: 3500});
+  // await page.getByLabel('open drawer').click({timeout: 3500});
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
@@ -510,14 +512,16 @@ async function addReadyphaseGallery(page) {
 }
 
 async function addOffplanProperty(page){
-    await page.getByLabel('open drawer').click({timeout: 3500});
-    await page.getByRole('button', { name: 'Projects' }).click();
-    await page.getByRole('button', { name: 'Local Projects' }).click();
+    // await page.getByLabel('open drawer').click({timeout: 3500});
+    // await page.getByRole('button', { name: 'Projects' }).click();
+    // await page.getByRole('button', { name: 'Local Projects' }).click();
     // ${randomProjectReady} make it dynamic soon
-    await page.getByRole('row', { name: `PRO_8435171` }).getByTestId('secondary-actions').click();
+    // await page.getByRole('row', { name: `PRO_1364774` }).getByTestId('secondary-actions').click();
+    await page.getByRole('row', { name: `${randomProjectReady}` }).getByTestId('secondary-actions').click();
     await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
     await page.getByRole('button', { name: 'Add Property' }).click();
-    await page.getByPlaceholder('Enter property name').fill(randomProjectOffPlan+ ' Offplan');
+    const projectName = await page.locator('input[name="project_name"]').inputValue();
+    await page.getByPlaceholder('Enter property name').fill(projectName+ ' Properties');
 
     await clickCenterMap(page);
 
@@ -530,14 +534,12 @@ async function addOffplanProperty(page){
       let selectedText = '';
       try {
         selectedText = await selectedOption.textContent();
-        console.log('Selected text:', selectedText); 
+        // console.log('Selected text:', selectedText); 
       } catch (error) {
-        console.error('Error getting text content:', error);
+        // console.error('Error getting text content:', error);
       }
       await selectedOption.click();
     if (selectedText === 'Commercial Lands' || selectedText === 'Mixed used lands' || selectedText === 'Residential Lands'){
-      await page.getByPlaceholder('Select Unit Type').click(); 
-      await page.locator('ul[role="listbox"] >> li').nth(0).click();
       await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 999) + 100).toString());
       await page.getByPlaceholder('Built up Area').fill((Math.floor(Math.random() * 999) + 100).toString());
       await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
@@ -547,15 +549,18 @@ async function addOffplanProperty(page){
       await page.getByRole('option', { name: 'UAE Dirham AED' }).click();
       await page.getByPlaceholder('Enter service charge').fill((Math.floor(Math.random() * 1000) + 1).toString());
       await page.getByText('measure', { exact: true }).click();
+
       await page.getByRole('option', { name: 'sqft' }).click();
-      await randomView(page);
     }
-    for (let i = 0; i < 3; i++) {
+
       await page.getByPlaceholder('Select Unit type').click();
-      const random = (Math.floor(Math.random() * 2) + 1).toString();
-      const option = page.locator(`[data-option-index="${random}"]`);  
-      // await option.click();  
-    }
+      await page.locator('ul[role="listbox"] >> li').nth(0).click();
+
+      if(await page.getByRole('combobox', { name: 'Furnished' }).isVisible()){
+        await page.getByRole('combobox', { name: 'Furnished' }).click();
+        await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 3)).click();
+      }
+    
     await randomView(page);
     
     if(await page.getByPlaceholder('Enter Plot Area').isVisible()){
@@ -589,41 +594,82 @@ async function addOffplanProperty(page){
       await page.getByText('measure', { exact: true }).click();
       await page.getByRole('option', { name: 'sqft' }).click();
       }
+
+      await WriteDescription(page);
+
+      // Get all elements with `data-testid`
+      await page.waitForSelector('[data-testid]', { timeout: 10000 });
+
+    // Get all `data-testid` values (numeric and >= 77)
+    let testIds = await page.locator('[data-testid]').evaluateAll(elements =>
+        elements.map(el => el.getAttribute('data-testid'))
+            .filter(id => id && !isNaN(id) && id >= 77)
+    );
+    // console.log(testIds);
+    // Randomly select up to 5 IDs
+    testIds = testIds.sort(() => Math.random() - 0.5).slice(0, 5);
+    // console.log(`Selected testIds: ${testIds}`);
+
+    // Click each selected element
+    for (const testId of testIds) {
+        // console.log(`Clicking testId: ${testId}`);
+        await page.getByTestId(testId).click();
+    }
+  // await page.getByRole('button', { name: 'submit' }).click();
 }
 
 async function randomView(page){
   for (let i = 0; i < 5; i++) {
     await page.getByPlaceholder('Select View').click();
-    // randomIndex = randomIndex = Math.floor(Math.random() * 6) + 1;
     await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*20)).click();
   }
 }
+
 async function clickCenterMap(page) {
+for (let i = 0; i < 3; i++) {
+  await page.getByRole('button', { name: 'Zoom in' }).click();
+  await page.getByRole('button', { name: 'Zoom in' }).click();
+}
+
   const mapContainer = await page.waitForSelector('#map', { state: 'visible' });
-  await mapContainer.scrollIntoViewIfNeeded();
+
+  // Ensure the map is fully loaded
+  await page.waitForSelector('.leaflet-tile-loaded, .gm-style', { timeout: 5000 });
+
+  // Get bounding box
   const mapBoundingBox = await mapContainer.boundingBox();
   if (!mapBoundingBox) {
-    throw new Error('Failed to retrieve map bounding box');
+      throw new Error('Failed to retrieve map bounding box');
   }
-  const { width: mapWidth, height: mapHeight, x: mapX, y: mapY } = mapBoundingBox;
-  const centerX = mapX + mapWidth / 2;
-  const centerY = mapY + mapHeight / 2;
-  await page.waitForTimeout(500);
+
+  const { width, height, x, y } = mapBoundingBox;
+  const centerX = x + width / 2;
+  const centerY = y + height / 2;
+
+  // console.log(`Clicking at: X=${centerX}, Y=${centerY}`);
+
+  // Move mouse and click
+  await page.mouse.move(centerX, centerY);
   await page.mouse.click(centerX, centerY);
 }
 
-test('add project offplan property', async ({ page }) => {
-  page.setDefaultTimeout(5000);
-  await login(page, VALID_USER, VALID_PASSWORD);
-  await addOffplanProperty(page);
-})
+
+
+
+// test('add project property', async ({ page }) => {
+//   page.setDefaultTimeout(5000);
+//   await login(page, VALID_USER, VALID_PASSWORD);
+//   await addOffplanProperty(page);
+// })
+
 test('add project ready', async ({ page }) => {
   page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await projectReadyDetails(page)
+  // console.log('Random amenities '+randomIds);
+  await addOffplanProperty(page);
   // await addReadyphaseGallery(page);
   // await addReadyphasePlan(page);
-
 });
 
 test('add project offplan', async ({ page }) => {

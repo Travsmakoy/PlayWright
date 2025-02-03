@@ -11,14 +11,14 @@ async function login(page, user, password) {
     // await expect(page.getByText('Weclome, Aqary Investment')).toBeVisible(); 
 }
 async function addBank(page){
-    await page.getByLabel('open drawer').click();
+    // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();
     await page.getByRole('button', { name: 'Banks' }).click();
     await page.getByRole('button', { name: 'Add Bank' }).click();
     const banklist = ['Test Bank 1', 'Test Bank 2', 'Test Bank 3' ];
     const selectedBank = banklist[Math.floor(Math.random() * banklist.length)];
     await page.getByPlaceholder('Enter Bank Name').fill(selectedBank);
-    // await page.locator('input[name="logo"]').setInputFiles(['path/to/logo.png']); // put valid logo path here
+    await page.locator('input[name="logo"]').setInputFiles('C:\\Users\\mark\\Downloads\\image (2).png');  // Using double backslashes
     await page.getByPlaceholder('http://').fill('https://www.'+ selectedBank.replace(/\s+/g, '')+'.com');
     await page.getByPlaceholder('Please enter email').fill('test@'+selectedBank.replace(/\s+/g, '')+'.com');
     await page.locator('input[name="interest_rate"]').fill((Math.floor(Math.random() * 10) + 1).toString());
@@ -37,7 +37,7 @@ test('add bank',async ({page}) => {
 test('add view', async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
-    await page.getByLabel('open drawer').click();
+    // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();
     await page.getByRole('button', { name: 'Views' }).click();
     await page.getByRole('button', { name: 'Add View' }).click();
@@ -50,7 +50,7 @@ test('add view', async ({page}) => {
 test('add luxury brand', async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
-    await page.getByLabel('open drawer').click();
+    // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();
     await page.getByRole('button', { name: 'Luxury Brands' }).click();
     await page.getByRole('button', { name: 'Add Luxury Brand' }).click();
@@ -60,3 +60,31 @@ test('add luxury brand', async ({page}) => {
     // await page.getByPlaceholder('Enter Brand Logo').fill('path/to/logo.png'); // put valid logo path here
     // await page.getByRole('button', { name: 'submit' }).click();
 })
+
+test('company category', async ({ page }) => {
+    page.setDefaultTimeout(3000);
+    await login(page, 'admin', 'newadmin');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Company Category' }).click();
+    await page.getByRole('button', { name: 'Add Company Category' }).click();
+    await page.getByRole('combobox', { name: 'Company Type' }).click();
+    const randomIndex = Math.floor(Math.random() * 4);
+    console.log('Random Index:', randomIndex);
+    const selectedOption = await page.locator('ul[role="listbox"] >> li').nth(randomIndex).textContent();
+    console.log('Selected Company Type:', selectedOption);
+    await page.locator('ul[role="listbox"] >> li').nth(randomIndex).click();
+    
+    if(selectedOption === 'Developer Company'){
+        await page.getByRole('textbox', { name: 'Enter Company Category' }).fill(selectedOption+' Category');
+    }
+    if(selectedOption === 'Product Company'){
+        await page.getByRole('textbox', { name: 'Enter Company Category' }).fill(selectedOption+' Category');
+    }
+    if(selectedOption === 'Services Company'){
+        await page.getByRole('textbox', { name: 'Enter Company Category' }).fill(selectedOption+' Category');
+    }
+    if(selectedOption === 'Broker Company'){
+        await page.getByRole('textbox', { name: 'Enter Company Category' }).fill(selectedOption+' Category');
+    }
+    await page.getByRole('button', { name: 'submit' }).click();
+});

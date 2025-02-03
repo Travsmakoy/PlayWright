@@ -32,7 +32,7 @@ async function locationRandom(page) {
 const SelectedProject = COMPANY_NAMES[Math.floor(Math.random() * 8)]
 
 async function addCompany(page){
-  await page.getByLabel('open drawer').click();
+  // await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Company', exact: true }).click();
   await page.getByRole('button', { name: 'Add Company' }).click();
   await page.getByPlaceholder('Please Select Company Type').click();

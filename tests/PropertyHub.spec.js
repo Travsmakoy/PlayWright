@@ -136,6 +136,7 @@ async function amenities(page){
               // console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
           }
       }
+      return randomIds;
   }
 
 function getRandomProject() {
@@ -374,10 +375,10 @@ const selectedOption = listItems.nth(randomValue);
   let selectedText = '';
   try {
     selectedText = await selectedOption.textContent();
-    console.log('Selected text:', selectedText); 
-    console.log(randomValue);
+    // console.log('Selected text:', selectedText); 
+    // console.log(randomValue);
   } catch (error) {
-    console.error('Error getting text content:', error);
+    // console.error('Error getting text content:', error);
   }
   
   await selectedOption.click();
@@ -405,7 +406,7 @@ const propertyHubRan = getRandomProject();
   const categoryRan = (Math.floor(Math.random() * 2) + 0).toString();
 
 async function addPropertyHub(page) {
-  await page.getByLabel('open drawer').click();
+  // await page.getByLabel('open drawer').click();
   await page.getByRole('button', { name: 'Property Hub' }).click();
   await page.getByRole('button', { name: 'Add Property' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
@@ -428,10 +429,10 @@ async function addPropertyHub(page) {
   let selectedText = '';
   try {
     selectedText = await selectedOption.textContent();
-    console.log('Selected text:', selectedText); 
-    console.log(categoryRan);
+    // console.log('Selected text:', selectedText); 
+    // console.log(categoryRan);
   } catch (error) {
-    console.error('Error getting text content:', error);
+    // console.error('Error getting text content:', error);
   }
   await selectedOption.click();
   await locationRandom(page);
@@ -450,7 +451,8 @@ async function addPropertyHub(page) {
   await PropertyTitle(page);
   await WriteDescription(page);
   await facilities(page);
-  await amenities(page);
+  await await amenities(page);
+  // console.log(await amenities(page));
 
   // await page.getByRole('button', { name: 'Submit' }).click();
   
@@ -579,6 +581,28 @@ async function addUnit(page) {
 
 }
 
+async function propertyhubUnit(page) {
+  await page.getByRole('button', { name: 'Property Hub' }).click();
+  await page.getByRole('button', { name: 'Local Properties' }).click();
+  // await page.getByRole('row', { name: `${propertyHubRan}` }).getByTestId('secondary-actions').click();
+  await page.getByRole('row', { name: `PRY_9769398` }).getByTestId('secondary-actions').click();
+  await page.locator('#actions-popover div').filter({ hasText: /^Units$/ }).getByRole('link').click();
+  await page.getByRole('button', { name: 'Add Unit' }).click();
+  const propname = await page.getByRole('textbox',{name:'property name'}).inputValue();
+  console.log(propname);
+  const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
+  await mapElement.waitFor({ state: 'visible' });
+
+  const box = await mapElement.boundingBox();
+  if (box) {
+      await page.mouse.move(box.x + 50, box.y + 50);
+      await page.mouse.click(box.x + 50, box.y + 50);
+  } else {
+      console.error('Element not found or not visible');
+  }
+
+}
+
 test('add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
@@ -590,4 +614,10 @@ test('add propertyhub', async ({ page }) => {
   // await addPlan(page);
   // await PaymentPlans(page);
   // await addUnit(page);
+});
+
+test('propertyhub unit', async ({ page }) => {
+  await login(page, 'admin', 'newadmin');
+  await propertyhubUnit(page);
+
 });

@@ -9,7 +9,7 @@ async function login(page, user, password) {
     // await expect(page.getByText('Weclome, Aqary Investment')).toBeVisible();
   }
   async function addUnit(page){
-    await page.getByLabel('open drawer').click();
+    // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Units', exact: true }).click();
     await page.getByRole('button', { name: 'Add Units' }).click();
   }

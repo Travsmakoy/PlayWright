@@ -13,7 +13,7 @@ async function login(page, user, password) {
     // await expect(page.getByText('Weclome, Super Ahmad')).toBeVisible();
   }
   async function addCompanyUser(page){
-    await page.getByLabel('open drawer').click();
+    // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Company users' }).click();
     await page.getByRole('button', { name: 'Add User' }).click();
     await page.getByPlaceholder('Enter username').fill('Mark');
