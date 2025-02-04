@@ -521,8 +521,10 @@ async function addOffplanProperty(page){
     await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
     await page.getByRole('button', { name: 'Add Property' }).click();
     const projectName = await page.locator('input[name="project_name"]').inputValue();
-    await page.getByPlaceholder('Enter property name').fill(projectName+ ' Properties');
+    const propName = projectName+ ' Properties';
+    await page.getByPlaceholder('Enter property name').fill(propName);
 
+    page.setDefaultTimeout(5000);
     await clickCenterMap(page);
 
     await page.getByPlaceholder('Select Property type').click();
@@ -597,6 +599,15 @@ async function addOffplanProperty(page){
 
       await WriteDescription(page);
 
+      await getAmeneties(page);
+  
+  // await page.getByRole('button', { name: 'submit' }).click();
+
+  // await page.getByRole('row', { name: `${propName}` }).getByTestId('secondary-actions').click();
+  
+}
+
+async function getAmeneties(page) {
       // Get all elements with `data-testid`
       await page.waitForSelector('[data-testid]', { timeout: 10000 });
 
@@ -615,7 +626,6 @@ async function addOffplanProperty(page){
         // console.log(`Clicking testId: ${testId}`);
         await page.getByTestId(testId).click();
     }
-  // await page.getByRole('button', { name: 'submit' }).click();
 }
 
 async function randomView(page){

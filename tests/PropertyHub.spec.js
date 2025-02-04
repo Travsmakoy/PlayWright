@@ -577,8 +577,6 @@ async function addUnit(page) {
   await page.getByPlaceholder('Enter municipality tax').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Select Rent Type').click();
   await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*4)+1)).click();
-
-
 }
 
 async function propertyhubUnit(page) {
@@ -603,6 +601,45 @@ async function propertyhubUnit(page) {
 
 }
 
+async function propUnitType(page){
+  await page.getByRole('button', { name: 'Property Hub' }).click();
+  await page.getByRole('button', { name: 'Local Properties' }).click();
+  // await page.getByRole('row', { name: `${propertyHubRan}` }).getByTestId('secondary-actions').click();
+  await page.getByRole('row', { name: `PRY_9769398` }).getByTestId('secondary-actions').click();
+  await page.locator('#actions-popover div').filter({ hasText: /^Manage Unit Types$/ }).getByRole('link').click();
+  await page.getByRole('button', { name: 'Add Unit Type' }).click();
+  await page.getByRole('combobox', { name: 'Select unit type' }).click();
+  const UnitNamesz = await page.locator('ul[role="listbox"] >> li').nth(0).textContent();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
+  const unitTypes = [
+    "Studio", "1 BR", "2 BR", "3 BR", "4 BR", "5 BR"
+  ];
+  const selectedType = unitTypes[Math.floor(Math.random() * 6)]
+  console.log(`Selected Unit Type: ${selectedType}`);
+  await page.getByRole('textbox', { name: 'Enter type name' }).fill(selectedType);
+  await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter Max Area').fill((Math.floor(Math.random() * 1500) + 1000).toString());
+  await page.getByPlaceholder('Enter min price').fill((Math.floor(Math.random() * 1000) + 1).toString());
+  await page.getByPlaceholder('Enter max price').fill((Math.floor(Math.random() * 1800) + 1000).toString());
+
+
+    const folderPath = 'D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\IMAGES FOR AUTO\\UNIT TYPES';
+    const files = fs.readdirSync(folderPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    const filePath = path.join(folderPath, randomFile);
+    await page.locator('input[name="plan_file"]').setInputFiles(filePath);
+
+
+  if (await page.getByPlaceholder('Enter No of Bedrooms').isVisible()) {
+    await page.getByPlaceholder('Enter No of Bedrooms').fill((Math.floor(Math.random() * 10) + 1).toString());
+  }
+  if(await page.getByPlaceholder('Enter no of parking').isVisible()){
+    await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
+  }
+  await page.getByRole('button', { name: 'submit' }).click();
+  await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
+};
+
 test('add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
@@ -613,11 +650,11 @@ test('add propertyhub', async ({ page }) => {
   // await addGallery(page);
   // await addPlan(page);
   // await PaymentPlans(page);
-  // await addUnit(page);
+  // await propertyhubUnit(page);
 });
 
 test('propertyhub unit', async ({ page }) => {
   await login(page, 'admin', 'newadmin');
+  await propUnitType(page);
   await propertyhubUnit(page);
-
 });

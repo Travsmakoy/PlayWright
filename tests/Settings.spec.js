@@ -88,3 +88,20 @@ test('company category', async ({ page }) => {
     }
     await page.getByRole('button', { name: 'submit' }).click();
 });
+
+
+test('company activities', async ({page}) => {
+await login(page, 'admin','newadmin');
+await page.getByRole('button', { name: 'Settings' }).click();
+await page.getByRole('button', { name: 'Company Activities' }).click();
+await page.getByRole('button', { name: 'Add Company Activities' }).click();
+await page.getByRole('combobox', { name: 'Select Company Type' }).click();
+const randomIndex = Math.floor(Math.random() * 4);
+// console.log('Random Index:', randomIndex);
+const selectedOption = await page.locator('ul[role="listbox"] >> li').nth(randomIndex).textContent();
+await page.locator('ul[role="listbox"] >> li').nth(randomIndex).click();
+await page.getByRole('combobox', { name: 'Select Company Category' }).click();
+const selectedCategory = await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*3))).click();
+await page.getByRole('textbox', { name: 'Enter title' }).fill(`${selectedOption} Activities`);
+await page.getByRole('button', { name: 'submit' }).click();
+});
