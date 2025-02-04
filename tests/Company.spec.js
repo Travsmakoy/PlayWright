@@ -233,8 +233,20 @@ async function WriteDescription(page) {
   await page.getByPlaceholder('Description..').fill(description);
 }
 
-test('add company', async ({page}) => {
+test('verify add company', async ({page}) => {
   page.setDefaultTimeout(3000);
     await login(page, VALID_USER, VALID_PASSWORD);
     await addCompany(page);
     });
+    
+test('edit / delete company', async ({page}) => {
+  await login(page, 'admin', 'newadmin');
+  await page.getByRole('button', { name: 'Company', exact: true }).click();
+  await page.getByRole('button', { name: 'Local Companies' }).click();
+  
+const row = await page.getByRole('row', { name: `1 04`  });
+const name = await row.innerText();
+console.log(name);
+await row.getByLabel('Delete').getByRole('button').click();
+
+});

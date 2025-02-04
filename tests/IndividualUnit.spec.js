@@ -17,7 +17,7 @@ async function login(page, user, password) {
   async function removeUnit(page){
     return null; // implement this function to remove a unit using the page object
   }
-test('add unit', async ({page}) => {
+test('verify add unit', async ({page}) => {
     await login(page, 'mark.admin@gmail.com', '123456');
     await addUnit(page);
 });

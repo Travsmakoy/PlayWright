@@ -672,7 +672,7 @@ for (let i = 0; i < 3; i++) {
 //   await addOffplanProperty(page);
 // })
 
-test('add project ready', async ({ page }) => {
+test('verify add project ready', async ({ page }) => {
   page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await projectReadyDetails(page)
@@ -682,7 +682,7 @@ test('add project ready', async ({ page }) => {
   // await addReadyphasePlan(page);
 });
 
-test('add project offplan', async ({ page }) => {
+test('verify add project offplan', async ({ page }) => {
   page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await addOffPlanDetails(page);
@@ -690,7 +690,7 @@ test('add project offplan', async ({ page }) => {
   await addOffplanPlan(page);
 });
 
-test('add project multiphase', async ({ page }) => {
+test('verify add project multiphase', async ({ page }) => {
   page.setDefaultTimeout(3000);
   await login(page, VALID_USER, VALID_PASSWORD);
   await multiphaseDetails(page);

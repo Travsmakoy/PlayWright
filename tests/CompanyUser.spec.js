@@ -74,7 +74,7 @@ async function locationRandom(page) {
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
 }
 
-test('add company user', async ({page}) => {
+test('verify add company user', async ({page}) => {
   page.setDefaultTimeout(3000);
     await login(page,'mark.admin@gmail.com','123456' );
     // await login(page,'aqary@aqaryinvestment.com','123456' );

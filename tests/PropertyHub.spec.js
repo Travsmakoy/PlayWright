@@ -615,7 +615,7 @@ async function propUnitType(page){
     "Studio", "1 BR", "2 BR", "3 BR", "4 BR", "5 BR"
   ];
   const selectedType = unitTypes[Math.floor(Math.random() * 6)]
-  console.log(`Selected Unit Type: ${selectedType}`);
+  // console.log(`Selected Unit Type: ${selectedType}`);
   await page.getByRole('textbox', { name: 'Enter type name' }).fill(selectedType);
   await page.getByPlaceholder('Enter Min Area').fill((Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Enter Max Area').fill((Math.floor(Math.random() * 1500) + 1000).toString());
@@ -640,7 +640,7 @@ async function propUnitType(page){
   await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 };
 
-test('add propertyhub', async ({ page }) => {
+test('verify add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
   await login(page, 'admin', 'newadmin');
@@ -653,7 +653,7 @@ test('add propertyhub', async ({ page }) => {
   // await propertyhubUnit(page);
 });
 
-test('propertyhub unit', async ({ page }) => {
+test('verify propertyhub unit', async ({ page }) => {
   await login(page, 'admin', 'newadmin');
   await propUnitType(page);
   await propertyhubUnit(page);

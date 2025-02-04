@@ -32,7 +32,7 @@ async function logout(page) {
   await expect(page).toHaveURL("http://192.168.1.193:3000/en/login");
 }
 
-test('login', async ({ page }) => {
+test('verify login', async ({ page }) => {
   await login(page, VALID_USER, VALID_PASSWORD);
   await page.context().storageState({ path: 'auth.json' });
 });
@@ -45,7 +45,7 @@ test('verify invalid credentials', async ({ page }) => {
   await expect(page.getByText(/invalid login credentials/)).toBeVisible();
 });  
  
-test('logout', async ({ page }) => { 
+test('verify logout', async ({ page }) => { 
   await login(page, VALID_USER, VALID_PASSWORD);
   await logout(page);
 });

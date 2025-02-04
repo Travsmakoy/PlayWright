@@ -28,13 +28,13 @@ async function addBank(page){
     // await page.getByRole('button', { name: 'submit' }).click();
 }
 
-test('add bank',async ({page}) => {
+test('verify add bank',async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     await addBank(page);
 });
 
-test('add view', async ({page}) => {
+test('verify add view', async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     // await page.getByLabel('open drawer').click();
@@ -47,7 +47,7 @@ test('add view', async ({page}) => {
     // await page.getByRole('button', { name: 'submit' }).cliclk();
 });
 
-test('add luxury brand', async ({page}) => {
+test('verify add luxury brand', async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     // await page.getByLabel('open drawer').click();
@@ -61,7 +61,7 @@ test('add luxury brand', async ({page}) => {
     // await page.getByRole('button', { name: 'submit' }).click();
 })
 
-test('company category', async ({ page }) => {
+test('verify company category', async ({ page }) => {
     page.setDefaultTimeout(3000);
     await login(page, 'admin', 'newadmin');
     await page.getByRole('button', { name: 'Settings' }).click();
@@ -90,7 +90,7 @@ test('company category', async ({ page }) => {
 });
 
 
-test('company activities', async ({page}) => {
+test('verify company activities', async ({page}) => {
 await login(page, 'admin','newadmin');
 await page.getByRole('button', { name: 'Settings' }).click();
 await page.getByRole('button', { name: 'Company Activities' }).click();
