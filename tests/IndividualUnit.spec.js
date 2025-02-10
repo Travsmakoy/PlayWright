@@ -21,3 +21,13 @@ test('verify add unit', async ({page}) => {
     await login(page, 'mark.admin@gmail.com', '123456');
     await addUnit(page);
 });
+
+test('verify edit unit', async ({page}) => {
+  await login(page, 'mark.admin@gmail.com', '123456');
+  await addUnit(page);
+});
+
+test('verify delete unit', async ({page}) => {
+  await login(page, 'mark.admin@gmail.com', '123456');
+  await addUnit(page);
+});

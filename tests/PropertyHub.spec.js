@@ -412,15 +412,6 @@ async function addPropertyHub(page) {
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/property_hub/add');
   await page.fill('input[name="property_name"]', propertyHubRan+' Properties');
   console.log(`PropertyName: `+propertyHubRan);
-  const mark = await page.locator('input[placeholder="Search by name or number"]');
-  // await page.getByPlaceholder('Broker Agent').fill('Kashif');
-  await page.getByPlaceholder('Broker Agent').fill('Ali');
-  await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
-  const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
-  await firstOption.click();
-  await mark.fill('Ali');
-  const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
-  await secondOption.click();
   await page.locator('input[placeholder="Choose category"]').click();
   // await page.locator('ul[role="listbox"] >> li').nth(0).click();
   const listItems = page.locator('ul[role="listbox"] >> li');
@@ -435,6 +426,16 @@ async function addPropertyHub(page) {
     // console.error('Error getting text content:', error);
   }
   await selectedOption.click();
+  const mark = await page.locator('input[placeholder="Search by name or number"]');
+  // await page.getByPlaceholder('Broker Agent').fill('Kashif');
+  await page.getByPlaceholder('Broker Agent').fill('Mark');
+  await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
+  const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
+  await firstOption.click();
+  await mark.fill('Ali');
+  const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
+  await secondOption.click();
+  
   await locationRandom(page);
 
   const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
@@ -605,7 +606,7 @@ async function propUnitType(page){
   await page.getByRole('button', { name: 'Property Hub' }).click();
   await page.getByRole('button', { name: 'Local Properties' }).click();
   // await page.getByRole('row', { name: `${propertyHubRan}` }).getByTestId('secondary-actions').click();
-  await page.getByRole('row', { name: `PRY_9769398` }).getByTestId('secondary-actions').click();
+  await page.getByRole('row', { name: `6565224000000889491` }).getByTestId('secondary-actions').click();
   await page.locator('#actions-popover div').filter({ hasText: /^Manage Unit Types$/ }).getByRole('link').click();
   await page.getByRole('button', { name: 'Add Unit Type' }).click();
   await page.getByRole('combobox', { name: 'Select unit type' }).click();
@@ -636,14 +637,14 @@ async function propUnitType(page){
   if(await page.getByPlaceholder('Enter no of parking').isVisible()){
     await page.getByPlaceholder('Enter no of parking').fill((Math.floor(Math.random() * 100) + 1).toString());
   }
-  await page.getByRole('button', { name: 'submit' }).click();
+  // await page.getByRole('button', { name: 'submit' }).click();
   await page.getByRole('link', { name: 'Manage unit types', exact: true }).click();
 };
 
 test('verify add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
-  await login(page, 'admin', 'newadmin');
+  await login(page, 'admin@finehomeint.com', '123456');
   // await login(page, 'mark.admin@gmail.com', '123456');
   await addPropertyHub(page);
   // await unitType(page);
@@ -654,7 +655,7 @@ test('verify add propertyhub', async ({ page }) => {
 });
 
 test('verify propertyhub unit', async ({ page }) => {
-  await login(page, 'admin', 'newadmin');
+  await login(page, 'admin@finehomeint.com', '123456');
   await propUnitType(page);
   await propertyhubUnit(page);
 });

@@ -32,19 +32,22 @@ async function login(page, user, password) {
   }
   async function selectUserType(page) {
     await page.getByPlaceholder('Select User type').click();
-    const selectedType = (Math.floor(Math.random() * 2) + 1).toString(); 
+    const selectedType = (Math.floor(Math.random() * 2)+1).toString(); 
+    console.log(selectedType);
     await page.locator('ul[role="listbox"] >> li').nth(parseInt(selectedType) - 1).click(); // Adjust for zero-based index
     
     if (selectedType == '1') {
       
     }
     if (selectedType == '2') {
+        await page.getByRole('combobox', { name: 'Select department' }).click(); // Adjust for zero-based index
+        await page.locator('ul[role="listbox"] >> li').nth(0).click();
+        await page.getByRole('combobox', { name: 'Select User role' }).click(); // Adjust for zero-based index
+        await page.locator('ul[role="listbox"] >> li').nth(0).click();
         await page.getByPlaceholder('Enter BRN No').fill((Math.floor(Math.random() * 1000000) + 100000).toString());
         await page.locator('input[name="brn_expiry_date"]').fill('01/20/2025');
         await page.getByPlaceholder('Select Nationality').click();
         await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*100)+1)).click();
-        await page.getByPlaceholder('Select Nationality').click();
-        await page.locator('ul[role="listbox"] >> li').nth(0).click();
         await page.getByPlaceholder('Multi language').click();
         await page.locator('ul[role="listbox"] >> li').nth(1).click();
         await page.getByPlaceholder('Multi language').click();
@@ -56,6 +59,10 @@ async function login(page, user, password) {
         await page.getByPlaceholder('Country/State/City').click();
         await page.locator('ul[role="listbox"] >> li').nth(0).click();
         await locationRandom(page);
+        await page.getByPlaceholder('premuim').fill('10');
+        await page.getByPlaceholder('standard').fill('10');
+        await page.getByPlaceholder('featured').fill('10');
+        await page.getByPlaceholder('top deal').fill('10');
 
       // await page.getByRole('button', { name: 'submit' }).click();
     }
@@ -76,10 +83,30 @@ async function locationRandom(page) {
 
 test('verify add company user', async ({page}) => {
   page.setDefaultTimeout(3000);
-    await login(page,'mark.admin@gmail.com','123456' );
+    await login(page,'admin@finehomeint.com','123456' );
     // await login(page,'aqary@aqaryinvestment.com','123456' );
     await addCompanyUser(page);
-})
+});
+
+test('verify edit company user', async ({page}) => {
+  page.setDefaultTimeout(2000);
+  await login(page,'mark.admin@gmail.com','123456' );
+  await page.getByRole('button', { name: 'Company users' }).click();
+  await page.getByRole('button', { name: 'Manage Users' }).click();
+  await page.getByRole('row', { name: `1` }).getByRole('cell', { name: 'Edit Delete' }).getByRole('link').click();
+  await page.getByRole('button', { name: 'submit' }).click();
+  await expect(page.getByText(/Updated successfully/)).toBeVisible();
+});
+
+test('verify delete/restore company user', async ({page}) => {
+  page.setDefaultTimeout(2000);
+  await login(page,'mark.admin@gmail.com','123456' );
+  await page.getByRole('button', { name: 'Company users' }).click();
+  await page.getByRole('button', { name: 'Manage Users' }).click();
+  await page.getByRole('row', { name: `1` }).getByLabel('Delete').getByRole('button').click();
+  await page.getByRole('button', { name: 'yes' }).click();
+  await expect(page.getByText(/Deleted user successfully/)).toBeVisible();
+});
 
 // Company Admin Broker
 // mark.admin@gmail.com

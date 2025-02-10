@@ -39,7 +39,7 @@ async function addCompany(page){
   const CompanyType = (Math.floor(Math.random()*3)+0).toString();
   await page.locator('ul[role="listbox"] >> li').nth(CompanyType).click(); //0 make static
   await page.getByPlaceholder('Choose category').click();
-  await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random() * 3) + 0)).click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   await page.getByPlaceholder('Choose a company activity').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
   const ProjectNumber = Math.floor(Math.random() * 1000000);
@@ -235,18 +235,71 @@ async function WriteDescription(page) {
 
 test('verify add company', async ({page}) => {
   page.setDefaultTimeout(3000);
-    await login(page, VALID_USER, VALID_PASSWORD);
+    await login(page, 'superadmin', '123456');
     await addCompany(page);
     });
-    
-test('edit / delete company', async ({page}) => {
-  await login(page, 'admin', 'newadmin');
-  await page.getByRole('button', { name: 'Company', exact: true }).click();
-  await page.getByRole('button', { name: 'Local Companies' }).click();
   
-const row = await page.getByRole('row', { name: `1 04`  });
-const name = await row.innerText();
-console.log(name);
-await row.getByLabel('Delete').getByRole('button').click();
+    
+test('verify edit company', async ({page}) => {
+  await login(page, VALID_USER, VALID_PASSWORD);
+
+});    
+test('verify delete company', async ({page}) => {
+// Perform login as admin
+await login(page, 'admin', 'newadmin');
+
+// Navigate to Local Companies section
+await page.getByRole('button', { name: 'Company', exact: true }).click();
+await page.getByRole('button', { name: 'Local Companies' }).click();
+
+// Ensure table is loaded before selecting rows
+await page.waitForSelector('table tbody tr');
+
+// Get all rows dynamically
+let rows = await page.locator('table tbody tr');
+
+
+const rowCount = await rows.count();
+if (rowCount === 0) {
+    console.error('❌ No rows found! Cannot delete.');
+    process.exit(1); 
+} 
+
+let rowData = [];
+for (let i = 0; i < rowCount; i++) {
+    rowData.push(await rows.nth(i).innerText());
+}
+// console.log('📌 Before Deletion:', rowData);
+
+
+const firstRow = rows.nth(0); 
+
+const deletedRowText = await firstRow.innerText();
+// console.log(`🗑️ Deleting: "${deletedRowText}"`);
+
+await firstRow.getByLabel('Delete').getByRole('button').click();
+await page.getByRole('button', { name: 'yes' }).click();
+
+await page.waitForResponse(response =>
+    response.url().includes('/updateCompanyStatus') && response.status() === 200
+);
+
+await page.waitForSelector('table tbody tr');
+
+rows = await page.locator('table tbody tr');
+const updatedRowCount = await rows.count();
+let updatedRowData = [];
+for (let i = 0; i < updatedRowCount; i++) {
+    updatedRowData.push(await rows.nth(i).innerText());
+}
+// console.log('📌 After Deletion:', updatedRowData);
+
+// ✅ Assert that deleted row is no longer in the list
+if (updatedRowData.includes(deletedRowText)) {
+    console.error('❌ Deletion failed!');
+} else {
+    // console.log('✅ Deletion successful!');
+}
+await expect(page.getByText(/Status Updated successfully/)).toBeVisible();
 
 });

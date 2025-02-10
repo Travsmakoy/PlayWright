@@ -663,9 +663,6 @@ for (let i = 0; i < 3; i++) {
   await page.mouse.click(centerX, centerY);
 }
 
-
-
-
 // test('add project property', async ({ page }) => {
 //   page.setDefaultTimeout(5000);
 //   await login(page, VALID_USER, VALID_PASSWORD);

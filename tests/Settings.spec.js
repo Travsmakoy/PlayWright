@@ -30,13 +30,13 @@ async function addBank(page){
 
 test('verify add bank',async ({page}) => {
     page.setDefaultTimeout(3000);
-    await login(page, 'admin', 'newadmin');
+    await login(page, 'superadmin', '123456');
     await addBank(page);
 });
 
 test('verify add view', async ({page}) => {
     page.setDefaultTimeout(3000);
-    await login(page, 'admin', 'newadmin');
+    await login(page, 'superadmin', '123456');
     // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();
     await page.getByRole('button', { name: 'Views' }).click();
@@ -49,7 +49,7 @@ test('verify add view', async ({page}) => {
 
 test('verify add luxury brand', async ({page}) => {
     page.setDefaultTimeout(3000);
-    await login(page, 'admin', 'newadmin');
+    await login(page, 'superadmin', '123456');
     // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Settings' }).click();
     await page.getByRole('button', { name: 'Luxury Brands' }).click();
@@ -60,10 +60,20 @@ test('verify add luxury brand', async ({page}) => {
     // await page.getByPlaceholder('Enter Brand Logo').fill('path/to/logo.png'); // put valid logo path here
     // await page.getByRole('button', { name: 'submit' }).click();
 })
-
+test('verify company type', async ({page}) =>{
+    page.setDefaultTimeout(3000);
+    await login(page, 'superadmin', '123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Company Type' }).click();
+    await page.getByRole('button', { name: 'Add Company Type' }).click();
+    const typeList = ['Developer Company', 'Product Company', 'Services Company', 'Broker Company'];
+    const selectedType = typeList[Math.floor(Math.random() * 4)];
+    await page.getByPlaceholder('Enter Company Type').fill(selectedType);
+    // await page.getByRole('button', { name: 'submit' }).click();
+});
 test('verify company category', async ({ page }) => {
     page.setDefaultTimeout(3000);
-    await login(page, 'admin', 'newadmin');
+    await login(page, 'superadmin', '123456');
     await page.getByRole('button', { name: 'Settings' }).click();
     await page.getByRole('button', { name: 'Company Category' }).click();
     await page.getByRole('button', { name: 'Add Company Category' }).click();
@@ -86,12 +96,13 @@ test('verify company category', async ({ page }) => {
     if(selectedOption === 'Broker Company'){
         await page.getByRole('textbox', { name: 'Enter Company Category' }).fill(selectedOption+' Category');
     }
-    await page.getByRole('button', { name: 'submit' }).click();
+    // await page.getByRole('button', { name: 'submit' }).click();
 });
 
 
 test('verify company activities', async ({page}) => {
-await login(page, 'admin','newadmin');
+page.setDefaultTimeout(2000);
+await login(page, 'superadmin','123456');
 await page.getByRole('button', { name: 'Settings' }).click();
 await page.getByRole('button', { name: 'Company Activities' }).click();
 await page.getByRole('button', { name: 'Add Company Activities' }).click();
@@ -101,7 +112,73 @@ const randomIndex = Math.floor(Math.random() * 4);
 const selectedOption = await page.locator('ul[role="listbox"] >> li').nth(randomIndex).textContent();
 await page.locator('ul[role="listbox"] >> li').nth(randomIndex).click();
 await page.getByRole('combobox', { name: 'Select Company Category' }).click();
-const selectedCategory = await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*3))).click();
+const selectedCategory = await page.locator('ul[role="listbox"] >> li').nth(0).click();
 await page.getByRole('textbox', { name: 'Enter title' }).fill(`${selectedOption} Activities`);
 await page.getByRole('button', { name: 'submit' }).click();
+});
+
+test('verify countries', async ({page}) => {
+    await login(page, 'superadmin','123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Country' }).click();
+    await page.getByRole('button', { name: 'Add Country' }).click();
+    const countryname = ['United States', 'Japan', 'Korea',];
+    await page.getByRole('textbox', { name: 'Enter Country name' }).fill(countryname[Math.floor(Math.random()* countryname.length)])
+    const countrycode = [12, 123, 1234, 12345]
+    const selectedCode = countrycode[Math.floor(Math.random() * countrycode.length)];
+
+    await page.evaluate((value) => {
+        document.querySelector('[placeholder="Enter Country Code"]').value = value;
+    }, selectedCode);
+    await page.evaluate((value) => {
+        document.querySelector('[placeholder="Enter Alpha Code 2"]').value = value;
+    }, selectedCode);
+    await page.evaluate((value) => {
+        document.querySelector('[placeholder="Enter Alpha Code 3"]').value = value;
+    }, selectedCode);
+});
+test('verify community', async ({page}) => {
+    await login(page, 'superadmin','123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: `Community`,exact: true }).click();
+    await page.getByRole('button', { name: 'Add Community' ,exact: true}).click();    
+    await page.getByRole('combobox', { name: 'Select Country' }).click();
+    await page.getByRole('option', { name: 'United Arab Emirates' }).click();
+    await page.getByRole('combobox', { name: 'Select State' }).click();
+    await page.getByRole('option', { name: 'Abu Dhabi' }).click();
+    await page.getByRole('combobox', { name: 'Select City' }).click();
+    await page.getByRole('option', { name: 'Abu Dhabi' }).click();
+    await page.getByRole('textbox', { name: 'Community' }).fill('Test Community');
+    // await page.getByRole('button', { name: 'submit' }).click();
+});
+
+test('verify sub-community', async ({page}) => {
+    await login(page, 'superadmin','123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Sub Community' }).click();
+    await page.getByRole('button', { name: 'Add Sub Community' }).click();    
+    await page.getByRole('combobox', { name: 'Select Country' }).click();
+    await page.getByRole('option', { name: 'United Arab Emirates' }).click();
+    await page.getByRole('combobox', { name: 'Select State' }).click();
+    await page.getByRole('option', { name: 'Abu Dhabi' }).click();
+    await page.getByRole('combobox', { name: 'Select City' }).click();
+    await page.getByRole('option', { name: 'Abu Dhabi' }).click();
+    await page.getByRole('combobox', { name: 'Select Community' }).click();
+    const random = Math.floor(Math.random()*50);
+    await page.locator('ul[role="listbox"] >> li').nth(random).click();
+    await page.getByRole('textbox', { name: 'Community' }).fill('Test Community');
+    // await page.getByRole('button', { name: 'submit' }).click();
+});
+
+test('verify currency', async ({page}) => {
+    await login(page, 'superadmin','123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Manage Currencies' }).click();
+    await page.getByRole('button', { name: 'Add Currency' }).click();
+    const currencyname = ['US Dollar', 'Japanese Dollar', 'Korean Dollar',];
+    const selectedCurrency = currencyname[Math.floor(Math.random() * currencyname.length)];
+    await page.getByPlaceholder('Enter Currency Name').fill(selectedCurrency);
+    await page.getByRole('textbox', { name: 'Enter Currency Code' }).click();
+    const currencycode = ['USD','JPY','KD'];
+    await page.getByPlaceholder('Enter Currency Code').fill(currencycode[Math.floor(Math.random() * currencycode.length)]);
 });

@@ -18,9 +18,9 @@ async function login(page, user, password) {
   const currentHour = new Date().getHours();
 
   if (currentHour < 12) {
-      await expect(page.getByText('Good Morning, Super Ahmad')).toBeVisible();
+      await expect(page.getByText('Good Morning, Super Admin')).toBeVisible();
   } else {
-      await expect(page.getByText('Good Evening, Super Ahmad')).toBeVisible();
+      await expect(page.getByText('Good Evening, Super Admin')).toBeVisible();
   }
 }
 
@@ -33,20 +33,20 @@ async function logout(page) {
 }
 
 test('verify login', async ({ page }) => {
-  await login(page, VALID_USER, VALID_PASSWORD);
+  await login(page, 'superadmin', '123456');
   await page.context().storageState({ path: 'auth.json' });
 });
 
 test('verify invalid credentials', async ({ page }) => {
   await page.goto(`${BASE_URL}/login`);
-  await page.fill('input[name="user"]', 'admin');
+  await page.fill('input[name="user"]', 'superadmin');
   await page.fill('input[name="password"]', 'ahdmin');
   await page.click('button[type="submit"]');    
   await expect(page.getByText(/invalid login credentials/)).toBeVisible();
 });  
  
 test('verify logout', async ({ page }) => { 
-  await login(page, VALID_USER, VALID_PASSWORD);
+  await login(page, 'superadmin', '123456');
   await logout(page);
 });
   
