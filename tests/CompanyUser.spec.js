@@ -17,8 +17,14 @@ async function login(page, user, password) {
     await page.getByRole('button', { name: 'Company users' }).click();
     await page.getByRole('button', { name: 'Add User' }).click();
     await page.getByPlaceholder('Enter username').fill('Mark');
-    await page.getByPlaceholder('Enter first name').fill('Mark Angelo');
-    await page.getByPlaceholder('Enter last name').fill('Smith');
+    const firstname = ['Mark', 'John', 'Ken', 'Bob','Bruno']
+    const selectFname = firstname[(Math.floor(Math.random() * firstname.length))]
+    // console.log(selectFname);
+    const lastname = ['Smith','Doe','Dale','Kingston']
+    const selectlastname = lastname[(Math.floor(Math.random() * lastname.length))]
+    // console.log(selectlastname);
+    await page.getByPlaceholder('Enter first name').fill(selectFname);
+    await page.getByPlaceholder('Enter last name').fill(selectlastname);
     await page.getByPlaceholder('Enter email').fill('mark@aqaryinvestment.com');
     await page.getByPlaceholder('Select Gender').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -63,7 +69,6 @@ async function login(page, user, password) {
         await page.getByPlaceholder('standard').fill('10');
         await page.getByPlaceholder('featured').fill('10');
         await page.getByPlaceholder('top deal').fill('10');
-
       // await page.getByRole('button', { name: 'submit' }).click();
     }
 }

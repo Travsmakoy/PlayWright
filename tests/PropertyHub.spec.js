@@ -452,7 +452,7 @@ async function addPropertyHub(page) {
   await PropertyTitle(page);
   await WriteDescription(page);
   await facilities(page);
-  await await amenities(page);
+  await amenities(page);
   // console.log(await amenities(page));
 
   // await page.getByRole('button', { name: 'Submit' }).click();
