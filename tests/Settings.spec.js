@@ -137,6 +137,16 @@ test('verify countries', async ({page}) => {
         document.querySelector('[placeholder="Enter Alpha Code 3"]').value = value;
     }, selectedCode);
 });
+test('verify state', async ({page}) => {
+    await login(page, 'superadmin','123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: `State`,exact: true }).click();
+    await page.getByRole('button', { name: 'Add State' ,exact: true}).click();    
+    await page.getByRole('combobox', { name: 'Select Country' }).click();
+    await page.getByRole('option', { name: 'United Arab Emirates' }).click();
+    await page.getByRole('textbox', { name: 'State' }).fill('Test State');
+    // await page.getByRole('button', { name: 'submit' }).click();
+});
 test('verify community', async ({page}) => {
     await login(page, 'superadmin','123456');
     await page.getByRole('button', { name: 'Settings' }).click();
