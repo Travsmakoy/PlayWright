@@ -16,16 +16,16 @@ async function login(page, user, password) {
     // await page.getByLabel('open drawer').click();
     await page.getByRole('button', { name: 'Company users' }).click();
     await page.getByRole('button', { name: 'Add User' }).click();
-    await page.getByPlaceholder('Enter username').fill('Mark');
     const firstname = ['Mark', 'John', 'Ken', 'Bob','Bruno']
     const selectFname = firstname[(Math.floor(Math.random() * firstname.length))]
     // console.log(selectFname);
     const lastname = ['Smith','Doe','Dale','Kingston']
     const selectlastname = lastname[(Math.floor(Math.random() * lastname.length))]
     // console.log(selectlastname);
+    await page.getByPlaceholder('Enter username').fill(selectFname);
     await page.getByPlaceholder('Enter first name').fill(selectFname);
     await page.getByPlaceholder('Enter last name').fill(selectlastname);
-    await page.getByPlaceholder('Enter email').fill('mark@aqaryinvestment.com');
+    await page.getByPlaceholder('Enter email').fill(`${selectFname}@aqaryinvestment.com`);
     await page.getByPlaceholder('Select Gender').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
     await page.locator('input[name="primary_phone"]').fill('543835792');
@@ -62,7 +62,7 @@ async function login(page, user, password) {
         await page.getByPlaceholder('facebook link').fill('https://www.facebook.com/aqaryinvestment');
         await page.getByPlaceholder('twitter link').fill('https://www.twitter.com/aqaryinvestment');
         await page.getByPlaceholder('linkedin link').fill('https://www.linkedin.com/aqaryinvestment');
-        await page.getByPlaceholder('Country/State/City').click();
+        await page.getByRole('combobox', { name: 'Select Country' }).click();
         await page.locator('ul[role="listbox"] >> li').nth(0).click();
         await locationRandom(page);
         await page.getByPlaceholder('premuim').fill('10');
