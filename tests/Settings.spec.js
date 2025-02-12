@@ -28,6 +28,19 @@ async function addBank(page){
     // await page.getByRole('button', { name: 'submit' }).click();
 }
 
+test('verify facilities & amenities category',async ({page}) => {
+    page.setDefaultTimeout(3000);
+    await login(page, 'superadmin', '123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Category', exact: true }).click();
+    await page.getByRole('button', { name: 'Add Category' }).click();
+    const categorylist = ['Facilities & Amenities', 'Real Estate', 'Transportation', 'Health & Wellness', 'Education & Training', 'Services & Products', 'Entertainment & Recreation', 'Community & Governance', 'Sports & Leisure', 'Culinary & Dining', 'Business & Finance', 'Art & Culture', 'Science & Technology', 'Environment & Sustainability', 'Personal & Lifestyle', 'Other'];
+    const selectRandom = categorylist[Math.floor(Math.random()*categorylist.length)];
+    await page.getByRole('textbox', { name: 'Enter Title' }).fill(selectRandom)
+    await page.getByRole('combobox', { name: 'Select type' }).click();
+    await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random()*2)).click();
+});
+
 test('verify add bank',async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'superadmin', '123456');
@@ -145,6 +158,18 @@ test('verify state', async ({page}) => {
     await page.getByRole('combobox', { name: 'Select Country' }).click();
     await page.getByRole('option', { name: 'United Arab Emirates' }).click();
     await page.getByRole('textbox', { name: 'State' }).fill('Test State');
+    // await page.getByRole('button', { name: 'submit' }).click();
+});
+test('verify city', async ({page}) => {
+    await login(page, 'superadmin','123456');
+    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: `City`,exact: true }).click();
+    await page.getByRole('button', { name: 'Add City' ,exact: true}).click();    
+    await page.getByRole('combobox', { name: 'Select Country' }).click();
+    await page.getByRole('option', { name: 'United Arab Emirates' }).click();
+    await page.getByRole('combobox', { name: 'Select State' }).click();
+    await page.getByRole('option', { name: 'Abu Dhabi' }).click();
+    await page.getByRole('textbox', { name: 'City' }).fill('Test Community');
     // await page.getByRole('button', { name: 'submit' }).click();
 });
 test('verify community', async ({page}) => {

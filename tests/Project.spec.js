@@ -326,7 +326,7 @@ async function addOffPlanDetails(page) {
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProjectOffPlan+ ' Offplan');
+  await page.fill('input[name="project_name"]', randomProjectOffPlan);
   console.log('Project Name:', randomProjectOffPlan+ ' Offplan');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
@@ -352,13 +352,13 @@ async function projectReadyDetails(page) {
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProjectReady+' Ready');
+  await page.fill('input[name="project_name"]', randomProjectReady);
   console.log('Project Name:', randomProjectReady+' Ready');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
   await page.locator('input[placeholder="Developer Company"]').click();
-  await page.locator('ul[role="listbox"] >> li').nth(Math.floor(Math.random() * 10) + 1 - 1).click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click(); //Math.floor(Math.random() * 10) + 1 - 1
   await locationRandom(page);
   await page.evaluate(() => window.scrollBy(0, 250));
   await drawPolygonOnMap(page);
@@ -366,7 +366,7 @@ async function projectReadyDetails(page) {
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
-  // await page.getByRole('button', { name: 'submit' }).click();
+  await page.getByRole('button', { name: 'submit' }).click();
   // await expect(page.getByText(/Project created successfully/)).toBeVisible();
 }
 const randomProjectPhase = getRandomProject();
@@ -378,7 +378,7 @@ async function multiphaseDetails(page) {
   await page.getByRole('button', { name: 'Projects' }).click();
   await page.getByRole('button', { name: 'Add Project' }).click();
   // await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard/project/add');
-  await page.fill('input[name="project_name"]', randomProjectPhase+' Multiphase');
+  await page.fill('input[name="project_name"]', randomProjectPhase);
   console.log('Project Name:', randomProjectPhase+' Multiphase');
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
@@ -516,7 +516,7 @@ async function addOffplanProperty(page){
     // await page.getByRole('button', { name: 'Projects' }).click();
     // await page.getByRole('button', { name: 'Local Projects' }).click();
     // ${randomProjectReady} make it dynamic soon
-    // await page.getByRole('row', { name: `PRO_1364774` }).getByTestId('secondary-actions').click();
+    // await page.getByRole('row', { name: `PRO_4087711` }).getByTestId('secondary-actions').click();
     await page.getByRole('row', { name: `${randomProjectReady}` }).getByTestId('secondary-actions').click();
     await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
     await page.getByRole('button', { name: 'Add Property' }).click();
@@ -665,13 +665,13 @@ for (let i = 0; i < 3; i++) {
 
 // test('add project property', async ({ page }) => {
 //   page.setDefaultTimeout(5000);
-//   await login(page, VALID_USER, VALID_PASSWORD);
+//   await login(page, 'OMNIYAT881@gmail.com', '123456');
 //   await addOffplanProperty(page);
 // })
 
 test('verify add project ready', async ({ page }) => {
   page.setDefaultTimeout(3000);
-  await login(page, VALID_USER, VALID_PASSWORD);
+  await login(page, 'OMNIYAT881@gmail.com', '123456');
   await projectReadyDetails(page)
   // console.log('Random amenities '+randomIds);
   await addOffplanProperty(page);
@@ -681,7 +681,7 @@ test('verify add project ready', async ({ page }) => {
 
 test('verify add project offplan', async ({ page }) => {
   page.setDefaultTimeout(3000);
-  await login(page, VALID_USER, VALID_PASSWORD);
+  await login(page, 'OMNIYAT881@gmail.com', '123456');
   await addOffPlanDetails(page);
   await addOffplanGallery(page);
   await addOffplanPlan(page);
@@ -689,7 +689,7 @@ test('verify add project offplan', async ({ page }) => {
 
 test('verify add project multiphase', async ({ page }) => {
   page.setDefaultTimeout(3000);
-  await login(page, VALID_USER, VALID_PASSWORD);
+  await login(page, 'OMNIYAT881@gmail.com', '123456');
   await multiphaseDetails(page);
   await addMultiphaseGallery(page);
   await addMultiphasePlan(page)
