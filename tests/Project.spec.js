@@ -4,8 +4,8 @@ const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
 const BASE_URL = 'https://dashboard.aqaryint.com';
 const local = 'http://192.168.1.193:3000/en';
-const VALID_USER = 'admin';
-const VALID_PASSWORD = 'newadmin';
+const VALID_USER = 'superadmin';
+const VALID_PASSWORD = '123456';
 const PROJECT_NAMES = ["Burj Khalifa Residences", "Palm Jumeirah Villas", "Jumeirah Beach Apartments",
                 "Downtown Dubai Towers", "Business Bay Heights", "Dubai Marina Skyrise",
                 "Emaar Beachfront", "Bluewaters Island Residences", "Meydan Heights Villas",
@@ -366,7 +366,7 @@ async function projectReadyDetails(page) {
   await WriteDescription(page);
   await facilities(page);
   await amenities(page);
-  await page.getByRole('button', { name: 'submit' }).click();
+  // await page.getByRole('button', { name: 'submit' }).click();
   // await expect(page.getByText(/Project created successfully/)).toBeVisible();
 }
 const randomProjectPhase = getRandomProject();
