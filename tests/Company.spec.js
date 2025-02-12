@@ -120,7 +120,9 @@ async function addCompany(page){
 
   await page.getByPlaceholder('Enter Username').fill(SelectedProject+(Math.floor(Math.random() * 1000) + 1).toString());
   await page.getByPlaceholder('Enter First Name ').fill(SelectedProject);
-  await page.getByPlaceholder('Enter Last Name ').fill('Doe');
+  const lastname = ['Smith','Burman','Taylor','Quin','Helena'];
+  const selectedLastname = lastname[(Math.floor(Math.random() * lastname.length))]
+  await page.getByPlaceholder('Enter Last Name ').fill(selectedLastname);
   await page.getByPlaceholder('Enter Admin Phone No').fill(Math.floor(Math.random() * 1000000000).toString());
   await page.getByPlaceholder('Admin email address').fill(SelectedProject.replace(/\s+/g, '')+(Math.floor(Math.random() * 1000) + 1).toString()+'@gmail.com');
   await profile(page);
