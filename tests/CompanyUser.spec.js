@@ -88,7 +88,8 @@ async function locationRandom(page) {
 
 test('verify add company user', async ({page}) => {
   page.setDefaultTimeout(3000);
-    await login(page,'admin@finehomeint.com','123456' );
+  await login(page, 'OMNIYAT','123456')
+    // await login(page,'admin@finehomeint.com','123456' );
     // await login(page,'aqary@aqaryinvestment.com','123456' );
     await addCompanyUser(page);
 });

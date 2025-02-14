@@ -403,7 +403,7 @@ async function locationRandom(page) {
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
 }
 const propertyHubRan = getRandomProject();
-  const categoryRan = (Math.floor(Math.random() * 2) + 0).toString();
+const categoryRan = Math.floor(Math.random() * 2).toString();
 
 async function addPropertyHub(page) {
   // await page.getByLabel('open drawer').click();
@@ -432,7 +432,7 @@ async function addPropertyHub(page) {
   await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
   const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
   await firstOption.click();
-  await mark.fill('Ali');
+  await mark.fill('Hi');
   const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
   await secondOption.click();
   
@@ -645,6 +645,8 @@ test('verify add propertyhub', async ({ page }) => {
   page.setDefaultTimeout(5000);
   // await login(page, 'aqary@aqaryinvestment.com', '123456');
   await login(page, 'admin@finehomeint.com', '123456');
+  // await login(page, 'omniyat', '123456');
+
   // await login(page, 'mark.admin@gmail.com', '123456');
   await addPropertyHub(page);
   // await unitType(page);
