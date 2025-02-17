@@ -672,7 +672,7 @@ for (let i = 0; i < 3; i++) {
 
 test('verify add project ready', async ({ page }) => {
   page.setDefaultTimeout(3000);
-  await login(page, 'OMNIYAT', '123456');
+  await login(page, 'omniyat', '123456');
   await projectReadyDetails(page)
   // console.log('Random amenities '+randomIds);
   await addOffplanProperty(page);

@@ -65,10 +65,10 @@ async function login(page, user, password) {
         await page.getByRole('combobox', { name: 'Select Country' }).click();
         await page.locator('ul[role="listbox"] >> li').nth(0).click();
         await locationRandom(page);
-        await page.getByPlaceholder('premuim').fill('10');
-        await page.getByPlaceholder('standard').fill('10');
-        await page.getByPlaceholder('featured').fill('10');
-        await page.getByPlaceholder('top deal').fill('10');
+        await page.getByPlaceholder('premuim').fill('2');
+        await page.getByPlaceholder('standard').fill('2');
+        await page.getByPlaceholder('featured').fill('2');
+        await page.getByPlaceholder('top deal').fill('2');
       // await page.getByRole('button', { name: 'submit' }).click();
     }
 }
@@ -88,7 +88,7 @@ async function locationRandom(page) {
 
 test('verify add company user', async ({page}) => {
   page.setDefaultTimeout(3000);
-  await login(page, 'OMNIYAT','123456')
+  await login(page, 'sobha','123456')
     // await login(page,'admin@finehomeint.com','123456' );
     // await login(page,'aqary@aqaryinvestment.com','123456' );
     await addCompanyUser(page);
