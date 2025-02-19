@@ -182,7 +182,7 @@ test('verify community', async ({page}) => {
     await page.getByRole('combobox', { name: 'Select State' }).click();
     await page.getByRole('option', { name: 'Abu Dhabi' }).click();
     await page.getByRole('combobox', { name: 'Select City' }).click();
-    await page.getByRole('option', { name: 'Abu Dhabi' }).click();
+    await page.getByRole('option', { name: 'Abu Dhabi' ,exact:true}).click();
     await page.getByRole('textbox', { name: 'Community' }).fill('Test Community');
     // await page.getByRole('button', { name: 'submit' }).click();
 });

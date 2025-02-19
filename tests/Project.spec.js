@@ -358,7 +358,7 @@ async function projectReadyDetails(page) {
   await page.fill('input[name="license_no"]', licenseNumber);
   await page.fill('input[name="project_no"]', projectNumber);
   await page.fill('input[name="starting_price"]', startingPrice);
-  await page.locator('input[placeholder="Developer Company"]').click();
+  await page.getByRole('combobox', { name: 'Enter developer company' }).click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click(); //Math.floor(Math.random() * 10) + 1 - 1
   await locationRandom(page);
   await page.evaluate(() => window.scrollBy(0, 250));
@@ -672,7 +672,9 @@ for (let i = 0; i < 3; i++) {
 
 test('verify add project ready', async ({ page }) => {
   page.setDefaultTimeout(3000);
-  await login(page, 'omniyat', '123456');
+  // await login(page, 'omniyat', '123456');
+  await login(page, 'sobha', '123456');
+
   await projectReadyDetails(page)
   // console.log('Random amenities '+randomIds);
   await addOffplanProperty(page);

@@ -124,7 +124,7 @@ function getrandomAmenities(count, min, max) {
 
 async function amenities(page){
   const randomIds = getrandomAmenities(10, 78, 200);
-      // console.log(`Randomly selected IDs: ${randomIds}`);
+      console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
           const testId = id.toString(); // Convert number to string for test ID
           try {
@@ -133,7 +133,7 @@ async function amenities(page){
               // console.log(`Clicked on test ID: ${testId}`);
           } catch (error) {
             return error;
-              // console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
+              console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
           }
       }
       return randomIds;
