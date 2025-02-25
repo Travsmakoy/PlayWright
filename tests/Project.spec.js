@@ -517,7 +517,7 @@ async function addOffplanProperty(page){
     // await page.getByRole('button', { name: 'Projects' }).click();
     // await page.getByRole('button', { name: 'Local Projects' }).click();
     // ${randomProjectReady} make it dynamic soon
-    // await page.getByRole('row', { name: `PRO_6894638` }).getByTestId('secondary-actions').click();
+    // await page.getByRole('row', { name: `PRO_1478711` }).getByTestId('secondary-actions').click();
     await page.getByRole('row', { name: `${randomProjectReady}` }).getByTestId('secondary-actions').click();
     await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
     await page.getByRole('button', { name: 'Add Property' }).click();
@@ -602,7 +602,8 @@ async function addOffplanProperty(page){
 
       await getAmeneties(page);
   
-  // await page.getByRole('button', { name: 'submit' }).click();
+  await page.getByRole('button', { name: 'submit' }).click();
+  await addUnit(page);
 
   // await page.getByRole('row', { name: `${propName}` }).getByTestId('secondary-actions').click();
   
@@ -664,11 +665,23 @@ for (let i = 0; i < 3; i++) {
   await page.mouse.click(centerX, centerY);
 }
 
-// test('add project property', async ({ page }) => {
-//   page.setDefaultTimeout(5000);
-//   await login(page, 'OMNIYAT', '123456');
-//   await addOffplanProperty(page);
-// })
+test('add project property', async ({ page }) => {
+  page.setDefaultTimeout(8000);
+  await login(page, 'sobha', '123456');
+  await addOffplanProperty(page);
+})
+
+async function addUnit(page){
+  await page.getByRole('row', { name: `${randomProjectReady}` }).getByTestId('secondary-actions').click();
+  await page.locator('div').filter({ hasText: /^Units$/ }).getByRole('link').click();
+  await page.getByRole('button', { name: 'Add Unit' }).click();
+  const projectName = await page.locator('input[name="project_name"]').inputValue();
+  const propName = projectName+ ' Unit';
+  await page.getByPlaceholder('Enter property name').fill(propName);
+
+  page.setDefaultTimeout(5000); 
+  await clickCenterMap(page); 
+}
 
 test('verify add project ready', async ({ page }) => {
   page.setDefaultTimeout(3000);

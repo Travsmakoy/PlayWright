@@ -36,7 +36,7 @@ async function addCompany(page){
   await page.getByRole('button', { name: 'Company', exact: true }).click();
   await page.getByRole('button', { name: 'Add Company' }).click();
   await page.getByPlaceholder('Please Select Company Type').click();
-  const CompanyType = (Math.floor(Math.random()*3)+0).toString();
+  const CompanyType =  '1'; //(Math.floor(Math.random()*3)+0).toString() 
   await page.locator('ul[role="listbox"] >> li').nth(CompanyType).click(); //0 make static
   await page.getByPlaceholder('Choose category').click();
   await page.locator('ul[role="listbox"] >> li').nth(0).click();
