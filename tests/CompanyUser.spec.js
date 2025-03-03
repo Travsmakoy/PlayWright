@@ -53,7 +53,7 @@ async function login(page, user, password) {
         await page.getByPlaceholder('Enter BRN No').fill((Math.floor(Math.random() * 1000000) + 100000).toString());
         await page.locator('input[name="brn_expiry_date"]').fill('01/20/2025');
         await page.getByPlaceholder('Select Nationality').click();
-        await page.locator('ul[role="listbox"] >> li').nth((Math.floor(Math.random()*100)+1)).click();
+        await page.locator('ul[role="listbox"] >> li').nth(0).click(); //(Math.floor(Math.random()*100)+1)
         await page.getByPlaceholder('Multi language').click();
         await page.locator('ul[role="listbox"] >> li').nth(1).click();
         await page.getByPlaceholder('Multi language').click();
@@ -65,10 +65,10 @@ async function login(page, user, password) {
         await page.getByRole('combobox', { name: 'Select Country' }).click();
         await page.locator('ul[role="listbox"] >> li').nth(0).click();
         await locationRandom(page);
-        await page.getByPlaceholder('premuim').fill('2');
-        await page.getByPlaceholder('standard').fill('2');
-        await page.getByPlaceholder('featured').fill('2');
-        await page.getByPlaceholder('top deal').fill('2');
+        await page.locator('input[name="standard"]').fill('2');
+        await page.locator('input[name="featured"]').fill('2');
+        await page.locator('input[name="premuim"]').fill('2');
+        await page.locator('input[name="top_deal"]').fill('2');
       // await page.getByRole('button', { name: 'submit' }).click();
     }
 }
@@ -88,8 +88,8 @@ async function locationRandom(page) {
 
 test('verify add company user', async ({page}) => {
   page.setDefaultTimeout(3000);
-  await login(page, 'sobha','123456')
-    // await login(page,'admin@finehomeint.com','123456' );
+  // await login(page, 'superadmin','123456')
+    await login(page,'admin@finehomeint.com','123456' );
     // await login(page,'aqary@aqaryinvestment.com','123456' );
     await addCompanyUser(page);
 });

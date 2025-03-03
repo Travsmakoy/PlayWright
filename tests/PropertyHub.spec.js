@@ -123,14 +123,14 @@ function getrandomAmenities(count, min, max) {
 }
 
 async function amenities(page){
-  const randomIds = getrandomAmenities(10, 78, 200);
+  const randomIds = getrandomAmenities(10, 90, 200);
       console.log(`Randomly selected IDs: ${randomIds}`);
       for (const id of randomIds) {
           const testId = id.toString(); // Convert number to string for test ID
           try {
               // Attempt to click the element with the corresponding test ID
               await page.getByTestId(testId).click();
-              // console.log(`Clicked on test ID: ${testId}`);
+              console.log(`Clicked on test ID: ${testId}`);
           } catch (error) {
             return error;
               console.warn(`Could not click on test ID: ${testId} - ${error.message}`);
@@ -432,12 +432,17 @@ async function addPropertyHub(page) {
   await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
   const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
   await firstOption.click();
-  await mark.fill('Hi');
+  await mark.fill('Mark');
   const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
   await secondOption.click();
   
   await locationRandom(page);
+  await page.getByRole('button', { name: 'Map camera controls' }).click();
+  await page.getByRole('button', { name: 'Zoom in' }).click();
+  await page.getByRole('button', { name: 'Zoom in' }).click();
+  await page.waitForTimeout(2000);
 
+  
   const mapElement = await page.locator("div[style*='z-index: 3'][style*='position: absolute']");
   await mapElement.waitFor({ state: 'visible' });
 

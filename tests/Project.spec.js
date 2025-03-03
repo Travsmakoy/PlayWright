@@ -517,7 +517,7 @@ async function addOffplanProperty(page){
     // await page.getByRole('button', { name: 'Projects' }).click();
     // await page.getByRole('button', { name: 'Local Projects' }).click();
     // ${randomProjectReady} make it dynamic soon
-    // await page.getByRole('row', { name: `PRO_1478711` }).getByTestId('secondary-actions').click();
+    // await page.getByRole('row', { name: `PRO_1407774` }).getByTestId('secondary-actions').click();
     await page.getByRole('row', { name: `${randomProjectReady}` }).getByTestId('secondary-actions').click();
     await page.locator('div').filter({ hasText: /^Listing Properties$/ }).getByRole('link').click();
     await page.getByRole('button', { name: 'Add Property' }).click();
@@ -638,6 +638,7 @@ async function randomView(page){
 }
 
 async function clickCenterMap(page) {
+  await page.getByRole('button', { name: 'Map camera controls' }).click();
 for (let i = 0; i < 3; i++) {
   await page.getByRole('button', { name: 'Zoom in' }).click();
   await page.getByRole('button', { name: 'Zoom in' }).click();
