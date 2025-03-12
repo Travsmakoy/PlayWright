@@ -43,8 +43,12 @@ test('verify invalid credentials', async ({ page }) => {
   await page.fill('input[name="password"]', 'ahdmin');
   await page.click('button[type="submit"]');    
   await expect(page.getByText(/invalid login credentials/)).toBeVisible();
-});  
- 
+});
+
+// Apply the authentication state for the logout test
+
+  // test.use({ storageState: 'auth.json' });
+
 test('verify logout', async ({ page }) => { 
   await login(page, 'superadmin', '123456');
   await logout(page);
