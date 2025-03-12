@@ -48,6 +48,9 @@ test('verify invalid credentials', async ({ page }) => {
 // Apply the authentication state for the logout test
 
   // test.use({ storageState: 'auth.json' });
+  //        LIST WINDOW HANDLES
+//        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+//        driver.switchTo().window(tabs.get(1));
 
 test('verify logout', async ({ page }) => { 
   await login(page, 'superadmin', '123456');
