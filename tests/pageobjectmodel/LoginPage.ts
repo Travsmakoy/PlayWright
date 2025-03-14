@@ -9,14 +9,12 @@ export default class LoginPage
         this.page = page;
     }
 
-    // Locators
     private readonly userInput = () => this.page.locator('input[name="user"]');
     private readonly passwordInput = () => this.page.locator('input[name="password"]');
     private readonly submitButton = () => this.page.locator('button[type="submit"]');
     private readonly welcomeHeading = () => this.page.getByRole('heading', { name: 'Hi, Welcome Back' });
     private readonly invalidCredentialsMessage = () => this.page.getByText(/invalid login credentials/);
 
-    // Actions
     async goto() {
         await this.page.goto(`${this.BASE_URL}/login`);
     }
@@ -27,7 +25,6 @@ export default class LoginPage
         await this.submitButton().click();
     }
 
-    // Verifications
     async verifyLoginPage() {
         await expect(this.page).toHaveURL(`${this.BASE_URL}/login`);
         await expect(this.welcomeHeading()).toBeVisible();

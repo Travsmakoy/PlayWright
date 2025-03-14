@@ -1,13 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const { test, expect } = require('@playwright/test');
-const { write } = require('fs');
+const { test } = require('@playwright/test');
 const LoginPage = require('./pageobjectmodel/LoginPage').default;
 const DashboardPage = require('./pageobjectmodel/DashboardPage').default;
-const BASE_URL = 'http://192.168.1.193:3000/en';
-const local = 'http://192.168.1.193:3000/en';
-const VALID_USER = 'admin';
-const VALID_PASSWORD = 'newadmin';
 
 test('verify login', async ({ page }) => {
     const loginPage = new LoginPage(page);

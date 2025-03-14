@@ -8,19 +8,16 @@ export default class DashboardPage {
         this.page = page;
     }
 
-    // Locators
     private readonly logoutMenuButton = () => this.page.getByRole('button').filter({ hasText: /^$/ }).nth(4);
     private readonly logoutButton = () => this.page.getByRole('button', { name: 'Logout' });
     private readonly morningGreeting = () => this.page.getByText('Good Morning, Super Admin');
     private readonly eveningGreeting = () => this.page.getByText('Good Evening, Super Admin');
 
-    // Actions
     async logout() {
         await this.logoutMenuButton().click();
         await this.logoutButton().click();
     }
 
-    // Verifications
     async verifyDashboard() {
         await expect(this.page).toHaveURL(`${this.BASE_URL}/dashboard`);
         

@@ -240,7 +240,7 @@ test('verify add company', async ({page}) => {
     await login(page, 'superadmin', '123456');
     await addCompany(page);
     });
-  
+   
     
 test('verify edit company', async ({page}) => {
   await login(page, VALID_USER, VALID_PASSWORD);
