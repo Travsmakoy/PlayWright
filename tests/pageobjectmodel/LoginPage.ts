@@ -2,34 +2,38 @@ import {expect, Page} from '@playwright/test';
 
 export default class LoginPage
 {
-    page: Page;
+    readonly page: Page;
+    private readonly BASE_URL = 'http://192.168.1.193:3000/en';
+
     constructor(page: Page) {
         this.page = page;
     }
-    public async goto(){
-        await this.page.goto('https://192.168.1.193:8080/');
+
+    // Locators
+    private readonly userInput = () => this.page.locator('input[name="user"]');
+    private readonly passwordInput = () => this.page.locator('input[name="password"]');
+    private readonly submitButton = () => this.page.locator('button[type="submit"]');
+    private readonly welcomeHeading = () => this.page.getByRole('heading', { name: 'Hi, Welcome Back' });
+    private readonly invalidCredentialsMessage = () => this.page.getByText(/invalid login credentials/);
+
+    // Actions
+    async goto() {
+        await this.page.goto(`${this.BASE_URL}/login`);
     }
 
-    EnterUser = ()  => this.page.locator('input[name="user"]');   
-    EnterPassword = () => this.page.locator('input[name="password"]');
-    ClickLogin = () => this.page.locator('button[type="submit"]');
-    
-    VerifyLoginSuccess = async () => 
-        {
-            await expect(this.page).toHaveURL('https://192.168.1.193:8080/');
-            await expect(this.EnterUser()).toBeVisible();
-            await expect(this.EnterPassword()).toBeVisible();
-            await expect(this.ClickLogin()).toBeVisible();
-            await this.EnterUser().fill('admin');
-            await this.EnterPassword().fill('password');
-            await this.ClickLogin().click();
-        }
-    veroyInvalidLogin = async () =>
-        {
-            await this.EnterUser().fill('invalidUser');
-            await this.EnterPassword().fill('invalidPassword');
-            await this.ClickLogin().click();
-            await expect(this.page).toHaveURL('https://192.168.1.193:8080/login');
-            await expect(this.page.getByText('Invalid username or password.')).toBeVisible();
-        }
+    async login(username: string, password: string) {
+        await this.userInput().fill(username);
+        await this.passwordInput().fill(password);
+        await this.submitButton().click();
+    }
+
+    // Verifications
+    async verifyLoginPage() {
+        await expect(this.page).toHaveURL(`${this.BASE_URL}/login`);
+        await expect(this.welcomeHeading()).toBeVisible();
+    }
+
+    async verifyInvalidCredentials() {
+        await expect(this.invalidCredentialsMessage()).toBeVisible();
+    }
 }

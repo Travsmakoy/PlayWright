@@ -2,58 +2,39 @@ const fs = require('fs');
 const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { write } = require('fs');
-const { default: LoginPage } = require('./pageobjectmodel/LoginPage');
+const LoginPage = require('./pageobjectmodel/LoginPage').default;
+const DashboardPage = require('./pageobjectmodel/DashboardPage').default;
 const BASE_URL = 'http://192.168.1.193:3000/en';
 const local = 'http://192.168.1.193:3000/en';
 const VALID_USER = 'admin';
 const VALID_PASSWORD = 'newadmin';
 
-async function login(page, user, password) {
-  await page.goto(`${BASE_URL}/login`);
-  await page.fill('input[name="user"]', user);
-  await page.fill('input[name="password"]', password);
-  await page.click('button[type="submit"]');
-  await expect(page).toHaveURL('http://192.168.1.193:3000/en/dashboard');
-  
-  const currentHour = new Date().getHours();
-
-  if (currentHour < 12) {
-      await expect(page.getByText('Good Morning, Super Admin')).toBeVisible();
-  } else {
-      await expect(page.getByText('Good Evening, Super Admin')).toBeVisible();
-  }
-}
-
-async function logout(page) {
-  await page.getByRole('button').filter({ hasText: /^$/ }).nth(4).click();
-  await page.getByRole('button', { name: 'Logout' }).click();
-  await expect(page).toHaveURL(`${BASE_URL}/login`);
-  await expect(page.getByRole('heading', { name: 'Hi, Welcome Back' })).toBeVisible();
-  await expect(page).toHaveURL("http://192.168.1.193:3000/en/login");
-}
-
 test('verify login', async ({ page }) => {
-  await login(page, 'superadmin', '123456');
-  await page.context().storageState({ path: 'auth.json' });
+    const loginPage = new LoginPage(page);
+    const dashboardPage = new DashboardPage(page);
+
+    await loginPage.goto();
+    await loginPage.login('superadmin', '123456');
+    await dashboardPage.verifyDashboard();
+    await page.context().storageState({ path: 'auth.json' });
 });
 
 test('verify invalid credentials', async ({ page }) => {
-  await page.goto(`${BASE_URL}/login`);
-  await page.fill('input[name="user"]', 'superadmin');
-  await page.fill('input[name="password"]', 'ahdmin');
-  await page.click('button[type="submit"]');    
-  await expect(page.getByText(/invalid login credentials/)).toBeVisible();
+    const loginPage = new LoginPage(page);
+
+    await loginPage.goto();
+    await loginPage.login('superadmin', 'ahdmin');
+    await loginPage.verifyInvalidCredentials();
 });
 
-// Apply the authentication state for the logout test
+test('verify logout', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    const dashboardPage = new DashboardPage(page);
 
-  // test.use({ storageState: 'auth.json' });
-  //        LIST WINDOW HANDLES
-//        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-//        driver.switchTo().window(tabs.get(1));
-
-test('verify logout', async ({ page }) => { 
-  await login(page, 'superadmin', '123456');
-  await logout(page);
+    await loginPage.goto();
+    await loginPage.login('superadmin', '123456');
+    await dashboardPage.verifyDashboard();
+    await dashboardPage.logout();
+    await loginPage.verifyLoginPage();
 });
   
