@@ -9,13 +9,13 @@ const local = 'http://192.168.1.193:3000/en';
 async function login(page){
     await page.goto(local);
     await page.getByRole('button', { name: 'Discover Now' }).click();
-    await page.getByRole('textbox', { name: 'Email/Username' }).fill('superadmin');
+    await page.getByRole('textbox', { name: 'admin@aqaryint.com' }).fill('superadmin');
     await page.fill('input[name="password"]', '123456');
     await page.click('button[type="submit"]');
     await expect(page.getByText('Good Morning, Super Admin')).toBeVisible();
 }
 async function locationRandom(page) {
-    await page.locator('input[placeholder="Select Country"]').click(),{timeout:1000};
+    await page.locator('input[placeholder="Select Country"]').click({ timeout: 1000 });
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
     await page.locator('input[placeholder="Select State"]').click();
     await page.locator('ul[role="listbox"] >> li').nth(0).click();
@@ -28,9 +28,9 @@ async function locationRandom(page) {
   }
 
   async function clickCenterMap(page){
-    await page.getByRole('button', { name: 'Map camera controls' }).click();
-  await page.getByRole('button', { name: 'Zoom in' }).click();
-  await page.getByRole('button', { name: 'Zoom in' }).click();
+  await page.getByRole('button', { name: 'Map camera controls' }).click({timeout: 1000});
+  await page.getByRole('button', { name: 'Zoom in' }).click({timeout: 1000});
+  await page.getByRole('button', { name: 'Zoom in' }).click({timeout: 1000});
   await page.waitForTimeout(2000);
 
   

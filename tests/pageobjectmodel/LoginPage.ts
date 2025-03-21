@@ -12,7 +12,7 @@ export default class LoginPage
     private readonly userInput = () => this.page.locator('input[name="user"]');
     private readonly passwordInput = () => this.page.locator('input[name="password"]');
     private readonly submitButton = () => this.page.locator('button[type="submit"]');
-    private readonly welcomeHeading = () => this.page.getByRole('heading', { name: 'Hi, Welcome Back' });
+    private readonly welcomeHeading = () => this.page.getByRole('heading', { name: 'Welcome to AQARY!' });
     private readonly invalidCredentialsMessage = () => this.page.getByText(/invalid login credentials/);
 
     async goto() {
