@@ -33,7 +33,7 @@ async function login(page, user, password) {
     await page.locator('input[name="whatsapp_phone"]').fill('543835792');
     await page.locator('input[name="secondary_phone"]').fill('543835792');
     await page.locator('input[name="tawasal_phone"]').fill('543835792');
-    await page.locator('input[name="profile_picture"]').setInputFiles('D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\profile.webp')
+    await page.locator('input[name="profile_picture"]').setInputFiles('D:\\Mark OneDrive\\OneDrive - aqary international group\\Desktop\\trash\\profile.webp')
     await selectUserType(page);
   }
   async function selectUserType(page) {
