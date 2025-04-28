@@ -283,6 +283,7 @@ async function IfResidential(page){
   // await page.getByPlaceholder('Enter Plot Area').fill((Math.floor(Math.random() * 1000) + 500).toString());
   // await page.getByPlaceholder('Enter Built Up Area').fill((Math.floor(Math.random() * 499) + 1).toString());
   await page.getByPlaceholder('Enter sector number').fill(Math.floor(Math.random()*100).toString());
+  await page.getByRole('textbox', { name: 'Enter plot number' }).fill(Math.floor(Math.random()*100).toString());
   await page.getByPlaceholder('Enter Property number').fill(Math.floor(Math.random()*100).toString());
   if(await page.getByPlaceholder('Select Ownership').isVisible()){
     await page.getByPlaceholder('Select Ownership').click();
@@ -383,7 +384,7 @@ const selectedOption = listItems.nth(randomValue);
   
   await selectedOption.click();
 
-  if (selectedText === 'Commercial Lands' || selectedText === 'Mixed used lands' || selectedText === 'Residential Lands') {
+  if (selectedText === 'Land' || selectedText === 'Commercial Lands' || selectedText === 'Mixed used lands' || selectedText === 'Residential Lands') {
     await ifLand(page);
   } else {
     await IfResidential(page);
@@ -426,20 +427,25 @@ async function addPropertyHub(page) {
     // console.error('Error getting text content:', error);
   }
   await selectedOption.click();
+  await page.getByRole('combobox', { name: 'Select User Type' }).click();
+  await page.locator('ul[role="listbox"] >> li').nth(2).click();
+  await page.getByRole('combobox', { name: 'Select company' }).click();
+  await page.locator('ul[role="listbox"] >> li').nth(0).click();
   const mark = await page.locator('input[placeholder="Search by name or number"]');
   // await page.getByPlaceholder('Broker Agent').fill('Kashif');
-  await page.getByPlaceholder('Broker Agent').fill('Mark');
+  await page.getByPlaceholder('Search Here').fill('Mr  Marku');
   await page.waitForSelector('//ul[@role="listbox"]', { state: 'visible' });
   const firstOption = page.locator('//ul[@role="listbox"]//li[1]');
   await firstOption.click();
-  await mark.fill('Mark');
+  await mark.fill('Mark QA');
   const secondOption = page.locator('//ul[@role="listbox"]//li[1]');
   await secondOption.click();
   
   await locationRandom(page);
-  await page.getByRole('button', { name: 'Map camera controls' }).click();
-  await page.getByRole('button', { name: 'Zoom in' }).click();
-  await page.getByRole('button', { name: 'Zoom in' }).click();
+  // await page.getByRole('button', { name: 'Map camera controls' }).click();
+  // await page.getByRole('button', { name: 'Zoom in' }).click();
+  // await page.getByRole('button', { name: 'Zoom in' }).click();
+
   await page.waitForTimeout(2000);
 
   
@@ -453,6 +459,8 @@ async function addPropertyHub(page) {
   } else {
       console.error('Element not found or not visible');
   }
+  await page.waitForTimeout(2000);
+
   await propertyTypeLogic(page);
   await PropertyTitle(page);
   await WriteDescription(page);

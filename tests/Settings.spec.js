@@ -59,7 +59,6 @@ test('verify add view', async ({page}) => {
     await page.getByPlaceholder('Enter View Title').fill(selectedView);
     // await page.getByRole('button', { name: 'submit' }).cliclk();
 });
-
 test('verify add luxury brand', async ({page}) => {
     page.setDefaultTimeout(3000);
     await login(page, 'superadmin', '123456');
