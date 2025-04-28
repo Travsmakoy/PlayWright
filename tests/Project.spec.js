@@ -555,7 +555,7 @@ async function addOffplanProperty(page){
 
       await page.getByRole('option', { name: 'sqft' }).click();
     }
-
+      
       await page.getByPlaceholder('Select Unit type').click();
       await page.locator('ul[role="listbox"] >> li').nth(0).click();
 
